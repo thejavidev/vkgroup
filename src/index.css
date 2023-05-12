@@ -57,6 +57,7 @@ img{
 }
 .imageP{
     overflow: hidden;
+    position: relative;
 }
 .imageP::after{
     content: "";
@@ -72,5 +73,11 @@ img{
 }
 .imageP:hover::after{
     top: -100%;
-    
+}
+
+.imageB:hover img:nth-child(1){
+    display: none;
+}
+.imageB:hover img:nth-child(2){
+    display: block;
 }

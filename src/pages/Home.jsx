@@ -12,8 +12,10 @@ import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import { Card, Heading, CardBody, Stack, CardFooter } from '@chakra-ui/react'
 import { getMultiLang as ml } from '../components/MultiLang';
+import Contact from "./Contact";
 
-const Home = ({ slider, section2, about, avadanliq, project }) => {
+
+const Home = ({ slider, section2, about, avadanliq, project, brend }) => {
   const [t] = useTranslation("translation");
 
   return (
@@ -56,7 +58,7 @@ const Home = ({ slider, section2, about, avadanliq, project }) => {
               {
                 section2 && section2?.map((item, index) => (
                   <SwiperSlide className="relative w-full" key={index}>
-                    <Link to={`xidmetler/mexaniki/${ml(item.slug_az, item.slug_ru, item.slug_en)}`} className="scale1 flex items-center justify-center transitions cursor-pointer font-bold text-white bg-[#124395] w-[280px] h-[280px] overflow-hidden rounded-full z-50 border25 relative scale-[0.65]">
+                    <Link to={`xidmetler/mexaniki/${item.slug_az}`} className="scale1 flex items-center justify-center transitions cursor-pointer font-bold text-white bg-[#124395] w-[280px] h-[280px] overflow-hidden rounded-full z-50 border25 relative scale-[0.65]">
                       <div className="">
                         <h1 className="text-[18px] uppercase text-center border-none" dangerouslySetInnerHTML={{ __html: item && ml(item.name_az, item.name_ru, item.name_en) }}></h1>
                       </div>
@@ -119,7 +121,7 @@ const Home = ({ slider, section2, about, avadanliq, project }) => {
                       </CardBody>
 
                       <CardFooter>
-                        <Link to={`avadanliqlar/${ml(item?.slug_az, item?.slug_ru, item?.slug_en)}`}>
+                        <Link to={`avadanliqlar/${item?.slug_az}`}>
                           <Button className="bg-[#E10632] border-none outline-none shadow1 mt-[20px] mr-0 mb-[10px] ml-0 rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-white text-[17px] ">
                             {t("etrafli")}
                           </Button>
@@ -143,7 +145,7 @@ const Home = ({ slider, section2, about, avadanliq, project }) => {
             {
               project && project?.slice(0, 4).map((item, index) => (
                 <Col className="imageP relative p-0 m-0 cursor-pointer" key={index} lg={3} md={4}>
-                  <Link to={`layihelerimiz/${ml(item?.slug_az,item?.slug_ru,item?.slug_en)}`}>
+                  <Link to={`layihelerimiz/${item?.slug_az}`}>
                     <LazyLoadImage src={item?.cover} alt={item?.cover_alt_az} />
                   </Link>
                 </Col>
@@ -157,6 +159,36 @@ const Home = ({ slider, section2, about, avadanliq, project }) => {
           </Row>
         </Container>
       </div>
+
+      <div className="bg-[#fff] relative p-[20px] mt-4">
+        <Container>
+          <Row>
+            <Swiper
+              slidesPerView={6}
+              loop={true}
+              spaceBetween={20}
+            >
+              {
+                brend && brend?.map((item, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="rounded-full imageB bg-[#E10632] flex w-[180px] h-[180px] items-center justify-center transitions cursor-pointer hover:bg-[#f3f3f3]">
+                      <LazyLoadImage className="w-[100px]" src={item.src} alt={item.alt_az} />
+                      <LazyLoadImage className="w-[100px] hidden" src={item.grey_src} alt={item.alt_grey_az} />
+                    </div>
+                  </SwiperSlide>
+                ))
+              }
+
+
+            </Swiper>
+          </Row>
+        </Container>
+      </div>
+
+      <div className="mb-10 mt-10">
+        <Contact about={about} />
+      </div>
+
     </>
   )
 }

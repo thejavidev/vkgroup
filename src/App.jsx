@@ -57,6 +57,14 @@ function App() {
     {
       id:6,
       store:data?.avadanlig
+    },
+    {
+      id:7,
+      store:data?.brend
+    },
+    {
+      id:8,
+      store:data?.xidmets
     }
   ]
 
@@ -66,15 +74,20 @@ function App() {
 
   return (
     <>
-      <Layout>
+      <Layout options={api[1].store} subone={api[2].store} xidmet={api[8].store}>
         <Routes>
-          <Route path="/" exact element={<Home slider={api[0].store} section2={api[3].store} about={api[1].store} avadanliq={api[6].store} project={api[5].store} />} ></Route>
+          <Route path="/" exact element={<Home slider={api[0].store} section2={api[3].store} about={api[1].store} avadanliq={api[6].store} project={api[5].store} brend={api[7].store} />} ></Route>
           <Route path="/about" element={<About about={api[1].store} />} ></Route>
-          <Route path="/insaat/:name/:slug" element={<ProductsDetail productLinks={api[2].store} productData={api[[2].store2]} />} ></Route>
+          <Route path="/xidmetler/insaat" element={<ProductsDetail productLinks={api[2].store} productData={api[[2].store2]} />} ></Route>
+          <Route path="/xidmetler/insaat/:name" element={<ProductsDetail productLinks={api[2].store} productData={api[[2].store2]} />} ></Route>
+          <Route path="/xidmetler/insaat/:name/:slug" element={<ProductsDetail productLinks={api[2].store} productData={api[[2].store2]} />} ></Route>
+          <Route path="/xidmetler/mexaniki/" element={<Mechanical productLinks={api[3].store} productData={api[[3].store2]} />} ></Route>
           <Route path="/xidmetler/mexaniki/:slug" element={<Mechanical productLinks={api[3].store} productData={api[[3].store2]} />} ></Route>
+          <Route path="/xidmetler/mexaniki/:name" element={<Mechanical productLinks={api[3].store} productData={api[[3].store2]} />} ></Route>
           <Route path="/xidmetler/mehsullar/:name/:slug" element={<Construction mehsulLink={api[4].store} mehsulData={api[4].store2} />} ></Route>
-          <Route path="/layihelerimiz" element={<Projects layihe={api[5].store} />} ></Route>
-          <Route path="/layihelerimiz/:slug" element={<ProjectsDetails layihe={api[5].store} />} ></Route>
+          <Route path="/layihelerimiz" element={<Projects project={api[5].store} />} ></Route>
+          <Route path="/layihelerimiz/:slug" element={<ProjectsDetails project={api[5].store} />} ></Route>
+          <Route path="/avadanliqlar" element={<Equipment />} ></Route>
           <Route path="/avadanliqlar/:slug" element={<Equipment />} ></Route>
           <Route path="/foto" element={<Photo />} ></Route>
           <Route path="/foto/:id" element={<PhotoDetails />} ></Route>
@@ -84,7 +97,7 @@ function App() {
           <Route path="/sertifikat" element={<Certificats />} ></Route>
           <Route path="/servis" element={<ServiceAbout />} ></Route>
           <Route path="/rey-sorgusu" element={<Comments />} ></Route>
-          <Route path="/elaqe" element={<Contact />} ></Route>
+          <Route path="/elaqe" element={<Contact about={api[1].store} />} ></Route>
         </Routes>
       </Layout>
     </>

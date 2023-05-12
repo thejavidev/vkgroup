@@ -3,7 +3,7 @@ import React from 'react'
 const Mechanical = () => {
   return (
     <div>
-      service mexaniki 
+      service mexaniki  2
     </div>
   )
 }

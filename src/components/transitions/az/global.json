@@ -1,7 +1,30 @@
 {
+    "url":"xidmetler",
     "whowe":"Biz kimik?",
     "more":"Davamı",
+    "more2":"Daha çox",
     "avadanliq":"Avadanlıqlar",
     "etrafli":"Ətraflı",
-    "projects":"Layihələrimiz"
+    "projects":"Layihələrimiz",
+    "contactT":"Bizimlə əlaqə saxlayın",
+    "nameSurname":"Ad,Soyad",
+    "contactNumber":"Əlaqə nömrəsi",
+    "email":"E-mail",
+    "message":"Mesaj",
+    "send":"Göndər",
+    "footerT":"Bütün hüquqlar qorunur ©",
+    "quickmenu":"Asan menyu",
+    "footerabout":"biz",
+    "footerservice":"Servis",
+    "footerlayihe":"Layihələrimiz",
+    "footeravadanlig":"Avadanlıqlar",
+    "footercertf":"Sertifikatlar",
+    "footerrey":"Rəy Sorğusu",
+    "footerelaqe":"Əlaqə",
+    "footerservice":"xidmətlər",
+    "footermedia":"media",
+    "footerfoto":"Foto",
+    "footervideo":"Video",
+    "footerblog":"Bloq"
+
 }
