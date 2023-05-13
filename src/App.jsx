@@ -86,7 +86,7 @@ function App() {
           <Route path="/xidmetler/mexaniki/:name" element={<Mechanical productLinks={api[3].store} productData={api[[3].store2]} />} ></Route>
           <Route path="/xidmetler/mehsullar/:name/:slug" element={<Construction mehsulLink={api[4].store} mehsulData={api[4].store2} />} ></Route>
           <Route path="/layihelerimiz" element={<Projects project={api[5].store} />} ></Route>
-          <Route path="/layihelerimiz/:slug" element={<ProjectsDetails project={api[5].store} />} ></Route>
+          <Route path="/layihelerimiz/:slug_az" element={<ProjectsDetails project={api[5].store} />} ></Route>
           <Route path="/avadanliqlar" element={<Equipment />} ></Route>
           <Route path="/avadanliqlar/:slug" element={<Equipment />} ></Route>
           <Route path="/foto" element={<Photo />} ></Route>
