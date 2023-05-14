@@ -31,11 +31,11 @@ const Home = ({ slider, section2, about, avadanliq, project, brend }) => {
         {
           slider && slider?.map((item, index) => (
             <SwiperSlide key={index} className="relative after">
-              <LazyLoadImage className="w-full h-[650px] md:h-full" src={item.src} alt={item.alt_az} />
+              <LazyLoadImage className="w-full h-[650px] md:h-full" src={item?.src} alt={item?.alt_az} />
               <div className="sliderText absolute top-[50%] left-[50%] z-30 text-center text-black">
                 <div className="flex items-center justify-center w-full h-full flex-col text-center">
-                  <h5 className="text-[70px] text-white">{item.title_1_az}</h5>
-                  <p className="font-[400] text-[19px] pt-[30px] text-center text-white">{item.title_2_az}</p>
+                  <h5 className="text-[70px] text-white capitalize">{ml(item?.title_1_az,item?.title_1_ru,item?.title_1_en)}</h5>
+                  <p className="font-[400] text-[19px] pt-[30px] text-center text-white">{ml(item?.title_2_az,item?.title_2_ru,item?.title_2_en)}</p>
                 </div>
               </div>
             </SwiperSlide>
@@ -78,7 +78,7 @@ const Home = ({ slider, section2, about, avadanliq, project, brend }) => {
 
             <Col lg={8} md={12}>
               <p className="font-[400] text-[30px] text-[#272727]">{t("whowe")}</p>
-              <div className="font-[400] pt-[20px] text-justify line-clamp-3" dangerouslySetInnerHTML={{ __html: about && ml(about?.biz_text_az, about?.biz_text_ru, about?.biz_text_en) }}>
+              <div className="font-[400] pt-[20px] text-justify line-clamp-3 " dangerouslySetInnerHTML={{ __html: about && ml(about?.biz_text_az, about?.biz_text_ru, about?.biz_text_en) }}>
               </div>
               <Link to="about">
                 <Button className="mt-[30px] bg-[#E10632] text-white border-none outline-none rounded-none pl-[20px] pr-[20px] capitalize text-[17px]">{t("more")}</Button>

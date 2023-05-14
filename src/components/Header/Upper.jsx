@@ -19,7 +19,7 @@ const Upper =({toggle, switchLang})=>{
     return(
         <div className='relative  text-black px-2 ml-5'>
             <div onClick={toggle}>
-                <button className='uppercase text-[12px] xs:text-[10px]'>{localStorage.getItem("i18nextLng") ? localStorage.getItem("i18nextLng") : "az"}</button>
+                <button className='text-[#fff] uppercase text-[16px]'>{localStorage.getItem("i18nextLng") ? localStorage.getItem("i18nextLng") : "az"}</button>
             </div>
             {switchLang}
         </div>

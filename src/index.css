@@ -5,6 +5,27 @@
 ::-webkit-scrollbar{
     width: 7px;
 }
+@-webkit-keyframes dropdownMenu {
+    from {
+        opacity: 0;
+        transform: translate(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes dropdownMenu {
+    from {
+        opacity: 0;
+        transform: translate(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
 img{
     border-style: none;
     vertical-align: middle;
@@ -74,37 +95,32 @@ img{
 .imageP:hover::after{
     top: -100%;
 }
-
+.w-max{
+    width: max-content;
+}
 .imageB:hover img:nth-child(1){
     display: none;
 }
 .imageB:hover img:nth-child(2){
     display: block;
 }
-/* .mySwiper2 {
-    height: 80%;
-    width: 100%;
-  }
-  
-  .mySwiper {
-    height: 20%;
-    box-sizing: border-box;
-    padding: 10px 0;
-  }
-  
-  .mySwiper .swiper-slide {
-    width: 25%;
-    height: 100%;
-    opacity: 0.4;
-  }
-  
-  .mySwiper .swiper-slide-thumb-active {
+.first_alt_menu{
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, visibility 0.6s;
+}
+.ulHover:hover .first_alt_menu{
     opacity: 1;
-  }
-  
-  .swiper-slide img {
+    visibility: visible;
+}
+.second_li{
+    opacity: 0;
+}
+.secondUl:hover .second_li{
+    animation: dropdownMenu 0.5s forwards;
     display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  } */
+}
+.allmenu .hvr:hover{
+    transition: all 200ms linear;
+    box-shadow: 0px 6px 12px 4px rgba(0, 0, 0, 0.25);
+}

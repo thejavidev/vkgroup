@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react'
 import { AiFillYoutube, AiOutlineInstagram, AiFillFacebook } from 'react-icons/Ai';
 import { Tb360View } from 'react-icons/Tb';
-import { m } from 'framer-motion';
+
 
 
 

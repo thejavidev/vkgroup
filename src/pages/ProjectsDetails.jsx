@@ -47,7 +47,7 @@ const ProjectsDetails = ({ project }) => {
                 {
                   images && images?.map((item, index) => (
                     <SwiperSlide key={index}>
-                      <LazyLoadImage className="h-[400px]" src={item?.src} />
+                      <LazyLoadImage className="h-[400px] w-full" src={item?.src} />
                     </SwiperSlide>
 
                   ))
@@ -70,7 +70,7 @@ const ProjectsDetails = ({ project }) => {
                   {
                     images && images?.map((item, index) => (
                       <SwiperSlide key={index}>
-                        <LazyLoadImage className="h-[88px]" src={item?.src} />
+                        <LazyLoadImage className="h-[88px] w-full" src={item?.src} />
                       </SwiperSlide>
 
                     ))
