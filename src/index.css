@@ -37,9 +37,47 @@ img{
 .sliderText{
     transform: translate(-50%, -50%);
 }
+@keyframes animation321 {
+    0% {
+        background: #124395;
+        transform: translateX(var(--displace));
+    }
+
+    100% {
+        background: #E10632;
+        transform: translateX(00px);
+    }
+}
+.ball{
+    --size: 20px;
+    --timing: 0.7s;
+    --displace: 70px;
+    border-radius: 50%;
+    width: var(--size);
+    height: var(--size);
+    background: #000;
+    margin-right: var(--displace);
+    animation: animation321 var(--timing) infinite alternate cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+@keyframes placeHolderShimmer {
+    0%{ background-position: -468px 0; }
+    100%{ background-position: 468px 0; }
+  }
+  
+.ball2{
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: placeHolderShimmer;
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    background-size: 800px 104px;
+}
 .transitions{
     transition: all 200ms linear;
 }
+
+
 .swiper-slide-active > .scale1{
     transform: scale(1) !important;
 }

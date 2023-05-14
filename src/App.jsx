@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
@@ -21,10 +21,12 @@ import Contact from "./pages/Contact";
 import { loadposts } from './components/store/posts';
 import Mechanical from './pages/Mechanical';
 import ProjectsDetails from './pages/ProjectsDetails';
+import Loader from './components/loader/Loader';
 
 function App() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.list);
+  const [loading, setLoading] = useState(false)
 
   const api = [
     {
@@ -77,44 +79,57 @@ function App() {
     {
       id:11,
       store:data?.blog
+    },
+    {
+      id:12,
+      store:data?.foto
     }
   ]
 
   useEffect(useCallback(() => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 1500);
     dispatch(loadposts());
   }, [dispatch]), [])
 
   return (
     <>
+    {
+      loading ? <Loader /> :
       <Layout options={api[1].store} subone={api[2].store} xidmet={api[8].store} fourmenu={api[9].store}>
-        <Routes>
-          <Route path="/" exact element={<Home slider={api[0].store} section2={api[3].store} about={api[1].store} avadanliq={api[6].store} project={api[5].store} brend={api[7].store} />} ></Route>
-          <Route path="/about" element={<About about={api[1].store} />} ></Route>
-          <Route path="/xidmetler" element={<Products productLinks={api[2].store} productData={api[[2].store2]} />} ></Route>
-          <Route path="/xidmetler/insaat" element={<Products productLinks={api[2].store} productData={api[[2].store2]} />} ></Route>
-          <Route path="/xidmetler/insaat/:name" element={<ProductsDetail productLinks={api[2].store} productData={api[[2].store2]} />} ></Route>
-          <Route path="/xidmetler/insaat/:name/:slug_az" element={<ProductsDetail productLinks={api[2].store} productData={api[[2].store2]} />} ></Route>
-          <Route path="/xidmetler/mexaniki/" element={<Mechanical productLinks={api[3].store} productData={api[[3].store2]} />} ></Route>
-          <Route path="/xidmetler/mexaniki/:slug_az" element={<Mechanical productLinks={api[3].store} productData={api[[3].store2]} />} ></Route>
-          <Route path="/xidmetler/mexaniki/:name" element={<Mechanical productLinks={api[3].store} productData={api[[3].store2]} />} ></Route>
-          <Route path="/mehsullar" element={<Construction mehsulLink={api[4].store} mehsulData={api[4].store2} />} ></Route>
-          <Route path="/mehsullar/:name" element={<Construction mehsulLink={api[4].store} mehsulData={api[4].store2} />} ></Route>
-          <Route path="/mehsullar/:name/:slug_az" element={<Construction mehsulLink={api[4].store} mehsulData={api[4].store2} />} ></Route>
-          <Route path="/layihelerimiz" element={<Projects project={api[5].store} />} ></Route>
-          <Route path="/layihelerimiz/:slug_az" element={<ProjectsDetails project={api[5].store} />} ></Route>
-          <Route path="/avadanliqlar" element={<Equipment />} ></Route>
-          <Route path="/avadanliqlar/:slug_az" element={<Equipment />} ></Route>
-          <Route path="/foto" element={<Photo />} ></Route>
-          <Route path="/foto/:id" element={<PhotoDetails />} ></Route>
-          <Route path="/video" element={<Video />} ></Route>
-          <Route path="/blog" element={<Blog store={api[10].store}   />} ></Route>
-          <Route path="/blog/:slug_az" element={<BlogDetail store={api[10].store}   />} ></Route>
-          <Route path="/sertifikat" element={<Certificats />} ></Route>
-          <Route path="/servis" element={<ServiceAbout />} ></Route>
-          <Route path="/rey-sorgusu" element={<Comments />} ></Route>
-          <Route path="/elaqe" element={<Contact about={api[1].store} />} ></Route>
-        </Routes>
-      </Layout>
+      <Routes>
+        <Route path="/" exact element={<Home slider={api[0].store} section2={api[3].store} about={api[1].store} avadanliq={api[6].store} project={api[5].store} brend={api[7].store} />} ></Route>
+        <Route path="/about" element={<About about={api[1].store} />} ></Route>
+        <Route path="/xidmetler" element={<Products productLinks={api[2].store} productData={api[[2].store2]} />} ></Route>
+        <Route path="/xidmetler/insaat" element={<Products productLinks={api[2].store} productData={api[[2].store2]} />} ></Route>
+        <Route path="/xidmetler/insaat/:name" element={<ProductsDetail productLinks={api[2].store} productData={api[[2].store2]} />} ></Route>
+        <Route path="/xidmetler/insaat/:name/:slug_az" element={<ProductsDetail productLinks={api[2].store} productData={api[[2].store2]} />} ></Route>
+        <Route path="/xidmetler/mexaniki/" element={<Mechanical productLinks={api[3].store} productData={api[[3].store2]} />} ></Route>
+        <Route path="/xidmetler/mexaniki/:slug_az" element={<Mechanical productLinks={api[3].store} productData={api[[3].store2]} />} ></Route>
+        <Route path="/xidmetler/mexaniki/:name" element={<Mechanical productLinks={api[3].store} productData={api[[3].store2]} />} ></Route>
+        <Route path="/mehsullar" element={<Construction mehsulLink={api[4].store} mehsulData={api[4].store2} />} ></Route>
+        <Route path="/mehsullar/:name" element={<Construction mehsulLink={api[4].store} mehsulData={api[4].store2} />} ></Route>
+        <Route path="/mehsullar/:name/:slug_az" element={<Construction mehsulLink={api[4].store} mehsulData={api[4].store2} />} ></Route>
+        <Route path="/layihelerimiz" element={<Projects project={api[5].store} />} ></Route>
+        <Route path="/layihelerimiz/:slug_az" element={<ProjectsDetails project={api[5].store} />} ></Route>
+        <Route path="/avadanliqlar" element={<Equipment avadanlig={api[6].store} />} ></Route>
+        <Route path="/avadanliqlar/:slug_az" element={<Equipment />} ></Route>
+        <Route path="/foto" element={<Photo foto={api[12].store} />} ></Route>
+        <Route path="/foto/:id" element={<PhotoDetails foto={api[12].store} />} ></Route>
+        <Route path="/video" element={<Video />} ></Route>
+        <Route path="/blog" element={<Blog store={api[10].store}   />} ></Route>
+        <Route path="/blog/:slug_az" element={<BlogDetail store={api[10].store}   />} ></Route>
+        <Route path="/sertifikat" element={<Certificats />} ></Route>
+        <Route path="/servis" element={<ServiceAbout />} ></Route>
+        <Route path="/rey-sorgusu" element={<Comments />} ></Route>
+        <Route path="/elaqe" element={<Contact about={api[1].store} />} ></Route>
+      </Routes>
+    </Layout>
+    }
+
+     
     </>
   )
 }
