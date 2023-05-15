@@ -8,7 +8,7 @@ import Products from "./pages/Products";
 import ProductsDetail from "./pages/ProductsDetail";
 import Construction from "./pages/Construction";
 import Projects from "./pages/Projects";
-import Equipment from "./pages/Equipment";
+// import Equipment from "./pages/Equipment";
 import Photo from "./pages/Photo";
 import PhotoDetails from "./pages/PhotoDetails";
 import Video from "./pages/Video";
@@ -22,6 +22,7 @@ import { loadposts } from './components/store/posts';
 import Mechanical from './pages/Mechanical';
 import ProjectsDetails from './pages/ProjectsDetails';
 import Loader from './components/loader/Loader';
+// import NavTabs from './components/UI/NavTabs';
 
 function App() {
   const dispatch = useDispatch();
@@ -78,11 +79,20 @@ function App() {
     },
     {
       id:11,
-      store:data?.blog
+      store:data?.foto
     },
     {
       id:12,
-      store:data?.foto
+      store:data?.certificats
+    },
+    {
+      id:13,
+      store:data?.video
+    },
+    {
+      id:14,
+      store:data?.qurums,
+      store2:data?.xidmetSaheleri
     }
   ]
 
@@ -114,15 +124,14 @@ function App() {
         <Route path="/mehsullar/:name/:slug_az" element={<Construction mehsulLink={api[4].store} mehsulData={api[4].store2} />} ></Route>
         <Route path="/layihelerimiz" element={<Projects project={api[5].store} />} ></Route>
         <Route path="/layihelerimiz/:slug_az" element={<ProjectsDetails project={api[5].store} />} ></Route>
-        <Route path="/avadanliqlar" element={<Equipment avadanlig={api[6].store} />} ></Route>
-        <Route path="/avadanliqlar/:slug_az" element={<Equipment />} ></Route>
-        <Route path="/foto" element={<Photo foto={api[12].store} />} ></Route>
-        <Route path="/foto/:id" element={<PhotoDetails foto={api[12].store} />} ></Route>
-        <Route path="/video" element={<Video />} ></Route>
+        {/* <Route path="/avadanliqlar" element={<Equipment avadanlig={api[6].store} avadanliglar={api[6].store} />} ></Route> */}
+        <Route path="/foto" element={<Photo foto={api[11].store} />} ></Route>
+        <Route path="/foto/:id" element={<PhotoDetails foto={api[11].store} />} ></Route>
+        <Route path="/video" element={<Video video={api[13].store} />} ></Route>
         <Route path="/blog" element={<Blog store={api[10].store}   />} ></Route>
         <Route path="/blog/:slug_az" element={<BlogDetail store={api[10].store}   />} ></Route>
-        <Route path="/sertifikat" element={<Certificats />} ></Route>
-        <Route path="/servis" element={<ServiceAbout />} ></Route>
+        <Route path="/sertifikat" element={<Certificats certfkat={api[12].store} />} ></Route>
+        <Route path="/servis" element={<ServiceAbout options={api[1].store} service1={api[14].store} service2={api[14].store2}  />} ></Route>
         <Route path="/rey-sorgusu" element={<Comments />} ></Route>
         <Route path="/elaqe" element={<Contact about={api[1].store} />} ></Route>
       </Routes>

@@ -77,7 +77,21 @@ img{
     transition: all 200ms linear;
 }
 
-
+.transitionsa{
+    transition: background 0.4s linear, color 0.6s linear;
+}
+.colorchagne:hover .color1{
+    background:#f3f3f3;
+}
+.colorchagne:hover .color1 h6{
+    color: #000;
+}
+.colorchagne:hover .color2{
+    background:#E10632;
+}
+.colorchagne:hover .color2 h6{
+    color:#fff;
+}
 .swiper-slide-active > .scale1{
     transform: scale(1) !important;
 }
