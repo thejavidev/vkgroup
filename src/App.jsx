@@ -23,6 +23,8 @@ import Mechanical from './pages/Mechanical';
 import ProjectsDetails from './pages/ProjectsDetails';
 import Loader from './components/loader/Loader';
 import VideoDetails from './pages/VideoDetails';
+import Filtr from './pages/products/FiltrPages/Filtr';
+import Damper from './pages/products/damper/Damper';
 // import NavTabs from './components/UI/NavTabs';
 
 function App() {
@@ -51,8 +53,11 @@ function App() {
     },
     {
       id:4,
-      store: data?.hkategoriya,
-      store2: data?.hproducts
+      store1: data?.hproducts,
+      kategoriya1: data?.hkategoriya,
+      kategoriya2: data?.hkategoriya2,
+      kategoriya3: data?.hkategoriya3,
+      kategoriya4: data?.hkategoriya4
     },
     {
       id:5,
@@ -101,7 +106,7 @@ function App() {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
-    }, 1500);
+    }, 200);
     dispatch(loadposts());
   }, [dispatch]), [])
 
@@ -113,14 +118,12 @@ function App() {
       <Routes>
         <Route path="/" exact element={<Home slider={api[0].store} section2={api[3].store} about={api[1].store} avadanliq={api[6].store} project={api[5].store} brend={api[7].store} />} ></Route>
         <Route path="/about" element={<About about={api[1].store} />} ></Route>
-        <Route path="/xidmetler" element={<Products productLinks={api[2].store} productData={api[[2].store2]} />} ></Route>
-        <Route path="/xidmetler/insaat" element={<Products productLinks={api[2].store} productData={api[[2].store2]} />} ></Route>
-        <Route path="/xidmetler/insaat/:name" element={<ProductsDetail productLinks={api[2].store} productData={api[[2].store2]} />} ></Route>
-        <Route path="/xidmetler/insaat/:name/:slug_az" element={<ProductsDetail productLinks={api[2].store} productData={api[[2].store2]} />} ></Route>
-        <Route path="/xidmetler/mexaniki/" element={<Mechanical productLinks={api[3].store} productData={api[[3].store2]} />} ></Route>
-        <Route path="/xidmetler/mexaniki/:slug_az" element={<Mechanical productLinks={api[3].store} productData={api[[3].store2]} />} ></Route>
-        <Route path="/xidmetler/mexaniki/:name" element={<Mechanical productLinks={api[3].store} productData={api[[3].store2]} />} ></Route>
-        <Route path="/mehsullar" element={<Construction mehsulLink={api[4].store} mehsulData={api[4].store2} />} ></Route>
+        <Route path="/mehsullar/filtir" element={<Filtr filtr={api[4].kategoriya4} filtrdata={api[4].store1} />} ></Route>
+        <Route path="/mehsullar/damperler" element={<Damper filtr={api[4].kategoriya3} filtrdata={api[4].store1} />} ></Route>
+
+
+
+        <Route path="/mehsullar" element={<Construction  mehsulData={api[4].store1} mehsullink1={api[4].kategoriya1} mehsullink2={api[4].kategoriya2} mehsullink3={api[4].kategoriya3} mehsullink4={api[4].kategoriya4} />} ></Route>
         <Route path="/mehsullar/:name" element={<Construction mehsulLink={api[4].store} mehsulData={api[4].store2} />} ></Route>
         <Route path="/mehsullar/:name/:slug_az" element={<Construction mehsulLink={api[4].store} mehsulData={api[4].store2} />} ></Route>
         <Route path="/layihelerimiz" element={<Projects project={api[5].store} />} ></Route>

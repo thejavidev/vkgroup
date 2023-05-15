@@ -61,9 +61,9 @@ const Home = ({ slider, section2, about, avadanliq, project, brend }) => {
               {
                 section2 && section2?.map((item, index) => (
                   <SwiperSlide className="relative w-full" key={index}>
-                    <Link to={`xidmetler/mexaniki/${item.slug_az}`} className="scale1 flex items-center justify-center transitions cursor-pointer font-bold text-white bg-[#124395] w-[280px] h-[280px] overflow-hidden rounded-full z-50 border25 relative scale-[0.65]">
+                    <Link to={`xidmetler/mexaniki/${item?.slug_az}`} className="scale1 flex items-center justify-center transitions cursor-pointer font-bold text-white bg-[#124395] w-[280px] h-[280px] overflow-hidden rounded-full z-50 border25 relative scale-[0.65]">
                       <div className="">
-                        <h1 className="text-[18px] uppercase text-center border-none" dangerouslySetInnerHTML={{ __html: item && ml(item.name_az, item.name_ru, item.name_en) }}></h1>
+                        <h1 className="text-[18px] uppercase text-center border-none" dangerouslySetInnerHTML={{ __html: item && ml(item?.name_az, item?.name_ru, item?.name_en) }}></h1>
                       </div>
                     </Link>
                   </SwiperSlide>

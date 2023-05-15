@@ -83,11 +83,11 @@ const Header = ({ xidmet, subone, fourmenu }) => {
                 <div className='text-white text-[15px] uppercase xl:text-[13px] font-[300] relative block '>
                   {t("mehsullar")}
                 </div>
-                <ul className='first_alt_menu flex absolute top-[100%] left-[-50px] mt-[10px] bg-[#272727] pl-0 '>
+                <ul className='first_alt_menu flex absolute top-[75px] left-[-50px]  bg-[#272727] pl-0 '>
                   {
                     fourmenu && fourmenu?.map((cur, i) => (
-                      <li key={i} className='p-[20px] relative capitalize w-max text-[#E10632]  bg-[#272727] cursor-pointer text-[16px] transitions secondUl'>
-                        <Link to={`mehsullar/${cur.slug_az}`} className='text-[#E10632] hover:text-[#fff] transitions xl:text-[13px]'>
+                      <li key={i} className=' relative capitalize text-[#E10632] w-max     cursor-pointer text-[16px] transitions secondUl'>
+                        <Link to={`mehsullar/${cur.slug_az}`} className='text-[#E10632] pt-[15px] pl-[15px] pr-[15px] pb-[15px] bg-[#272727]  hover:text-[#fff] transitions xl:text-[13px]'>
                           {ml(cur?.name_az, cur?.name_ru, cur?.name_em)}
                         </Link>
 
