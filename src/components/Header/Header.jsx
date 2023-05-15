@@ -19,6 +19,7 @@ const Header = ({ xidmet, subone, fourmenu }) => {
   }
   const langs = ["az", "ru", "en"];
   const myLang = langs.filter(langChecker);
+ 
   return (
     <header className='fixed bg-[#272727] top-0 left-0 right-0 w-full z-50 transitions'>
       <Container fluid className='pr-[70px] pl-[70px] pt-[7px] pb-[7px] 2xl:pl-[20px] 2xl:pr-[20px]'>

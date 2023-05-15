@@ -22,6 +22,7 @@ import { loadposts } from './components/store/posts';
 import Mechanical from './pages/Mechanical';
 import ProjectsDetails from './pages/ProjectsDetails';
 import Loader from './components/loader/Loader';
+import VideoDetails from './pages/VideoDetails';
 // import NavTabs from './components/UI/NavTabs';
 
 function App() {
@@ -126,8 +127,9 @@ function App() {
         <Route path="/layihelerimiz/:slug_az" element={<ProjectsDetails project={api[5].store} />} ></Route>
         {/* <Route path="/avadanliqlar" element={<Equipment avadanlig={api[6].store} avadanliglar={api[6].store} />} ></Route> */}
         <Route path="/foto" element={<Photo foto={api[11].store} />} ></Route>
-        <Route path="/foto/:id" element={<PhotoDetails foto={api[11].store} />} ></Route>
+        <Route path="/foto/:id" element={<PhotoDetails foto={api[11].store}  />} ></Route>
         <Route path="/video" element={<Video video={api[13].store} />} ></Route>
+        <Route path="/video/:slug_az" element={<VideoDetails video={api[13].store} />} ></Route>
         <Route path="/blog" element={<Blog store={api[10].store}   />} ></Route>
         <Route path="/blog/:slug_az" element={<BlogDetail store={api[10].store}   />} ></Route>
         <Route path="/sertifikat" element={<Certificats certfkat={api[12].store} />} ></Route>

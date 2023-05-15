@@ -13,11 +13,14 @@ import Button from 'react-bootstrap/Button';
 import { Card, Heading, CardBody, Stack, CardFooter } from '@chakra-ui/react'
 import { getMultiLang as ml } from '../components/MultiLang';
 import Contact from "./Contact";
+import { useEffect } from "react";
 
 
 const Home = ({ slider, section2, about, avadanliq, project, brend }) => {
   const [t] = useTranslation("translation");
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <>
       <Swiper

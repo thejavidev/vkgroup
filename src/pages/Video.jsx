@@ -7,6 +7,7 @@ import FsLightbox from "fslightbox-react";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import LoaderContent from '../components/loader/LoaderContent';
 import { Link } from 'react-router-dom';
+import { getMultiLang as ml } from '../components/MultiLang';
 
 const Video = ({ video }) => {
   const [t] = useTranslation("translation");
@@ -18,7 +19,7 @@ const Video = ({ video }) => {
     setNext(next + imagePerRow);
   };
   useEffect(() => {
-
+    window.scrollTo(0, 0)
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
@@ -36,7 +37,10 @@ const Video = ({ video }) => {
                     {
                       loading ? <LoaderContent /> :
                         <div className="overflow-hidden ">
-                          <LazyLoadImage src={item?.src} className='w-full' />
+                          <Link to={`${item?.slug_az}`}>
+                            <LazyLoadImage src={item?.src} className='w-full' />
+                          </Link>
+                          <h3 className='font-[700] text-[25px] text-[#272727] w-full pt-[20px] pb-[20px] pl-0 pr-0 m-0'>{ml(item?.title_az,item?.title_ru,item?.title_en)}</h3>
                         </div>
                     }
 

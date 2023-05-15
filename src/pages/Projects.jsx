@@ -20,7 +20,7 @@ const Projects = ({ project }) => {
   };
 
   useEffect(() => {
-
+    window.scrollTo(0, 0)
     setLoading(true)
     setTimeout(() => {
       setLoading(false)

@@ -18,7 +18,7 @@ const Photo = ({ foto }) => {
     setNext(next + imagePerRow);
   };
   useEffect(() => {
-
+    window.scrollTo(0, 0)
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
@@ -28,7 +28,7 @@ const Photo = ({ foto }) => {
   return (
     <>
 
-      <div className="relative bg-[#F3F3F3]  pt-[100px] pb-[100px]">
+      <div className="relative bg-[#F3F3F3]  pt-[70px] pb-[100px]">
         <Container>
           <p className="font-[400] text-[30px] text-[#272727] pt-[10px] pl-0 pr-0 pb-[20px]">{t("projects")}</p>
           <Row className="">
@@ -38,7 +38,7 @@ const Photo = ({ foto }) => {
                   <Col className=" relative mb-3  cursor-pointer overflow-hidden" key={index} lg={3} md={4}>
                     {
                       loading ? <LoaderContent /> :
-                        <Link to={`${item?.id}`} className="imageP">
+                        <Link to={`${item.id}`} className="imageP">
                           <LazyLoadImage className="h-[250px]" src={item?.src} alt='' />
                         </Link>
                     }

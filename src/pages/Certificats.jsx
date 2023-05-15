@@ -17,7 +17,7 @@ const Certificats = ({ certfkat }) => {
     setNext(next + imagePerRow);
   };
   useEffect(() => {
-
+    window.scrollTo(0, 0)
     setLoading(true)
     setTimeout(() => {
       setLoading(false)

@@ -18,9 +18,9 @@ const Blog = ({ store }) => {
   const handleMoreImage = () => {
     setNext(next + imagePerRow);
   };
-
+  
   useEffect(() => {
-
+    window.scrollTo(0, 0)
     setLoading(true)
     setTimeout(() => {
       setLoading(false)

@@ -49,7 +49,7 @@ const Footer = ({ options, subone, xidmet }) => {
                           <Link className='text-white capitalize pb-[10px] font-[600]' to='avadanliqlar'>{t('footeravadanlig')}</Link>
                         </Col>
                         <Col lg={6} className='flex flex-col'>
-                          <Link className='text-white capitalize pb-[10px] font-[600]' to='footercertf'>{t('footercertf')}</Link>
+                          <Link className='text-white capitalize pb-[10px] font-[600]' to='sertifikat'>{t('footercertf')}</Link>
                           <Link className='text-white capitalize pb-[10px] font-[600]' to='rey-sorgusu'>{t('footerrey')}</Link>
                           <Link className='text-white capitalize pb-[10px] font-[600]' to='elaqe'>{t('footerelaqe')}</Link>
                         </Col>

@@ -36,7 +36,7 @@ const BlogDetail = ({ store }) => {
     window.scrollTo(0, 0)
   }
 
-  console.log(store)
+  
   return (
     <>
       <div className="p-[20px] mt-[80px] bg-[#F3F3F3] w-full flex items-center justify-center">

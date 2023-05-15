@@ -4,9 +4,13 @@ import Col from 'react-bootstrap/Col';
 import { useTranslation } from 'react-i18next';
 import { getMultiLang as ml } from '../components/MultiLang';
 import Contact from './Contact';
+import { useEffect } from 'react';
 
 const ServiceAbout = ({ options, service1, service2 }) => {
   const [t] = useTranslation("translation");
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <>
       <div className="mt-[100px]">

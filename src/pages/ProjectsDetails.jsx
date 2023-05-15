@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import { useTranslation } from 'react-i18next';
 import { getMultiLang as ml } from '../components/MultiLang';
 import { useParams } from "react-router";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 
@@ -24,10 +24,13 @@ const ProjectsDetails = ({ project }) => {
   const { slug_az } = useParams();
   const currentPost = Data?.find((post) => post.slug_az === slug_az);
   const images = currentPost?.images;
-
+  console.log(images)
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <>
-      <div className="">
+      <div className="mt-32 mb-28">
         <Container>
           <Row>
             <Col lg={4} md={12}>

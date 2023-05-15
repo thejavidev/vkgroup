@@ -9,12 +9,16 @@ import Col from 'react-bootstrap/Col';
 import { useTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
+import { useEffect } from 'react';
 
 const Contact = ({about}) => {
   const [t] = useTranslation("translation");
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <>
-        <div className="relative mt-6">
+        <div className="relative mt-28 mb-28">
         <Container>
           <Row>
             <p className="font-[700] text-[45px] text-[#272727] mb-4">{t("contactT")}</p>

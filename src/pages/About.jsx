@@ -4,9 +4,13 @@ import Col from 'react-bootstrap/Col';
 import { useTranslation } from 'react-i18next';
 import { getMultiLang as ml } from '../components/MultiLang';
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useEffect } from 'react';
 
 const About = ({about}) => {
   const [t] = useTranslation("translation");
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <>
       <div className="bg-[#F3F3F3] relative mt-4 w-full pt-[100px] pb-[70px] pl-0 pr-0">
