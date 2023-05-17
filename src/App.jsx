@@ -21,7 +21,8 @@ import Loader from './components/loader/Loader';
 import VideoDetails from './pages/VideoDetails';
 
 import Mehsullar from './pages/products/Mehsullar';
-import MehsullarItem from './pages/products/MehsullarItem';
+import Equipment from './pages/Equipment';
+
 
 
 
@@ -51,16 +52,15 @@ function App() {
     <>
       {
         loading ? <Loader /> :
-          <Layout option={data?.options} xidmet={data?.xidmets} mehsullar={data?.mehsullar}>
+          <Layout option={data?.options} xidmet={data?.xidmets} mehsullar={data?.mehsullar} avadanlig={data?.avadanlig}>
             <Routes>
               <Route path="/" exact element={<Home banner={data?.banner} option={data?.options} avadanlig={data?.avadanlig} layihe={data?.layihe} brend={data?.brend} />} ></Route>
               <Route path="/about" element={<About option={data?.options}  />} ></Route>
               <Route path="/mehsullar/:slug_az" element={<Mehsullar mehsullar={data?.mehsullar} />} ></Route>
-              <Route path="/mehsullar/:slug_az/:slug_az" element={<Mehsullar mehsullar={data?.mehsullar} />} ></Route>
-           
+              <Route path="/avadanliqlar/:slug_az" element={<Equipment avadanlig={data?.avadanlig} />} ></Route>
               <Route path="/layihelerimiz" element={<Projects layihe={data?.layihe}  />} ></Route>
               <Route path="/layihelerimiz/:slug_az" element={<ProjectsDetails  layihe={data?.layihe} />} ></Route>
-              <Route path="/foto" element={<Photo />} ></Route>
+              <Route path="/foto" element={<Photo photo={data?.foto} />} ></Route>
               <Route path="/foto/:id" element={<PhotoDetails />} ></Route>
               <Route path="/video" element={<Video video={data?.video} />} ></Route>
               <Route path="/video/:slug_az" element={<VideoDetails video={data?.video} />} ></Route>

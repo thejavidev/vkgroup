@@ -39,7 +39,7 @@ const BlogDetail = ({ blog }) => {
   
   return (
     <>
-      <div className="p-[20px] mt-[80px] bg-[#F3F3F3] w-full flex items-center justify-center">
+      <div className="p-[20px] mt-[70px] bg-[#F3F3F3] w-full flex items-center justify-center">
         <h2 className='text-center font-[700] text-[25px] uppercase text-[#272727] '>{t("blog")}</h2>
       </div>
       <div className="">

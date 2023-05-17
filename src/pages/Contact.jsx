@@ -1,7 +1,7 @@
 import { BsTelephone } from 'react-icons/Bs';
 import { HiOutlineLocationMarker, } from 'react-icons/Hi';
 import { BsEnvelope } from 'react-icons/Bs';
-import { AspectRatio, Input,Textarea } from '@chakra-ui/react'
+import { AspectRatio, Input, Textarea } from '@chakra-ui/react'
 import { getMultiLang as ml } from '../components/MultiLang';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -11,14 +11,17 @@ import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import { useEffect } from 'react';
 
-const Contact = ({option}) => {
+const Contact = ({ option }) => {
   const [t] = useTranslation("translation");
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
   return (
     <>
-        <div className="relative mt-28 mb-28">
+      <div className="p-[20px] mt-[70px] bg-[#F3F3F3] w-full flex items-center justify-center">
+        <h2 className='text-center font-[700] text-[25px] uppercase text-[#272727] '>{t("footerelaqe")}</h2>
+      </div>
+      <div className="relative mt-18 mb-28">
         <Container>
           <Row>
             <p className="font-[700] text-[45px] text-[#272727] mb-4">{t("contactT")}</p>
@@ -83,7 +86,7 @@ const Contact = ({option}) => {
                     placeholder={t("message")}
                     size='sm'
                   />
-                  
+
                 </div>
                 <Button className="pt-[5px] pb-[5px] pl-[20px] pr-[20px] text-[16px] border-[1px] border-[#000] text-[#272727] rounded-none mt-3">
                   {t("send")}

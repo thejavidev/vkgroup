@@ -16,7 +16,10 @@ const ServiceAbout = ({ option, service1, service2 }) => {
   }, [])
   return (
     <>
-      <div className="mt-[100px]">
+    <div className="p-[20px] mt-[70px] bg-[#F3F3F3] w-full flex items-center justify-center">
+        <h2 className='text-center font-[700] text-[25px] uppercase text-[#272727] '>{t("footerservice")}</h2>
+      </div>
+      <div className="mt-[20px]">
         <Container  className=' '>
           <Row className='flex-col'>
             <div className="mb-7">
@@ -34,7 +37,7 @@ const ServiceAbout = ({ option, service1, service2 }) => {
                 </div>
               ))
             }
-            <div className="mt-7 mb-7">
+            <div className="mt-7 mb-3">
               <h2 className='font-[700] text-[30px] uppercase text-[#272727] space-[5px]'>{ml(option?.servis_title_2_az, option?.servis_title_2_ru, option?.servis_title_2_en)}</h2>
             </div>
             <Row className='mt-3'>

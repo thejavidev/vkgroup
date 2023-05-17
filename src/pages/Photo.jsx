@@ -7,11 +7,11 @@ import Button from 'react-bootstrap/Button';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from "react";
 import LoaderContent from "../components/loader/LoaderContent";
+import { getMultiLang as ml } from "../components/MultiLang";
 
-const Photo = ({ foto }) => {
+const Photo = ({ photo }) => {
   const [t] = useTranslation("translation");
   const [loading, setLoading] = useState(false)
-
   const imagePerRow = 4;
   const [next, setNext] = useState(imagePerRow);
   const handleMoreImage = () => {
@@ -27,13 +27,15 @@ const Photo = ({ foto }) => {
 
   return (
     <>
-
-      <div className="relative bg-[#F3F3F3]  pt-[70px] pb-[100px]">
+      <div className="p-[20px] mt-[70px] bg-[#F3F3F3] w-full flex items-center justify-center">
+        <h2 className='text-center font-[700] text-[25px] uppercase text-[#272727] '>{t("photo")}</h2>
+      </div>
+      <div className="relative bg-[#fff]  pt-[70px] pb-[100px]">
         <Container>
-          <p className="font-[400] text-[30px] text-[#272727] pt-[10px] pl-0 pr-0 pb-[20px]">{t("projects")}</p>
+
           <Row className="">
             {
-              foto && foto?.slice(0, next)?.map((item, index) => {
+              photo && photo?.slice(0, next)?.map((item, index) => {
                 return (
                   <Col className=" relative mb-3  cursor-pointer overflow-hidden" key={index} lg={3} md={4}>
                     {
@@ -48,13 +50,11 @@ const Photo = ({ foto }) => {
             }
           </Row>
           <Row>
-            {next < foto?.length && (
-
+            {next < photo?.length && (
               <Button onClick={handleMoreImage} className="bg-[#fff] max-w-max ml-3 border-none capitalize outline-none shadow1 mt-[20px] mr-0 mb-[10px] rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-black text-[17px] ">
                 {t("more2")}
               </Button>
             )}
-
           </Row>
         </Container>
       </div>

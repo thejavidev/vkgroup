@@ -29,9 +29,12 @@ const Projects = ({ layihe }) => {
 
   return (
     <>
-      <div className="relative bg-[#F3F3F3] p-[20px] pt-[4rem] min-h-[60vh]">
+     <div className="p-[20px] mt-[70px] bg-[#F3F3F3] w-full flex items-center justify-center">
+        <h2 className='text-center font-[700] text-[25px] uppercase text-[#272727] '>{t("projects")}</h2>
+      </div>
+      <div className="relative bg-[#fff] p-[20px] pt-[4rem] min-h-[60vh]">
         <Container>
-          <p className="font-[400] text-[30px] text-[#272727] pt-[10px] pl-0 pr-0 pb-[20px]">{t("projects")}</p>
+ 
           <Row className="">
             {
               layihe && layihe?.slice(0, next)?.map((item, index) => {

@@ -6,18 +6,27 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import LoaderContent from '../../components/loader/LoaderContent';
+import LoaderText from '../../components/loader/LoaderText';
 const Mehsullar = ({ mehsullar }) => {
     const { slug_az } = useParams();
     const currentPost = mehsullar?.find((post) => post.slug_az === slug_az);
     const menu = currentPost?.sub_categories;
+    const [loading, setLoading] = useState(false);
 
     // const yoxla = menu?.[0]?.products?.[0]?.src;
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+        setLoading(true)
+        setTimeout(() => {
+        setLoading(false)
+    }, 1000);
+      }, []);
 
     return (
         <>
             <div className="min-h-[80vh]">
-
-
                 <div className="p-[20px] mt-[70px] bg-[#F3F3F3] w-full flex items-center justify-center">
                     <h2 className='text-center font-[700] text-[25px] uppercase text-[#272727] '>{ml(currentPost?.name_az, currentPost?.name_ru, currentPost?.name_en)}</h2>
                 </div>
@@ -48,11 +57,20 @@ const Mehsullar = ({ mehsullar }) => {
                                         <TabPanel key={index}>
                                             <Row className='justify-between items-center'>
                                                 <Col lg={4} className=' p-[20px]'>
-                                                    <LazyLoadImage id='img'  src={shortlinkSrc} className=' w-[400px] object-contain ' alt={shortlinkALt} />
+                                                   {
+                                                    loading ? <LoaderContent /> :
+                                                    <LazyLoadImage id='img'  src={shortlinkSrc ? shortlinkSrc :defaulImg} className=' w-[400px] object-contain ' alt={shortlinkALt} />
+                                                   }
                                                 </Col>
                                                 <Col lg={8} className=' h-full flex flex-col pl-[20px]'>
-                                                    <h2 className='text-[25px] font-[700] text-[#272727] capitalize pb-[20px]'>{shortLinkH2}</h2>
-                                                    <div className='text-[16px] text-justify tetx-[#272727]' dangerouslySetInnerHTML={{ __html: shortLinkDiv }}></div>
+                                                    {
+                                                        loading ? <LoaderText /> :
+                                                        <h2 className='text-[25px] font-[700] text-[#272727] capitalize pb-[20px]'>{shortLinkH2}</h2>
+                                                    }
+                                                    {
+                                                        loading ? <LoaderText  /> :
+                                                        <div className='text-[16px] text-justify tetx-[#272727]' dangerouslySetInnerHTML={{ __html: shortLinkDiv }}></div>
+                                                    }
                                                 </Col>
 
                                             </Row>
@@ -61,9 +79,6 @@ const Mehsullar = ({ mehsullar }) => {
                                     )
                                 })
                             }
-
-
-
                         </TabPanels>
                     </Tabs>
                 </Container>

@@ -37,8 +37,8 @@ const Home = ({ banner, section2, option, avadanlig, layihe, brend }) => {
               <LazyLoadImage className="w-full h-[650px] md:h-full" src={item?.src} alt={item?.alt_az} />
               <div className="sliderText absolute top-[50%] left-[50%] z-30 text-center text-black">
                 <div className="flex items-center justify-center w-full h-full flex-col text-center">
-                  <h5 className="text-[70px] text-white capitalize">{ml(item?.title_1_az,item?.title_1_ru,item?.title_1_en)}</h5>
-                  <p className="font-[400] text-[19px] pt-[30px] text-center text-white">{ml(item?.title_2_az,item?.title_2_ru,item?.title_2_en)}</p>
+                  <h5 className="text-[70px] text-white capitalize">{ml(item?.title_1_az, item?.title_1_ru, item?.title_1_en)}</h5>
+                  <p className="font-[400] text-[19px] pt-[30px] text-center text-white">{ml(item?.title_2_az, item?.title_2_ru, item?.title_2_en)}</p>
                 </div>
               </div>
             </SwiperSlide>
@@ -124,18 +124,19 @@ const Home = ({ banner, section2, option, avadanlig, layihe, brend }) => {
                       </CardBody>
 
                       <CardFooter>
-                        <Link to={`avadanliqlar/${item?.slug_az}`}>
-                          <Button className="bg-[#E10632] border-none outline-none shadow1 mt-[20px] mr-0 mb-[10px] ml-0 rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-white text-[17px] ">
-                            {t("etrafli")}
-                          </Button>
-                        </Link>
+
                       </CardFooter>
                     </Card>
                   </SwiperSlide>
                 ))
               }
-
+             
             </Swiper>
+            <Link to={`avadanliqlar/${avadanlig?.[0]?.slug_az}`}>
+                <Button className="bg-[#fff] border-none outline-none shadow1 mt-[20px] mr-0 mb-[10px] ml-0 rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-black text-[17px] ">
+                  {t("more2")}
+                </Button>
+              </Link>
           </Row>
         </Container>
 

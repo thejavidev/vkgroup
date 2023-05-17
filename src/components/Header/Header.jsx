@@ -7,7 +7,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Link } from 'react-router-dom';
 import { getMultiLang as ml } from '../MultiLang';
 
-const Header = ({ xidmet, mehsullar }) => {
+const Header = ({ xidmet, mehsullar,avadanlig }) => {
   const [t, i18n] = useTranslation("translation");
 
   const [open, setOpen] = useState(false);
@@ -20,6 +20,8 @@ const Header = ({ xidmet, mehsullar }) => {
   }
   const langs = ["az", "ru", "en"];
   const myLang = langs.filter(langChecker);
+
+  console.log(avadanlig)
  
   return (
     <header className='fixed bg-[#272727] top-0 left-0 right-0 w-full z-50 transitions'>
@@ -105,7 +107,7 @@ const Header = ({ xidmet, mehsullar }) => {
                 </Link>
               </li>
               <li className='cursor-pointer hvr pt-[15px] pb-[15px]  pl-[18px] pr-[18px] 2xl:pl-[8px] 2xl:pr-[8px] lg:pl-[4px] lg:pr-[4px]'>
-                <Link to='avadanliqlar' className='text-white text-[15px] xl:text-[13px] uppercase font-[300] relative block '>
+                <Link to={`avadanliqlar/${avadanlig?.[0].slug_az}`} className='text-white text-[15px] xl:text-[13px] uppercase font-[300] relative block '>
                   {t("avadanliq")}
                 </Link>
               </li>
