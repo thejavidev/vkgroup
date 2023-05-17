@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from 'react-bootstrap';
 import LoaderCertf from '../components/loader/LoaderCertf';
 
-const Certificats = ({ certfkat }) => {
+const Certificats = ({ certificats }) => {
   const [t] = useTranslation("translation");
   const [loading, setLoading] = useState(false)
   const imagePerRow = 4;
@@ -30,7 +30,7 @@ const Certificats = ({ certfkat }) => {
         <Container>
           <Row>
             {
-              certfkat && certfkat?.slice(0, next)?.map((item, i) => {
+              certificats && certificats?.slice(0, next)?.map((item, i) => {
                 return (
                   <Col key={i} lg={3} md={4} xs={6} className='mb-4'>
                     {
@@ -46,7 +46,7 @@ const Certificats = ({ certfkat }) => {
             }
 
           </Row>
-          {next < certfkat?.length && (
+          {next < certificats?.length && (
 
             <Button onClick={handleMoreImage} className="bg-[#fff] max-w-max ml-3 border-none capitalize outline-none shadow1 mt-[20px] mr-0 mb-[10px] rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-black text-[17px] ">
               {t("more2")}

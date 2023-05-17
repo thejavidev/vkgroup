@@ -7,8 +7,9 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Link } from 'react-router-dom';
 import { getMultiLang as ml } from '../MultiLang';
 
-const Header = ({ xidmet, subone, fourmenu }) => {
+const Header = ({ xidmet, mehsullar }) => {
   const [t, i18n] = useTranslation("translation");
+
   const [open, setOpen] = useState(false);
   const clickHandle = async (lang) => {
     await i18n.changeLanguage(lang);
@@ -42,12 +43,12 @@ const Header = ({ xidmet, subone, fourmenu }) => {
                 </div>
                 <ul className='first_alt_menu flex absolute top-[100%] left-[-50px] mt-[10px] bg-[#272727] pl-0 '>
                   {
-                    xidmet && xidmet?.slice(0, 1).map((cur, i) => (
+                    xidmet && xidmet?.slice(0,1).map((cur, i) => (
                       <li key={i} className='p-[20px] relative capitalize w-max text-[#E10632] bg-[#272727] cursor-pointer text-[16px] xl:text-[13px] transitions secondUl'>
-                        {ml(cur?.name_az, cur?.name_ru, cur?.name_em)}
+                        {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
                         <ul className='absolute block top-[100%] left-0'>
                           {
-                            subone && subone?.slice(0, 3).map((menu, index) => (
+                            xidmet[0]?.sub_categories_1 && xidmet[0].sub_categories_1?.map((menu, index) => (
                               <li key={index} className='bg-[#E10632]  hidden  text-center  second_li pt-[10px] xl:text-[13px] pb-[10px] pl-[20px] pr-[20px]'>
                                 <Link to={`/xidmetler/insaat/${menu?.slug_az}`} className='text-[#000] hover:text-[#fff] transitions w-full h-full block'>
                                   {ml(menu?.name_az, menu?.name_ru, menu.name_en)}
@@ -60,14 +61,14 @@ const Header = ({ xidmet, subone, fourmenu }) => {
                     ))
                   }
                   {
-                    xidmet && xidmet?.slice(1, 20).map((cur, i) => (
-                      <li key={i} className='p-[20px] relative capitalize w-max text-[#E10632] xl:text-[13px] bg-[#272727] cursor-pointer text-[16px] transitions secondUl'>
+                    xidmet && xidmet?.slice(1,2).map((cur, i) => (
+                      <li key={i} className='p-[20px] relative capitalize w-max text-[#E10632] bg-[#272727] cursor-pointer text-[16px] xl:text-[13px] transitions secondUl'>
                         {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
-                        <ul className='absolute block top-[100%] left-[-77px]'>
+                        <ul className='absolute block top-[100%] left-0'>
                           {
-                            subone && subone?.slice(3, 30).map((menu, index) => (
+                            xidmet[1]?.sub_categories_1 && xidmet[1].sub_categories_1?.map((menu, index) => (
                               <li key={index} className='bg-[#E10632]  hidden  text-center  second_li pt-[10px] xl:text-[13px] pb-[10px] pl-[20px] pr-[20px]'>
-                                <Link to={`/xidmetler/insaat/${menu?.slug_az}`} className='text-[#000]  hover:text-[#fff] transitions w-full h-full block'>
+                                <Link to={`/xidmetler/insaat/${menu?.slug_az}`} className='text-[#000] hover:text-[#fff] transitions w-full h-full block'>
                                   {ml(menu?.name_az, menu?.name_ru, menu.name_en)}
                                 </Link>
                               </li>
@@ -77,6 +78,7 @@ const Header = ({ xidmet, subone, fourmenu }) => {
                       </li>
                     ))
                   }
+                 
                 </ul>
               </li>
               <li className='relative ulHover hvr pt-[15px] pb-[15px]  pl-[18px] pr-[18px] 2xl:pl-[8px] 2xl:pr-[8px] lg:pl-[4px] lg:pr-[4px] cursor-pointer'>
@@ -85,10 +87,10 @@ const Header = ({ xidmet, subone, fourmenu }) => {
                 </div>
                 <ul className='first_alt_menu flex absolute top-[75px] left-[-50px]  bg-[#272727] pl-0 '>
                   {
-                    fourmenu && fourmenu?.map((cur, i) => (
+                    mehsullar && mehsullar?.map((cur, i) => (
                       <li key={i} className=' relative capitalize text-[#E10632] w-max     cursor-pointer text-[16px] transitions secondUl'>
                         <Link to={`mehsullar/${cur.slug_az}`} className='text-[#E10632] pt-[15px] pl-[15px] pr-[15px] pb-[15px] bg-[#272727]  hover:text-[#fff] transitions xl:text-[13px]'>
-                          {ml(cur?.name_az, cur?.name_ru, cur?.name_em)}
+                          {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
                         </Link>
 
                       </li>

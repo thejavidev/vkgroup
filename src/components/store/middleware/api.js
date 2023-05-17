@@ -2,6 +2,7 @@ import axios from "axios";
 import * as actions from "../api";
 
 
+
 const api =
     ({ dispatch }) =>
     (next) =>
@@ -17,7 +18,7 @@ const api =
             
         try {
             const response = await axios.request({
-                baseURL: 'https://vkgroup.az/api/data',
+                baseURL: import.meta.env.VITE_API,
                 url,
                 method,
                 body,

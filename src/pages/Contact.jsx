@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import { useEffect } from 'react';
 
-const Contact = ({about}) => {
+const Contact = ({option}) => {
   const [t] = useTranslation("translation");
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -28,13 +28,13 @@ const Contact = ({about}) => {
                   <BsTelephone className="text-[30px] mr-3" />
                   <div className="flex flex-col">
                     <p className="text-[16px] font-[300] text-[#272727]">
-                      <Link to={`tel:${about?.tel1}`}>
-                        {about?.tel1}
+                      <Link to={`tel:${option?.tel1}`}>
+                        {option?.tel1}
                       </Link>
                     </p>
                     <p className="font-[300] text-[16px] text-[#272727]">
-                      <Link to={`tel:${about?.tel2}`}>
-                        {about?.tel2}
+                      <Link to={`tel:${option?.tel2}`}>
+                        {option?.tel2}
                       </Link>
                     </p>
                   </div>
@@ -44,7 +44,7 @@ const Contact = ({about}) => {
                   <div className="flex flex-col">
                     <p className="font-[300] text-[16px] text-[#272727]">
                       <Link target="_blank" to={`https://goo.gl/maps/UsQwaNLbsHKVyCicA?coh=178571&entry=tt`}>
-                        {ml(about?.unvan_az, about?.unvan_ru, about?.unvan_en)}
+                        {ml(option?.unvan_az, option?.unvan_ru, option?.unvan_en)}
                       </Link>
                     </p>
 
@@ -54,8 +54,8 @@ const Contact = ({about}) => {
                   <BsEnvelope className="text-[30px] font-[200] mr-3" />
                   <div className="flex flex-col">
                     <p className="font-[300] text-[16px] text-[#272727]">
-                      <Link target="_blank" to={`mailto:${about?.email}`}>
-                        {about?.email}
+                      <Link target="_blank" to={`mailto:${option?.email}`}>
+                        {option?.email}
                       </Link>
                     </p>
 

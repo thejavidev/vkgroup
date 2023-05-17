@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { useDispatch, useSelector } from 'react-redux';
 import FsLightbox from "fslightbox-react";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import LoaderContent from '../components/loader/LoaderContent';
@@ -11,7 +12,7 @@ import { getMultiLang as ml } from '../components/MultiLang';
 
 const Video = ({ video }) => {
   const [t] = useTranslation("translation");
-  const [toggler, setToggler] = useState(false);
+
   const [loading, setLoading] = useState(false)
   const imagePerRow = 4;
   const [next, setNext] = useState(imagePerRow);
@@ -25,6 +26,9 @@ const Video = ({ video }) => {
       setLoading(false)
     }, 1000);
   }, []);
+
+
+
   return (
     <>
       <div className="bg-[#f3f3f3] pt-[100px] pb-[100px] min-h-[70vh] pl-0 pr-0 relative">

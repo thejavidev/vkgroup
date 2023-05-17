@@ -9,7 +9,7 @@ import Col from 'react-bootstrap/Col';
 import { Link } from "react-router-dom";
 import LoaderContent from '../components/loader/LoaderContent';
 
-const Blog = ({ store }) => {
+const Blog = ({ blog }) => {
   const [t] = useTranslation("translation");
   const [loading, setLoading] = useState(false);
 
@@ -37,7 +37,7 @@ const Blog = ({ store }) => {
         <Container>
           <Row>
             {
-              store && store?.slice(0, next)?.map((cur, i) => {
+              blog && blog?.slice(0, next)?.map((cur, i) => {
                 return (
                   <Col key={i} lg={6} md={12} className='flex pb-[50px]' id="oneBlog">
                     {
@@ -63,7 +63,7 @@ const Blog = ({ store }) => {
             }
 
           </Row>
-          {next < store?.length && (
+          {next < blog?.length && (
 
             <Button onClick={handleMoreImage} className="bg-[#fff] max-w-max ml-3 border-none capitalize outline-none shadow1 mt-[20px] mr-0 mb-[50px] rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-black text-[17px] ">
               {t("more2")}

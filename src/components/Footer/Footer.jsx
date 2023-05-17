@@ -16,7 +16,7 @@ import { Tb360View } from 'react-icons/Tb';
 
 
 
-const Footer = ({ options, subone, xidmet }) => {
+const Footer = ({ option, subone, xidmet }) => {
   const year = new Date().getFullYear();
   const [t] = useTranslation("translation");
   const url = `xidmetler`
@@ -28,12 +28,12 @@ const Footer = ({ options, subone, xidmet }) => {
             <Col lg={12} md={12} className='pt-[40px] pb-0 pl-[40px] pr-[40px]'>
               <Row className='mb-[50px]'>
                 <Col lg={6} className='mb-[40px]'>
-                  <h1 className='pb-[20px] font-[700] text-[27px] text-white'>{options?.footer_title_az}</h1>
-                  <div className='text-white text-[16px] bg-transparent mb-3' dangerouslySetInnerHTML={{ __html: options && ml(options?.footer_text_az, options?.footer_text_ru, options?.footer_text_en) }}></div>
+                  <h1 className='pb-[20px] font-[700] text-[27px] text-white'>{option?.footer_title_az}</h1>
+                  <div className='text-white text-[16px] bg-transparent mb-3' dangerouslySetInnerHTML={{ __html: option && ml(option?.footer_text_az, option?.footer_text_ru, option?.footer_text_en) }}></div>
                   <UnorderedList className='flex gap-2 list-none p-0 m-0'>
-                    <ListItem className='list-none text-white pr-2'><Link to={options?.youtube}><AiFillYoutube className='text-[25px]' /></Link></ListItem>
-                    <ListItem className='list-none text-white pr-2'><Link to={options?.instagram}><AiOutlineInstagram className='text-[25px]' /></Link></ListItem>
-                    <ListItem className='list-none text-white pr-2'><Link to={options?.facebook}><AiFillFacebook className='text-[25px]' /></Link></ListItem>
+                    <ListItem className='list-none text-white pr-2'><Link to={option?.youtube}><AiFillYoutube className='text-[25px]' /></Link></ListItem>
+                    <ListItem className='list-none text-white pr-2'><Link to={option?.instagram}><AiOutlineInstagram className='text-[25px]' /></Link></ListItem>
+                    <ListItem className='list-none text-white pr-2'><Link to={option?.facebook}><AiFillFacebook className='text-[25px]' /></Link></ListItem>
                     <ListItem className='list-none text-white '><Link to='https://player.emlak360.az/LHGzMU4Yqvx/?m=LHGzMU4Yqvx&type=az360'><Tb360View className='text-[25px]' /></Link></ListItem>
                   </UnorderedList>
                 </Col>

@@ -16,7 +16,7 @@ import Contact from "./Contact";
 import { useEffect } from "react";
 
 
-const Home = ({ slider, section2, about, avadanliq, project, brend }) => {
+const Home = ({ banner, section2, option, avadanlig, layihe, brend }) => {
   const [t] = useTranslation("translation");
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -32,7 +32,7 @@ const Home = ({ slider, section2, about, avadanliq, project, brend }) => {
         className="mySwiper"
       >
         {
-          slider && slider?.map((item, index) => (
+          banner && banner?.map((item, index) => (
             <SwiperSlide key={index} className="relative after">
               <LazyLoadImage className="w-full h-[650px] md:h-full" src={item?.src} alt={item?.alt_az} />
               <div className="sliderText absolute top-[50%] left-[50%] z-30 text-center text-black">
@@ -81,14 +81,14 @@ const Home = ({ slider, section2, about, avadanliq, project, brend }) => {
 
             <Col lg={8} md={12}>
               <p className="font-[400] text-[30px] text-[#272727]">{t("whowe")}</p>
-              <div className="font-[400] pt-[20px] text-justify line-clamp-3 " dangerouslySetInnerHTML={{ __html: about && ml(about?.biz_text_az, about?.biz_text_ru, about?.biz_text_en) }}>
+              <div className="font-[400] pt-[20px] text-justify line-clamp-3 " dangerouslySetInnerHTML={{ __html: option && ml(option?.biz_text_az, option?.biz_text_ru, option?.biz_text_en) }}>
               </div>
               <Link to="about">
                 <Button className="mt-[30px] bg-[#E10632] text-white border-none outline-none rounded-none pl-[20px] pr-[20px] capitalize text-[17px]">{t("more")}</Button>
               </Link>
             </Col>
             <Col lg={4} md={12}>
-              <LazyLoadImage className="p-[20px]" src={about?.biz_img} />
+              <LazyLoadImage className="p-[20px]" src={option?.biz_img} />
             </Col>
           </Row>
         </Container>
@@ -108,7 +108,7 @@ const Home = ({ slider, section2, about, avadanliq, project, brend }) => {
               modules={[Navigation]}
             >
               {
-                avadanliq && avadanliq?.map((item, index) => (
+                avadanlig && avadanlig?.map((item, index) => (
                   <SwiperSlide key={index} >
                     <Card maxW='sm'>
                       <CardBody>
@@ -146,7 +146,7 @@ const Home = ({ slider, section2, about, avadanliq, project, brend }) => {
           <p className="font-[400] text-[30px] text-[#272727] pt-[10px] pl-0 pr-0 pb-[20px]">{t("projects")}</p>
           <Row className="">
             {
-              project && project?.slice(0, 4).map((item, index) => (
+              layihe && layihe?.slice(0, 4).map((item, index) => (
                 <Col className="imageP relative p-0 m-0 cursor-pointer" key={index} lg={3} md={4}>
                   <Link to={`layihelerimiz/${item?.slug_az}`}>
                     <LazyLoadImage src={item?.cover} alt={item?.cover_alt_az} />
@@ -189,7 +189,7 @@ const Home = ({ slider, section2, about, avadanliq, project, brend }) => {
       </div>
 
       <div className="mb-10 mt-10">
-        <Contact about={about} />
+        <Contact option={option} />
       </div>
 
     </>

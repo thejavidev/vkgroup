@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { apiCallBegan } from "./api";
 
+
 const slice = createSlice({
     name: "posts",
     initialState: {
@@ -28,12 +29,14 @@ export default slice.reducer;
 
 
 const { postsRequested, postsReceived, postsRequestFailed } = slice.actions;
-// const url = "/api/home";
+
+
+const url='/alldata'
 
 export const loadposts = () => (dispatch) => {
     return dispatch(
         apiCallBegan({
-            // url,
+            url,
             onStart: postsRequested.type,
             onSuccess: postsReceived.type,
             onError: postsRequestFailed.type,

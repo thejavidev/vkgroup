@@ -17,8 +17,8 @@ import "swiper/css/thumbs";
 
 
 
-const ProjectsDetails = ({ project }) => {
-  const Data = project;
+const ProjectsDetails = ({ layihe }) => {
+  const Data = layihe;
   const [t] = useTranslation("translation");
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const { slug_az } = useParams();

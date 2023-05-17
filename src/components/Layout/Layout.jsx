@@ -2,15 +2,15 @@ import React from 'react'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 
-const Layout = ({children,options,subone,xidmet,fourmenu}) => {
+const Layout = ({children,option,mehsullar,xidmet}) => {
 
   return (
     <>
-     <Header xidmet={xidmet} subone={subone} fourmenu={fourmenu} />
+     <Header xidmet={xidmet} mehsullar={mehsullar}  />
       <div className="mt-[66px]">
         {children}
       </div>
-     <Footer options={options} subone={subone} xidmet={xidmet} /> 
+     <Footer option={option}  xidmet={xidmet} /> 
     </>
   )
 }

@@ -6,7 +6,7 @@ import { getMultiLang as ml } from '../components/MultiLang';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useEffect } from 'react';
 
-const About = ({about}) => {
+const About = ({option}) => {
   const [t] = useTranslation("translation");
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -19,12 +19,12 @@ const About = ({about}) => {
 
             <Col lg={8} md={12}>
               <p className="font-[700] text-[55px] text-[#272727]">{t("whowe")}</p>
-              <div className="font-[400] pt-[20px] text-justify " dangerouslySetInnerHTML={{ __html: about && ml(about?.biz_text_az, about?.biz_text_ru, about?.biz_text_en) }}>
+              <div className="font-[400] pt-[20px] text-justify " dangerouslySetInnerHTML={{ __html: option && ml(option?.biz_text_az, option?.biz_text_ru, option?.biz_text_en) }}>
               </div>
               
             </Col>
             <Col lg={4} md={12}>
-              <LazyLoadImage className="p-[20px]" src={about?.biz_img} />
+              <LazyLoadImage className="p-[20px]" src={option?.biz_img} />
             </Col>
           </Row>
         </Container>

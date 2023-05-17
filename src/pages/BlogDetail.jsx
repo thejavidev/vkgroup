@@ -21,8 +21,8 @@ function shuffle(a) {
   return a;
 }
 
-const BlogDetail = ({ store }) => {
-  const Data = store;
+const BlogDetail = ({ blog }) => {
+  const Data = blog;
   const [t] = useTranslation("translation");
   const { slug_az } = useParams();
   const currentPost = Data?.find((post) => post.slug_az === slug_az);
@@ -57,7 +57,7 @@ const BlogDetail = ({ store }) => {
       <Container fluid className="mb-10 pt-[20px] pb-[20px] pl-[100px] pr-[100px]">
         <Row>
           {
-            store && shuffle(Array.from(store))?.slice(0, 4).map((cur, i) => {
+            blog && shuffle(Array.from(blog))?.slice(0, 4).map((cur, i) => {
               return (
                 <Col lg={3} key={i} className=''>
                 <div className="flex flex-col ">
