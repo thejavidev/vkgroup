@@ -18,10 +18,8 @@ const Contact = ({ option }) => {
   }, [])
   return (
     <>
-      <div className="p-[20px] mt-[70px] bg-[#F3F3F3] w-full flex items-center justify-center">
-        <h2 className='text-center font-[700] text-[25px] uppercase text-[#272727] '>{t("footerelaqe")}</h2>
-      </div>
-      <div className="relative mt-18 mb-28">
+     
+      <div className="relative mt-24 mb-28">
         <Container>
           <Row>
             <p className="font-[700] text-[45px] text-[#272727] mb-4">{t("contactT")}</p>

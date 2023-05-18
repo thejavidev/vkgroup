@@ -1,4 +1,4 @@
-import {useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Upper from './Upper';
 import Container from 'react-bootstrap/Container';
@@ -7,7 +7,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Link } from 'react-router-dom';
 import { getMultiLang as ml } from '../MultiLang';
 
-const Header = ({ xidmet, mehsullar,avadanlig }) => {
+const Header = ({ xidmet, mehsullar, avadanlig }) => {
   const [t, i18n] = useTranslation("translation");
 
   const [open, setOpen] = useState(false);
@@ -20,11 +20,37 @@ const Header = ({ xidmet, mehsullar,avadanlig }) => {
   }
   const langs = ["az", "ru", "en"];
   const myLang = langs.filter(langChecker);
+  const [show, setShow] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
-  console.log(avadanlig)
- 
+  const controlNavbar = () => {
+    if (typeof window !== 'undefined') { 
+      if (window.scrollY > lastScrollY) { // if scroll down hide the navbar
+        setShow(true); 
+      } else { // if scroll up show the navbar
+        setShow(false);  
+      }
+
+      // remember current page location to use in the next move
+      setLastScrollY(window.scrollY); 
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', controlNavbar);
+
+      // cleanup function
+      return () => {
+        window.removeEventListener('scroll', controlNavbar);
+      };
+    }
+  }, [lastScrollY]);
+
+  console.log()
+
   return (
-    <header className='fixed bg-[#272727] top-0 left-0 right-0 w-full z-50 transitions'>
+    <header className={` ${show && 'none'}   fixed bg-[#272727] top-[0px] left-0 right-0 w-full z-50`} >
       <Container fluid className='pr-[70px] pl-[70px] pt-[7px] pb-[7px] 2xl:pl-[20px] 2xl:pr-[20px]'>
         <Nav className='items-center justify-between w-full'>
           <div className="logo">
@@ -45,7 +71,7 @@ const Header = ({ xidmet, mehsullar,avadanlig }) => {
                 </div>
                 <ul className='first_alt_menu flex absolute top-[100%] left-[-50px] mt-[10px] bg-[#272727] pl-0 '>
                   {
-                    xidmet && xidmet?.slice(0,1).map((cur, i) => (
+                    xidmet && xidmet?.slice(0, 1).map((cur, i) => (
                       <li key={i} className='p-[20px] relative capitalize w-max text-[#E10632] bg-[#272727] cursor-pointer text-[16px] xl:text-[13px] transitions secondUl'>
                         {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
                         <ul className='absolute block top-[100%] left-0'>
@@ -63,14 +89,14 @@ const Header = ({ xidmet, mehsullar,avadanlig }) => {
                     ))
                   }
                   {
-                    xidmet && xidmet?.slice(1,2).map((cur, i) => (
+                    xidmet && xidmet?.slice(1, 2).map((cur, i) => (
                       <li key={i} className='p-[20px] relative capitalize w-max text-[#E10632] bg-[#272727] cursor-pointer text-[16px] xl:text-[13px] transitions secondUl'>
                         {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
-                        <ul className='absolute block top-[100%] left-0'>
+                        <ul className='absolute block top-[100%] left-[-80px]'>
                           {
                             xidmet[1]?.sub_categories_1 && xidmet[1].sub_categories_1?.map((menu, index) => (
                               <li key={index} className='bg-[#E10632]  hidden  text-center  second_li pt-[10px] xl:text-[13px] pb-[10px] pl-[20px] pr-[20px]'>
-                                <Link to={`/xidmetler/insaat/${menu?.slug_az}`} className='text-[#000] hover:text-[#fff] transitions w-full h-full block'>
+                                <Link to={`/xidmetler/mexaniki/${menu?.slug_az}`} className='text-[#000] hover:text-[#fff] transitions w-full h-full block'>
                                   {ml(menu?.name_az, menu?.name_ru, menu.name_en)}
                                 </Link>
                               </li>
@@ -80,7 +106,7 @@ const Header = ({ xidmet, mehsullar,avadanlig }) => {
                       </li>
                     ))
                   }
-                 
+
                 </ul>
               </li>
               <li className='relative ulHover hvr pt-[15px] pb-[15px]  pl-[18px] pr-[18px] 2xl:pl-[8px] 2xl:pr-[8px] lg:pl-[4px] lg:pr-[4px] cursor-pointer'>
@@ -107,7 +133,7 @@ const Header = ({ xidmet, mehsullar,avadanlig }) => {
                 </Link>
               </li>
               <li className='cursor-pointer hvr pt-[15px] pb-[15px]  pl-[18px] pr-[18px] 2xl:pl-[8px] 2xl:pr-[8px] lg:pl-[4px] lg:pr-[4px]'>
-                <Link to={`avadanliqlar/${avadanlig?.[0].slug_az}`} className='text-white text-[15px] xl:text-[13px] uppercase font-[300] relative block '>
+                <Link to={`avadanliqlar`} className='text-white text-[15px] xl:text-[13px] uppercase font-[300] relative block '>
                   {t("avadanliq")}
                 </Link>
               </li>

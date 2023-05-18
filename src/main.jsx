@@ -4,6 +4,7 @@ import App from './App.jsx';
 import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+import "swiper/css";
 import i18next from 'i18next';
 import { BrowserRouter } from 'react-router-dom';
 import { I18nextProvider, initReactI18next } from 'react-i18next';

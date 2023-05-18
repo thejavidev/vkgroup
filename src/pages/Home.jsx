@@ -16,7 +16,7 @@ import Contact from "./Contact";
 import { useEffect } from "react";
 
 
-const Home = ({ banner, section2, option, avadanlig, layihe, brend }) => {
+const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
   const [t] = useTranslation("translation");
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -52,14 +52,16 @@ const Home = ({ banner, section2, option, avadanlig, layihe, brend }) => {
             <Swiper
               slidesPerView={5}
               centeredSlides
+              centeredSlidesBounds={true}
               roundLengths={true}
-              loop={true}
+              loop={false}
               speed={1200}
-              spaceBetween={0}
+            
+              
               className="relative w-full"
             >
               {
-                section2 && section2?.map((item, index) => (
+                roundedmenu && roundedmenu?.slice(0,5)?.map((item, index) => (
                   <SwiperSlide className="relative w-full" key={index}>
                     <Link to={`xidmetler/mexaniki/${item?.slug_az}`} className="scale1 flex items-center justify-center transitions cursor-pointer font-bold text-white bg-[#124395] w-[280px] h-[280px] overflow-hidden rounded-full z-50 border25 relative scale-[0.65]">
                       <div className="">
@@ -118,22 +120,17 @@ const Home = ({ banner, section2, option, avadanlig, layihe, brend }) => {
                           className="w-full"
                         />
                         <Stack mt='6' >
-                          <Heading className="pt-[10px] font-[600] text-[14px] text-white" size='md'>{ml(item?.name_az, item?.name_ru, item?.name_en)}</Heading>
-
+                          <Heading className="pt-[10px] font-[600] capitalize text-[14px] text-white" size='md'>{ml(item?.name_az, item?.name_ru, item?.name_en)}</Heading>
                         </Stack>
                       </CardBody>
-
-                      <CardFooter>
-
-                      </CardFooter>
                     </Card>
                   </SwiperSlide>
                 ))
               }
              
             </Swiper>
-            <Link to={`avadanliqlar/${avadanlig?.[0]?.slug_az}`}>
-                <Button className="bg-[#fff] border-none outline-none shadow1 mt-[20px] mr-0 mb-[10px] ml-0 rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-black text-[17px] ">
+            <Link to={`avadanliqlar`}>
+                <Button className="bg-[#fff] border-none outline-none shadow1 mt-[40px] mr-0 mb-[10px] ml-0 rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-black text-[17px] ">
                   {t("more2")}
                 </Button>
               </Link>
@@ -157,7 +154,7 @@ const Home = ({ banner, section2, option, avadanlig, layihe, brend }) => {
             }
             <Link to={`layihelerimiz`} className="p-0 m-0">
               <Button className="bg-[#fff] border-none capitalize outline-none shadow1 mt-[20px] mr-0 mb-[10px] ml-0 rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-black text-[17px] ">
-                {t("more")}
+                {t("more2")}
               </Button>
             </Link>
           </Row>

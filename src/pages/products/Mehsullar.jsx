@@ -8,12 +8,13 @@ import Col from 'react-bootstrap/Col';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import LoaderContent from '../../components/loader/LoaderContent';
 import LoaderText from '../../components/loader/LoaderText';
+import { useTranslation } from 'react-i18next';
 const Mehsullar = ({ mehsullar }) => {
     const { slug_az } = useParams();
     const currentPost = mehsullar?.find((post) => post.slug_az === slug_az);
     const menu = currentPost?.sub_categories;
     const [loading, setLoading] = useState(false);
-
+    const [t] = useTranslation("translation");
     // const yoxla = menu?.[0]?.products?.[0]?.src;
 
     useEffect(() => {

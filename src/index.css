@@ -76,9 +76,16 @@ img{
 .transitions{
     transition: all 200ms linear;
 }
-
+.none {
+    top: -80px;
+    transition: .4s linear;
+}
 .transitionsa{
     transition: background 0.4s linear, color 0.6s linear;
+}
+.activeRounded{
+    background: #f3f3f3;
+    color:#124395;
 }
 .colorchagne:hover .color1{
     background:#f3f3f3;

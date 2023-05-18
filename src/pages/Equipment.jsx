@@ -10,13 +10,14 @@ import { AspectRatio } from '@chakra-ui/react'
 import LoaderContent from '../components/loader/LoaderContent';
 import LoaderText from '../components/loader/LoaderText';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const Equipment = ({ avadanlig }) => {
     const [t] = useTranslation("translation");
     const [loading, setLoading] = useState(false);
-    const { slug_az } = useParams();
-    const currentPost = avadanlig?.find((post) => post.slug_az === slug_az);
-    console.log(currentPost)
+    const { slug_en } = useParams();
+//     const currentPost = avadanlig?.find((post) => post.slug_en === slug_en);
+//    console.log(currentPost)
     useEffect(() => {
         window.scrollTo(0, 0)
         setLoading(true)
@@ -30,8 +31,6 @@ const Equipment = ({ avadanlig }) => {
                 <h2 className='text-center font-[700] text-[25px] uppercase text-[#272727] '>{t("avadanliq")}</h2>
             </div>
             <div className="min-h-[65vh]">
-
-
                 <Container>
                     <Tabs className='mt-5'>
                         <TabList className='flex justify-around gap-5  bg-[#f3f3f3] transitions rounded-[42px]'>
@@ -42,8 +41,6 @@ const Equipment = ({ avadanlig }) => {
                                     </Tab>
                                 ))
                             }
-
-
                         </TabList>
                         <TabPanels className='mt-3 mb-10 '>
                             {
@@ -76,8 +73,6 @@ const Equipment = ({ avadanlig }) => {
                                     </TabPanel>
                                 ))
                             }
-
-
                         </TabPanels>
                     </Tabs>
                 </Container>

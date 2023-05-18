@@ -8,14 +8,15 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 // Import Swiper styles
-import "swiper/css";
+
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { useTranslation } from 'react-i18next';
 
 
 const PhotoDetails = ({foto}) => {
-
+  const [t] = useTranslation("translation");
   const Data = foto;
   const { id } = useParams();
   const url ='https://vkgroup.az/files/fotos/';
