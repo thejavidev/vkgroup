@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'react-bootstrap';
 import LoaderCertf from '../components/loader/LoaderCertf';
+import { noPhoto } from '../assets';
 
 const Certificats = ({ certificats }) => {
   const [t] = useTranslation("translation");
@@ -38,9 +39,9 @@ const Certificats = ({ certificats }) => {
                   <Col key={i} lg={3} md={4} xs={6} className='mb-4'>
                     {
                       loading ? <LoaderCertf /> :
-                        <Link to={item?.pdf} target='_blank'>
-                          <LazyLoadImage src={item?.src} />
-                        </Link>
+                        <a href={item?.pdf ? item?.pdf :null}  target='_blank'>
+                          <LazyLoadImage src={item?.src ? item?.src : noPhoto} />
+                        </a>
                     }
 
                   </Col>

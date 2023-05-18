@@ -9,13 +9,14 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import LoaderContent from '../../components/loader/LoaderContent';
 import LoaderText from '../../components/loader/LoaderText';
 import { useTranslation } from 'react-i18next';
+import { noPhoto } from '../../assets';
 const Mehsullar = ({ mehsullar }) => {
     const { slug_az } = useParams();
     const currentPost = mehsullar?.find((post) => post.slug_az === slug_az);
     const menu = currentPost?.sub_categories;
     const [loading, setLoading] = useState(false);
     const [t] = useTranslation("translation");
-    // const yoxla = menu?.[0]?.products?.[0]?.src;
+  
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -38,7 +39,7 @@ const Mehsullar = ({ mehsullar }) => {
                                 menu && menu?.map((link, index) => (
                                     <Tab _selected={{ color: 'white', bg: 'red' }}
                                         className={`transitions pt-[10px] pb-[10px] pl-[20px] pr-[20px] rounded-[42px] `}
-                                     
+
                                         key={index}>
                                         {ml(link?.name_az, link?.name_ru, link?.name_en)}
                                     </Tab>
@@ -48,7 +49,7 @@ const Mehsullar = ({ mehsullar }) => {
                         <TabPanels className='mt-3 mb-10 '>
                             {
                                 menu && menu?.map((cur, index) => {
-                                    const defaulImg = 'https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg';
+                                    const defaulImg = noPhoto;
                                     const shortLink = cur?.products?.[0];
                                     const shortlinkSrc = shortLink?.src;
                                     const shortlinkALt = (ml(shortLink?.alt_az, shortLink?.alt_ru, shortLink?.alt_en))

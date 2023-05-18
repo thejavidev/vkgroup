@@ -14,6 +14,7 @@ import { Card, Heading, CardBody, Stack, CardFooter } from '@chakra-ui/react'
 import { getMultiLang as ml } from '../components/MultiLang';
 import Contact from "./Contact";
 import { useEffect } from "react";
+import { noPhoto } from "../assets";
 
 
 const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
@@ -90,7 +91,7 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
               </Link>
             </Col>
             <Col lg={4} md={12}>
-              <LazyLoadImage className="p-[20px]" src={option?.biz_img} />
+              <LazyLoadImage className="p-[20px]" src={option?.biz_img ? option?.biz_img : noPhoto} />
             </Col>
           </Row>
         </Container>
@@ -115,8 +116,8 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
                     <Card maxW='sm'>
                       <CardBody>
                         <LazyLoadImage
-                          src={item.src}
-                          alt={item.alt_az}
+                          src={item?.src}
+                          alt={item?.alt_az}
                           className="w-full"
                         />
                         <Stack mt='6' >
