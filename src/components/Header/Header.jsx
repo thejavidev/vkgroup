@@ -330,7 +330,7 @@ const Header = ({ xidmet, mehsullar }) => {
                                 {
                                   xidmet[1]?.sub_categories_1 && xidmet[1].sub_categories_1?.map((menu, index) => (
                                     <ListItem key={index} className='mb-[10px] mt-[10px]'>
-                                      <Link to={`/xidmetler/insaat/${menu?.slug_az}`} className='hover:text-[#E10632]' onClick={CloseMenu}> 
+                                      <Link to={`/xidmetler/mexaniki/${menu?.slug_az}`} className='hover:text-[#E10632]' onClick={CloseMenu}> 
                                         {ml(menu?.name_az, menu?.name_ru, menu.name_en)}
                                       </Link>
                                     </ListItem>

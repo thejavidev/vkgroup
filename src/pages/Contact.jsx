@@ -84,7 +84,6 @@ const Contact = ({ option }) => {
                     placeholder={t("message")}
                     size='sm'
                   />
-
                 </div>
                 <Button className="pt-[5px] pb-[5px] pl-[20px] pr-[20px] text-[16px] border-[1px] border-[#000] text-[#272727] rounded-none mt-3">
                   {t("send")}

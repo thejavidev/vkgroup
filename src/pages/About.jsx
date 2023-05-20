@@ -21,7 +21,7 @@ const About = ({option}) => {
   }, [])
   return (
     <>
-      <div className="bg-[#F3F3F3] relative mt-4 w-full pt-[100px] pb-[70px] pl-0 pr-0 min-h-[60vh]">
+      <div className="bg-[#F3F3F3] relative mt-4 w-full pt-[100px] lg:pt-[50px] pb-[70px] pl-0 pr-0 md:pr-[20px] md:pl-[20px] min-h-[60vh]">
         <Container>
           <Row className="items-center">
 
@@ -30,7 +30,7 @@ const About = ({option}) => {
               {
                 loading ? <LoaderContent /> :
                <>
-                <p className="font-[700] text-[55px] text-[#272727]">{t("whowe")}</p>
+                <p className="font-[700] text-[55px] lg:text-[40px] text-[#272727] md:text-[30px]">{t("whowe")}</p>
                 <div className="font-[400] pt-[20px] text-justify " dangerouslySetInnerHTML={{ __html: option && ml(option?.biz_text_az, option?.biz_text_ru, option?.biz_text_en) }}>
                 </div>
                </>
@@ -40,7 +40,7 @@ const About = ({option}) => {
             <Col lg={4} md={12}>
               {
                 loading ? <LoaderContent /> :
-                <LazyLoadImage className="p-[20px]" src={option?.biz_img ? option?.biz_img : noPhoto} />
+                <LazyLoadImage className="p-[20px] md:p-0 md:w-full md:mt-10" src={option?.biz_img ? option?.biz_img : noPhoto} />
               }
             </Col>
           </Row>

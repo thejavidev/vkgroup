@@ -31,12 +31,34 @@ const Products = ({ products }) => {
         }, 500);
       }, [])
     return (
-        <div className='min-h-[80vh] pt-[40px] pb-40px] pl-[100px] pr-[100px]'>
+        <div className='min-h-[80vh] pt-[40px] pb-40px] pl-[100px] pr-[100px] lg:pl-[40px] lg:pr-[40px] md:pl-[20px] md:pr-[20px]'>
             <Swiper
                 slidesPerView={8}
                 spaceBetween={30}
+                breakpoints={{
+                    40: {
+                      slidesPerView: 2,
+                    },
+                    340: {
+                      slidesPerView: 2,
+                    },
+                    640: {
+                      slidesPerView: 2,
+                    
+                    },
+                    768: {
+                      slidesPerView: 3,
+                    
+                    },
+                    1024: {
+                      slidesPerView: 4,
+                    },
+                    1299: {
+                      slidesPerView: 8,
+                    },
+                  }}
             >
-                <SwiperSlide className='flex gap-5'>
+                <SwiperSlide className='flex gap-[3rem] md:gap-[1rem]'>
                     {
                         subCategories1 && subCategories1?.map((cur, index) => {
 
@@ -45,8 +67,8 @@ const Products = ({ products }) => {
                                     <NavLink to={`/${url}/${cur?.slug_az}`}
                                    
                                     className={`bg-[#124395] text-[#fff]  
-                                   font-[700] uppercase
-                                    flex w-[170px] h-[170px] items-center justify-center  transitions  hover:bg-[#f3f3f3] hover:text-[#124395]
+                                   font-[700] uppercase md:text-[12px]
+                                    flex w-[170px] h-[170px] md:w-[140px] md:h-[140px] items-center justify-center  transitions  hover:bg-[#f3f3f3] hover:text-[#124395]
                                     text-center rounded-full cursor-pointer`}>
                                         {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
                                     </NavLink>
@@ -88,21 +110,21 @@ const Products = ({ products }) => {
                                         <Col lg={3} className=''>
                                             {
                                                 loading ? <LoaderContent /> :
-                                                <LazyLoadImage id='img' src={image ? image : defaulImg} className=' w-full h-[250px]  object-contain ' alt={altTeg} />
+                                                <LazyLoadImage id='img' src={image ? image : defaulImg} className=' w-full h-[250px] md:mb-10  object-contain ' alt={altTeg} />
                                             }
                                         </Col>
                                         <Col lg={9}>
                                             {
                                                 loading ? <LoaderText /> :
-                                                <h2 className='capitalize font-[700] text-[40px] tetx-[#272727] m-0 pb-[10px]'>{text1}</h2>
+                                                <h2 className='capitalize font-[700] text-[40px] md:text-[25px] tetx-[#272727] m-0 pb-[10px]'>{text1}</h2>
                                             }
                                             {
                                                 loading ? <LoaderText /> :
-                                                <h5 className='text-[25px] font-[600] capitalize text-[#272727] m-0 pb-[10px]'>{text2}</h5>
+                                                <h5 className='text-[25px] md:text-[20px] font-[600]  capitalize text-[#272727] m-0 pb-[10px]'>{text2}</h5>
                                             }
                                             {
                                                 loading ? <LoaderText /> :
-                                                <div className='text-[#272727] text-[16px] text-justify m-0' dangerouslySetInnerHTML={{ __html: text3 && text3 }}></div>
+                                                <div className='text-[#272727] text-[16px] md:text-[13px] md:pt-5 md:pb-20 text-justify m-0' dangerouslySetInnerHTML={{ __html: text3 && text3 }}></div>
                                             }
                                         </Col>
                                     </Row>
