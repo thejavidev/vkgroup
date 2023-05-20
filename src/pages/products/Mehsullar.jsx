@@ -29,8 +29,8 @@ const Mehsullar = ({ mehsullar }) => {
     return (
         <>
             <div className="min-h-[80vh]">
-                <div className="p-[20px] mt-[70px] bg-[#F3F3F3] w-full flex items-center justify-center">
-                    <h2 className='text-center font-[700] text-[25px] uppercase text-[#272727] '>{ml(currentPost?.name_az, currentPost?.name_ru, currentPost?.name_en)}</h2>
+                <div className="p-[20px] mt-[70px] md:mt-[50px] bg-[#F3F3F3] w-full flex items-center justify-center">
+                    <h2 className='text-center font-[700] text-[25px] md:text-[20px] uppercase text-[#272727] '>{ml(currentPost?.name_az, currentPost?.name_ru, currentPost?.name_en)}</h2>
                 </div>
                 <Container>
                     <Tabs className='mt-5 '>

@@ -29,8 +29,8 @@ const Projects = ({ layihe }) => {
 
   return (
     <>
-     <div className="p-[20px] mt-[70px] bg-[#F3F3F3] w-full flex items-center justify-center">
-        <h2 className='text-center font-[700] text-[25px] uppercase text-[#272727] '>{t("projects")}</h2>
+     <div className="p-[20px] mt-[70px] md:mt-[50px] bg-[#F3F3F3] w-full flex items-center justify-center">
+        <h2 className='text-center font-[700]  text-[25px] md:text-[20px] uppercase text-[#272727] '>{t("projects")}</h2>
       </div>
       <div className="relative bg-[#fff] p-[20px] pt-[4rem] min-h-[60vh]">
         <Container>
@@ -39,7 +39,7 @@ const Projects = ({ layihe }) => {
             {
               layihe && layihe?.slice(0, next)?.map((item, index) => {
                 return (
-                  <Col className=" relative mb-3  cursor-pointer overflow-hidden" key={index} lg={3} md={4}>
+                  <Col className=" relative mb-3  cursor-pointer overflow-hidden" key={index} lg={3} md={4} xs={6}>
                     {
                       loading ? <LoaderContent /> :
                         <Link to={`${item?.slug_az}`} className="imageP">
