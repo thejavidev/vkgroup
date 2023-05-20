@@ -70,46 +70,26 @@ const Header = ({ xidmet, mehsullar }) => {
     Overlay.classList.remove('active')
   }
   const [openId, setOpenId] = useState(0);
-
+  const [openId2, setOpenId2] = useState(0);
 
 
   const mobileHeader = [
     {
       id: 1,
       title: `${t('projects')}`,
-      link: '/about',
     },
     {
       id: 2,
       title: `${t('footerservices')}`,
-      submenu: [
-        {
-          id: 3 - 1,
-          title: "alt-1"
-        },
-        {
-          id: 3 - 2,
-          title: "alt-2"
-        },
-      ]
+
     },
     {
       id: 3,
-      title: `test2`,
+      title: `${t('mehsullar')}`,
     },
     {
       id: 4,
       title: `${t('projects')}`,
-      submenu: [
-        {
-          id: 4 - 1,
-          title: "alt-3"
-        },
-        {
-          id: 4 - 2,
-          title: "alt-4"
-        },
-      ]
     },
     {
       id: 5,
@@ -118,6 +98,17 @@ const Header = ({ xidmet, mehsullar }) => {
     {
       id: 6,
       title: `${t('footermedia')}`,
+      submenu:[
+        {
+          id:1,
+          title:`${t('footerfoto')}`,
+          link:'/media/foto'
+        },
+        {
+          id:2,
+          title:`${t('footervideo')}`
+        },
+      ]
     },
     {
       id: 7,
@@ -228,9 +219,9 @@ const Header = ({ xidmet, mehsullar }) => {
                   </NavLink>
                 </li>
                 <li className='relative ulHover hvr  cursor-pointer'>
-                  <NavLink to={'/media/foto'} className='text-white text-[15px] xl:text-[13px] uppercase font-[300] relative block pt-[15px] pb-[15px]  pl-[18px] pr-[18px] 2xl:pl-[8px] 2xl:pr-[8px] lg:pl-[4px] lg:pr-[4px]'>
+                  <p  className='text-white text-[15px] xl:text-[13px] uppercase font-[300] relative block pt-[15px] pb-[15px]  pl-[18px] pr-[18px] 2xl:pl-[8px] 2xl:pr-[8px] lg:pl-[4px] lg:pr-[4px]'>
                     {t("footermedia")}
-                  </NavLink>
+                  </p>
                   <ul className='first_alt_menu flex absolute top-[100%] left-[-50px] mt-[10px] bg-[#272727] pl-0 '>
                     <li className=' relative capitalize w-max text-[#E10632] bg-[#272727] cursor-pointer text-[16px] xl:text-[13px] transitions secondUl'>
                       <Link to='/media/foto' className='text-[#E10632] p-[20px] lg:p-[10px] md:lg-[5px] xl:text-[13px] hover:text-[#fff] transitions w-full h-full block'>
@@ -304,18 +295,84 @@ const Header = ({ xidmet, mehsullar }) => {
         >
           <AiOutlineClose />
         </Button>
-        <ul className='mt-[100px]'>
+        <UnorderedList className='mt-[100px]'>
+          <ListItem className='cursor-pointer hvr'>
+            <NavLink to='/about' className='text-[#000]  '>
+              {t("footerabout")}
+            </NavLink>
+          </ListItem>
           {
-            mobileHeader && mobileHeader?.map((item, index) => (
+            mobileHeader && mobileHeader?.slice(1, 2)?.map((item, index) => (
+              <ListItem key={index}>
+                <p onClick={() => setOpenId(item?.id === openId ? 0 : item?.id)}>{item?.title}</p>
+                <Collapse in={item.id === openId} animateOpacity>
+                  {
+                    xidmet && xidmet?.slice(0, 1).map((cur, i) => (
+                      <UnorderedList key={i}>
+                        <ListItem onClick={() => setOpenId2(cur?.id === openId2 ? 0 : cur?.id)}
+
+                          className=''>
+                          {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
+                          <UnorderedList>
+                            <Collapse in={cur.id === openId2} className=''>
+                              {
+                                xidmet[0]?.sub_categories_1 && xidmet[0].sub_categories_1?.map((menu, index) => (
+                                  <ListItem key={index} className=''>
+                                    <Link to={`/xidmetler/insaat/${menu?.slug_az}`} className=''>
+                                      {ml(menu?.name_az, menu?.name_ru, menu.name_en)}
+                                    </Link>
+                                  </ListItem>
+                                ))
+                              }
+                            </Collapse>
+                          </UnorderedList>
+                        </ListItem>
+                      </UnorderedList>
+                    ))
+                  }
+                  {
+                    xidmet && xidmet?.slice(1, 2).map((cur, i) => (
+                      <UnorderedList key={i}>
+                        <ListItem onClick={() => setOpenId2(cur?.id === openId2 ? 0 : cur?.id)}
+                          className=''>
+                          {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
+                          <UnorderedList>
+                            <Collapse in={cur.id === openId2} className=''>
+                              {
+                                xidmet[1]?.sub_categories_1 && xidmet[1].sub_categories_1?.map((menu, index) => (
+                                  <ListItem key={index} className=''>
+                                    <Link to={`/xidmetler/insaat/${menu?.slug_az}`} className=''>
+                                      {ml(menu?.name_az, menu?.name_ru, menu.name_en)}
+                                    </Link>
+                                  </ListItem>
+                                ))
+                              }
+                            </Collapse>
+                          </UnorderedList>
+                        </ListItem>
+                      </UnorderedList>
+                    ))
+                  }
+                </Collapse>
+
+              </ListItem>
+            ))
+          }
+
+          {
+            mobileHeader && mobileHeader?.slice(2, 3)?.map((item, index) => (
               <li key={index}>
                 <p onClick={() => setOpenId(item?.id === openId ? 0 : item?.id)}>{item?.title}</p>
                 <Collapse in={item.id === openId} animateOpacity>
                   <List>
                     {
-                      item?.submenu && item?.submenu?.map((altlink, index) => (
-                        <li key={index}>
-                          <h2> {altlink?.title}</h2>
-                        </li>
+                      mehsullar && mehsullar?.map((cur, i) => (
+                        <ListItem key={i} className=''>
+                          <Link to={`mehsullar/${cur.slug_az}`} className=''>
+                            {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
+                          </Link>
+
+                        </ListItem>
                       ))
                     }
                   </List>
@@ -323,12 +380,44 @@ const Header = ({ xidmet, mehsullar }) => {
               </li>
             ))
           }
-        </ul>
+          <ListItem className='cursor-pointer hvr'>
+            <NavLink to='layihelerimiz' className='text-[#000]  '>
+            {t("projects")}
+            </NavLink>
+          </ListItem>
+          <ListItem className='cursor-pointer hvr'>
+            <NavLink to='avadanliqlar' className='text-[#000]  '>
+            {t("avadanliq")}
+            </NavLink>
+          </ListItem>
+          {
+            mobileHeader && mobileHeader?.slice(5, 6)?.map((item, index) => (
+              <li key={index}>
+                <p onClick={() => setOpenId(item?.id === openId ? 0 : item?.id)}>{item?.title}</p>
+                <Collapse in={item.id === openId} animateOpacity>
+                  <List>
+                    {
+                      mehsullar && mehsullar?.map((cur, i) => (
+                        <ListItem key={i} className=''>
+                          <Link to={`mehsullar/${cur.slug_az}`} className=''>
+                            {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
+                          </Link>
+
+                        </ListItem>
+                      ))
+                    }
+                  </List>
+                </Collapse>
+              </li>
+            ))
+          }
+        </UnorderedList>
       </div>
     </>
   )
 }
 
 export default Header
+
 
 
