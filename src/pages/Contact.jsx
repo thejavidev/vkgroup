@@ -22,10 +22,10 @@ const Contact = ({ option }) => {
       <div className="relative mt-24 mb-28">
         <Container>
           <Row>
-            <p className="font-[700] text-[45px] text-[#272727] mb-4">{t("contactT")}</p>
+            <p className="font-[700] text-[45px] md:text-[25px] text-[#272727] mb-4">{t("contactT")}</p>
             <Col lg={7} md={12} className="p-[20px]">
-              <div className="flex justify-between w-full">
-                <div className="flex items-center justify-center">
+              <div className="flex justify-between w-full md:flex-col md:justify-start">
+                <div className="flex items-center justify-center md:items-start md:justify-start md:mb-[20px]">
                   <BsTelephone className="text-[30px] mr-3" />
                   <div className="flex flex-col">
                     <p className="text-[16px] font-[300] text-[#272727]">
@@ -40,7 +40,7 @@ const Contact = ({ option }) => {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center  md:items-start md:justify-start md:mb-[20px]">
                   <HiOutlineLocationMarker className="text-[30px] mr-3" />
                   <div className="flex flex-col">
                     <p className="font-[300] text-[16px] text-[#272727]">
@@ -51,7 +51,7 @@ const Contact = ({ option }) => {
 
                   </div>
                 </div>
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center  md:items-start md:justify-start md:mb-[20px]">
                   <BsEnvelope className="text-[30px] font-[200] mr-3" />
                   <div className="flex flex-col">
                     <p className="font-[300] text-[16px] text-[#272727]">

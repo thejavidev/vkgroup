@@ -85,6 +85,9 @@ img{
 .menutransitions{
     transition: all 0.6s ease;
 }
+.border-botttom{
+    border-bottom: 0.1rem solid rgba(255, 255, 255, 0.08);
+}
 .none {
     top: -80px;
     transition: .4s linear;
@@ -92,11 +95,11 @@ img{
 .transitionsa{
     transition: background 0.4s linear, color 0.6s linear;
 }
-.header .active{
+.header .menu .active{
     box-shadow: 0px 6px 12px 4px rgba(0, 0, 0, 0.25);
     position: relative;
 }
-.header .active::after{
+.header .menu .active::after{
     content: "";
     position: absolute;
     width: 100%;
@@ -130,9 +133,12 @@ img{
 .colorchagne:hover .color2 h6{
     color:#fff;
 }
-@media screen and (min-width:1200px) {
+@media screen and (min-width:1100px) {
     .swiper-slide-active > .scale1{
         transform: scale(1) !important;
+    }
+    .border25{
+        border: 25px solid #F3F3F3;
     }
 }
 .shadow1{
@@ -152,9 +158,7 @@ img{
     background: rgba(18, 67, 149, 0.7);
     mix-blend-mode: multiply;
 }
-.border25{
-    border: 25px solid #F3F3F3;
-}
+
 
 .equi .swiper-button-prev,
 .equi .swiper-button-next{
@@ -228,14 +232,10 @@ img{
 }
 .mobile-header{
     visibility: hidden;
+    left: -100%;
 }
 .mobile-header.active {
     visibility: visible;
     left: 0%;
 }
-.myli .mobile-ul{
-    display: none;
-}
-.myli.activeUl .mobile-ul{
-    display: block;
-}
+

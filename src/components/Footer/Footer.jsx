@@ -16,7 +16,7 @@ import { Tb360View } from 'react-icons/Tb';
 
 
 
-const Footer = ({ option, subone, xidmet, mehsullar }) => {
+const Footer = ({ option, xidmet }) => {
   const year = new Date().getFullYear();
   const [t] = useTranslation("translation");
   const url = `xidmetler`
@@ -38,11 +38,11 @@ const Footer = ({ option, subone, xidmet, mehsullar }) => {
                   </UnorderedList>
                 </Col>
                 <Col xl={6} md={8} sm={12}>
-                  <Row className="justify-end">
-                    <Col lg={5}>
+                  <Row className="justify-end lg:justify-start">
+                    <Col lg={5} md={6}>
                       <h1 className='font-[700] text-[27px] lg:text-[20px] text-white uppercase mb-3'>{t('quickmenu')}</h1>
                       <Row className="lg:flex-col">
-                        <Col lg={6} className='flex flex-col'>
+                        <Col lg={6} md={6} className='flex flex-col'>
                           <Link className='text-white capitalize pb-[10px] font-[600]' to='about'>{t('footerabout')}</Link>
                           <Link className='text-white capitalize pb-[10px] font-[600]' to='servis'>{t('footerservice')}</Link>
                           <Link className='text-white capitalize pb-[10px] font-[600]' to='layihelerimiz'>{t('footerlayihe')}</Link>
@@ -55,7 +55,7 @@ const Footer = ({ option, subone, xidmet, mehsullar }) => {
                         </Col>
                       </Row>
                     </Col>
-                    <Col lg={4}>
+                    <Col lg={4} md={6} className='md:mt-8'>
                       <h1 className='font-[700] text-[27px] lg:text-[20px] text-white uppercase mb-3'>{t('footerservice')}</h1>
                       <div className="overflow-auto h-[190px] flex flex-col">
                         {
@@ -79,7 +79,7 @@ const Footer = ({ option, subone, xidmet, mehsullar }) => {
                         }
                       </div>
                     </Col>
-                    <Col lg={3} className='flex flex-col'>
+                    <Col lg={3} className='flex flex-col lg:mt-12'>
                       <h1 className='font-[700] text-[27px] lg:text-[20px] text-white uppercase mb-3'>{t('footermedia')}</h1>
                       <Link className='text-white capitalize pb-[10px] font-[600]' to='blog'>{t('footerblog')}</Link>
                       <Link className='text-white capitalize pb-[10px] font-[600]' to='foto'>{t('footerfoto')}</Link>
@@ -90,12 +90,12 @@ const Footer = ({ option, subone, xidmet, mehsullar }) => {
               </Row>
             </Col>
             <Col lg={12} md={12} className='bg-[#272727] p-[20px] '>
-              <div className="flex w-full justify-between">
+              <div className="flex w-full justify-between md:flex-col md:justify-center md:items-center md:gap-4">
                 <div className="">
                   <LazyLoadImage className='w-[150px]' src='https://vkgroup.az/vk/img/header/vklogo.png' />
                 </div>
-                <div className="flex flex-wrap items-center">
-                  <p className='text-white text-[18px] font-[400] pr-[20px]'>{t("footerT")} {year}</p>
+                <div className="flex flex-wrap items-center md:justify-center md:gap-4">
+                  <p className='text-white text-[18px] font-[400] pr-[20px] md:p-0'>{t("footerT")} {year}</p>
                   <LazyLoadImage className='w-[100px] object-contain' src='https://vkgroup.az/vk/img/footer/corn.png' />
                 </div>
               </div>

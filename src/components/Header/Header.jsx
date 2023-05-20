@@ -7,7 +7,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Link, NavLink } from 'react-router-dom';
 import { getMultiLang as ml } from '../MultiLang';
 import { BiMenu } from 'react-icons/Bi';
-import { AiOutlineClose } from 'react-icons/Ai';
+import { AiOutlineClose, AiOutlineCaretDown } from 'react-icons/Ai';
 import { Button } from 'react-bootstrap';
 import {
   Collapse,
@@ -76,62 +76,40 @@ const Header = ({ xidmet, mehsullar }) => {
   const mobileHeader = [
     {
       id: 1,
-      title: `${t('projects')}`,
+      title: `${t('footerservices')}`,
     },
     {
       id: 2,
-      title: `${t('footerservices')}`,
-
-    },
-    {
-      id: 3,
       title: `${t('mehsullar')}`,
     },
     {
-      id: 4,
-      title: `${t('projects')}`,
-    },
-    {
-      id: 5,
-      title: `${t('avadanliq')}`,
-    },
-    {
-      id: 6,
+      id: 3,
       title: `${t('footermedia')}`,
-      submenu:[
+      submenu: [
         {
-          id:1,
-          title:`${t('footerfoto')}`,
-          link:'/media/foto'
+          id: 1,
+          title: `${t('footerfoto')}`,
+          link: '/media/foto'
         },
         {
-          id:2,
-          title:`${t('footervideo')}`
+          id: 2,
+          title: `${t('footervideo')}`,
+          link: '/media/video'
+        },
+        {
+          id: 3,
+          title: `${t('footervideo')}`,
+          link: '/media/blog'
         },
       ]
     },
-    {
-      id: 7,
-      title: `${t('footercertf')}`,
-    },
-    {
-      id: 8,
-      title: `${t('footerservice')}`,
-    },
-    {
-      id: 9,
-      title: `${t('footerrey')}`,
-    },
-    {
-      id: 10,
-      title: `${t('footerelaqe')}`,
-    },
+
   ]
 
   return (
     <>
       <div onClick={CloseMenu} className="mobile-menu-overlay block fixed left-[0] top-[0] bottom-[0] right-[0] z-[100] overlay"></div>
-      <header className={` ${show && 'none'} header  fixed bg-[#272727] top-[0px] left-[0] right-[0] w-full z-50`} >
+      <header className={` ${show && 'none'} header  fixed bg-[#272727] top-[0px] left-[0] right-[0] w-full z-[150]`} >
         <Container fluid className='pr-[70px] pl-[70px] pt-[7px] pb-[7px] 2xl:pl-[20px] 2xl:pr-[20px] lg:pt-[10px] lg:pb-[10px]'>
           <Nav className='items-center justify-between w-full '>
             <div className="logo">
@@ -219,7 +197,7 @@ const Header = ({ xidmet, mehsullar }) => {
                   </NavLink>
                 </li>
                 <li className='relative ulHover hvr  cursor-pointer'>
-                  <p  className='text-white text-[15px] xl:text-[13px] uppercase font-[300] relative block pt-[15px] pb-[15px]  pl-[18px] pr-[18px] 2xl:pl-[8px] 2xl:pr-[8px] lg:pl-[4px] lg:pr-[4px]'>
+                  <p className='text-white text-[15px] xl:text-[13px] uppercase font-[300] relative block pt-[15px] pb-[15px]  pl-[18px] pr-[18px] 2xl:pl-[8px] 2xl:pr-[8px] lg:pl-[4px] lg:pr-[4px]'>
                     {t("footermedia")}
                   </p>
                   <ul className='first_alt_menu flex absolute top-[100%] left-[-50px] mt-[10px] bg-[#272727] pl-0 '>
@@ -278,141 +256,184 @@ const Header = ({ xidmet, mehsullar }) => {
                     )}
                 />}
               </div>
-              <div className="mobileMenu" onClick={openMenu}>
+              <div className="mobileMenu hidden lg:block" onClick={openMenu}>
                 <BiMenu className='text-[#fff] text-[30px] cursor-pointer' />
               </div>
             </div>
           </Nav>
         </Container>
 
+        <div className='mobile-header fixed inset-0 z-[150] bg-[#272727] w-full max-w-[300px] menutransitions p-[20px]'>
+          <Button
+            className="absolute right-[10px] top-[10px] shrink-0 border-none outline-none hover:bg-transparent hover:shadow-none hover:outline-none focus:bg-transparent"
 
+            onClick={() => CloseMenu()}
+          >
+            <AiOutlineClose className='text-[20px]' />
+          </Button>
+          <UnorderedList className='mt-[40px] text-[#fff] '>
+            <ListItem className='list-none uppercase mb-[10px] pb-[7px] pl-[7px] cursor-pointer border-botttom'>
+              <NavLink to='/about' className='text-[#fff]  hover:text-[#E10632]' onClick={CloseMenu}>
+                {t("footerabout")}
+              </NavLink>
+            </ListItem>
+            {
+              mobileHeader && mobileHeader?.slice(0, 1)?.map((item, index) => (
+                <ListItem key={index} className='list-none uppercase mb-[10px] pb-[7px] pl-[7px] cursor-pointer  border-botttom'>
+                  <div className="flex items-center">
+                    <p className='hover:text-[#E10632]' onClick={() => setOpenId(item?.id === openId ? 0 : item?.id)}>{item?.title}</p>
+                    <AiOutlineCaretDown className=' ml-[15px] ' />
+                  </div>
+                  <Collapse in={item.id === openId} animateOpacity>
+                    {
+                      xidmet && xidmet?.slice(0, 1).map((cur, i) => (
+                        <UnorderedList key={i}>
+                          <ListItem
+                            onClick={() => setOpenId2(cur?.id === openId2 ? 0 : cur?.id)}
+
+                            className='list-none mb-[10px] mt-[10px]'>
+                            <div className="flex items-center hover:text-[#E10632]">
+                              {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
+                              <AiOutlineCaretDown className=' ml-[15px]' />
+                            </div>
+
+                            <UnorderedList>
+                              <Collapse in={cur.id === openId2} className=''>
+                                {
+                                  xidmet[0]?.sub_categories_1 && xidmet[0].sub_categories_1?.map((menu, index) => (
+                                    <ListItem key={index} className='mb-[10px] mt-[10px]'>
+                                      <Link to={`/xidmetler/insaat/${menu?.slug_az}`} className='hover:text-[#E10632]' onClick={CloseMenu}>
+                                        {ml(menu?.name_az, menu?.name_ru, menu.name_en)}
+                                      </Link>
+                                    </ListItem>
+                                  ))
+                                }
+                              </Collapse>
+                            </UnorderedList>
+                          </ListItem>
+                        </UnorderedList>
+                      ))
+                    }
+                    {
+                      xidmet && xidmet?.slice(1, 2).map((cur, i) => (
+                        <UnorderedList key={i}>
+                          <ListItem onClick={() => setOpenId2(cur?.id === openId2 ? 0 : cur?.id)}
+                            className='list-none mb-[10px] mt-[10px]'>
+                            <div className="flex items-center hover:text-[#E10632]">
+                              {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
+                              <AiOutlineCaretDown className=' ml-[15px]' />
+                            </div>
+
+
+                            <UnorderedList>
+                              <Collapse in={cur.id === openId2} className=''>
+                                {
+                                  xidmet[1]?.sub_categories_1 && xidmet[1].sub_categories_1?.map((menu, index) => (
+                                    <ListItem key={index} className='mb-[10px] mt-[10px]'>
+                                      <Link to={`/xidmetler/insaat/${menu?.slug_az}`} className='hover:text-[#E10632]' onClick={CloseMenu}> 
+                                        {ml(menu?.name_az, menu?.name_ru, menu.name_en)}
+                                      </Link>
+                                    </ListItem>
+                                  ))
+                                }
+                              </Collapse>
+                            </UnorderedList>
+                          </ListItem>
+                        </UnorderedList>
+                      ))
+                    }
+                  </Collapse>
+
+                </ListItem>
+              ))
+            }
+
+            {
+              mobileHeader && mobileHeader?.slice(1, 2)?.map((item, index) => (
+                <ListItem key={index} className='uppercase list-none cursor-pointer border-botttom mb-[10px] pb-[7px] pl-[7px]'>
+                  <div className="flex items-center">
+                    <p className='hover:text-[#E10632]'
+                    onClick={() => setOpenId(item?.id === openId ? 0 : item?.id)}>
+                      {item?.title}
+                    </p>
+                    <AiOutlineCaretDown className=' ml-[15px]' />
+                  </div>
+                  <Collapse in={item.id === openId} animateOpacity>
+                    <List>
+                      {
+                        mehsullar && mehsullar?.map((cur, i) => (
+                          <ListItem key={i} className='mb-[10px] mt-[10px]'>
+                            <Link to={`mehsullar/${cur.slug_az}`} className='hover:text-[#E10632]' onClick={CloseMenu}>
+                              {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
+                            </Link>
+
+                          </ListItem>
+                        ))
+                      }
+                    </List>
+                  </Collapse>
+                </ListItem>
+              ))
+            }
+            <ListItem className='list-none border-botttom mb-[10px] pb-[7px] pl-[7px]'>
+              <NavLink to='layihelerimiz' className='text-[#fff]  uppercase hover:text-[#E10632]' onClick={CloseMenu}>
+                {t("projects")}
+              </NavLink>
+            </ListItem>
+            <ListItem className='list-none border-botttom mb-[10px] pb-[7px] pl-[7px]'>
+              <NavLink to='avadanliqlar' className='text-[#fff] uppercase hover:text-[#E10632]' onClick={CloseMenu}>
+                {t("avadanliq")}
+              </NavLink>
+            </ListItem>
+            {
+              mobileHeader && mobileHeader?.slice(2, 3)?.map((item, index) => (
+                <ListItem key={index} className='uppercase list-none cursor-pointer border-botttom mb-[10px] pb-[7px] pl-[7px]'>
+                  <div className="flex items-center">
+                  <p className='hover:text-[#E10632]' onClick={() => setOpenId(item?.id === openId ? 0 : item?.id)}>{item?.title}</p>
+                  <AiOutlineCaretDown className='ml-[15px]' />
+                  </div>
+              
+                  <Collapse in={item.id === openId} animateOpacity>
+                    <List>
+                      {
+                        item?.submenu && item?.submenu?.map((cur, i) => (
+                          <ListItem key={i} className='mb-[10px] mt-[10px]'>
+                            <Link to={cur?.link} className='hover:text-[#E10632]' onClick={CloseMenu}>
+                              {cur?.title}
+                            </Link>
+
+                          </ListItem>
+                        ))
+                      }
+                    </List>
+                  </Collapse>
+                </ListItem>
+              ))
+            }
+            <ListItem className='list-none border-botttom mb-[10px] pb-[7px] pl-[7px]'>
+              <NavLink to='sertifikat' className='text-[#fff] uppercase hover:text-[#E10632]' onClick={CloseMenu}>
+                {t("footercertf")}
+              </NavLink>
+            </ListItem>
+            <ListItem className='list-none border-botttom mb-[10px] pb-[7px] pl-[7px]'>
+              <NavLink to='servis' className='text-[#fff] uppercase  hover:text-[#E10632]' onClick={CloseMenu}>
+                {t("footerservice")}
+              </NavLink>
+            </ListItem>
+            <ListItem className='list-none border-botttom mb-[10px] pb-[7px] pl-[7px]'>
+              <NavLink to='rey-sorgusu' className='text-[#fff] uppercase  hover:text-[#E10632]' onClick={CloseMenu}>
+                {t("footerrey")}
+              </NavLink>
+            </ListItem>
+            <ListItem className='list-none border-botttom mb-[10px] pb-[7px] pl-[7px]'>
+              <NavLink to='elaqe' className='text-[#fff] uppercase hover:text-[#E10632] ' onClick={CloseMenu}>
+                {t("footerelaqe")}
+              </NavLink>
+            </ListItem>
+          </UnorderedList>
+        </div>
       </header>
-      <div className="offcanvas-mobile-menu" id="offcanvas-mobile-menu">
-        <Button
-          className="offcanvas-menu-close"
-          id="mobile-menu-close-trigger"
-          onClick={() => closeMobileMenu()}
-        >
-          <AiOutlineClose />
-        </Button>
-        <UnorderedList className='mt-[100px]'>
-          <ListItem className='cursor-pointer hvr'>
-            <NavLink to='/about' className='text-[#000]  '>
-              {t("footerabout")}
-            </NavLink>
-          </ListItem>
-          {
-            mobileHeader && mobileHeader?.slice(1, 2)?.map((item, index) => (
-              <ListItem key={index}>
-                <p onClick={() => setOpenId(item?.id === openId ? 0 : item?.id)}>{item?.title}</p>
-                <Collapse in={item.id === openId} animateOpacity>
-                  {
-                    xidmet && xidmet?.slice(0, 1).map((cur, i) => (
-                      <UnorderedList key={i}>
-                        <ListItem onClick={() => setOpenId2(cur?.id === openId2 ? 0 : cur?.id)}
 
-                          className=''>
-                          {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
-                          <UnorderedList>
-                            <Collapse in={cur.id === openId2} className=''>
-                              {
-                                xidmet[0]?.sub_categories_1 && xidmet[0].sub_categories_1?.map((menu, index) => (
-                                  <ListItem key={index} className=''>
-                                    <Link to={`/xidmetler/insaat/${menu?.slug_az}`} className=''>
-                                      {ml(menu?.name_az, menu?.name_ru, menu.name_en)}
-                                    </Link>
-                                  </ListItem>
-                                ))
-                              }
-                            </Collapse>
-                          </UnorderedList>
-                        </ListItem>
-                      </UnorderedList>
-                    ))
-                  }
-                  {
-                    xidmet && xidmet?.slice(1, 2).map((cur, i) => (
-                      <UnorderedList key={i}>
-                        <ListItem onClick={() => setOpenId2(cur?.id === openId2 ? 0 : cur?.id)}
-                          className=''>
-                          {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
-                          <UnorderedList>
-                            <Collapse in={cur.id === openId2} className=''>
-                              {
-                                xidmet[1]?.sub_categories_1 && xidmet[1].sub_categories_1?.map((menu, index) => (
-                                  <ListItem key={index} className=''>
-                                    <Link to={`/xidmetler/insaat/${menu?.slug_az}`} className=''>
-                                      {ml(menu?.name_az, menu?.name_ru, menu.name_en)}
-                                    </Link>
-                                  </ListItem>
-                                ))
-                              }
-                            </Collapse>
-                          </UnorderedList>
-                        </ListItem>
-                      </UnorderedList>
-                    ))
-                  }
-                </Collapse>
-
-              </ListItem>
-            ))
-          }
-
-          {
-            mobileHeader && mobileHeader?.slice(2, 3)?.map((item, index) => (
-              <li key={index}>
-                <p onClick={() => setOpenId(item?.id === openId ? 0 : item?.id)}>{item?.title}</p>
-                <Collapse in={item.id === openId} animateOpacity>
-                  <List>
-                    {
-                      mehsullar && mehsullar?.map((cur, i) => (
-                        <ListItem key={i} className=''>
-                          <Link to={`mehsullar/${cur.slug_az}`} className=''>
-                            {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
-                          </Link>
-
-                        </ListItem>
-                      ))
-                    }
-                  </List>
-                </Collapse>
-              </li>
-            ))
-          }
-          <ListItem className='cursor-pointer hvr'>
-            <NavLink to='layihelerimiz' className='text-[#000]  '>
-            {t("projects")}
-            </NavLink>
-          </ListItem>
-          <ListItem className='cursor-pointer hvr'>
-            <NavLink to='avadanliqlar' className='text-[#000]  '>
-            {t("avadanliq")}
-            </NavLink>
-          </ListItem>
-          {
-            mobileHeader && mobileHeader?.slice(5, 6)?.map((item, index) => (
-              <li key={index}>
-                <p onClick={() => setOpenId(item?.id === openId ? 0 : item?.id)}>{item?.title}</p>
-                <Collapse in={item.id === openId} animateOpacity>
-                  <List>
-                    {
-                      mehsullar && mehsullar?.map((cur, i) => (
-                        <ListItem key={i} className=''>
-                          <Link to={`mehsullar/${cur.slug_az}`} className=''>
-                            {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
-                          </Link>
-
-                        </ListItem>
-                      ))
-                    }
-                  </List>
-                </Collapse>
-              </li>
-            ))
-          }
-        </UnorderedList>
-      </div>
     </>
   )
 }
