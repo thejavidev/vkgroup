@@ -61,7 +61,7 @@ const Mehsullar = ({ mehsullar }) => {
                                                 <Col lg={4} className=' p-[20px]'>
                                                    {
                                                     loading ? <LoaderContent /> :
-                                                    <LazyLoadImage id='img'  src={shortlinkSrc ? shortlinkSrc :defaulImg} className=' w-[400px] object-contain ' alt={shortlinkALt} />
+                                                    <LazyLoadImage id='img'  src={shortlinkSrc ? shortlinkSrc :defaulImg} className=' w-[400px] object-contain  md:w-full md:mb-10 md:h-[250px]' alt={shortlinkALt} />
                                                    }
                                                 </Col>
                                                 <Col lg={8} className=' h-full flex flex-col pl-[20px]'>

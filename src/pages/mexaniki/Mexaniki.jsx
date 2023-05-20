@@ -86,13 +86,13 @@ const Mexaniki = ({ products }) => {
                                         <Col lg={3} className=''>
                                            {
                                             loading ? <LoaderContent /> :
-                                            <LazyLoadImage id='img' src={image ? image : defaulImg} className=' w-full h-[250px]  object-contain ' alt={altTeg} />
+                                            <LazyLoadImage id='img' src={image ? image : defaulImg} className=' w-full h-[250px]   object-contain md:object-cover md:mb-10' alt={altTeg} />
                                            }
                                         </Col>
                                         <Col lg={9}>
                                             {
                                                 loading ? <LoaderText /> :
-                                                <h2 className='capitalize font-[700] text-[40px] tetx-[#272727] m-0 pb-[10px]'>{text1}</h2>
+                                                <h2 className='capitalize font-[700] text-[40px] md:text-[25px] tetx-[#272727] m-0 pb-[10px]'>{text1}</h2>
                                             }
                                             {
                                                 loading ? <LoaderText /> :
@@ -100,7 +100,7 @@ const Mexaniki = ({ products }) => {
                                             }
                                             {
                                                 loading? <LoaderText /> :
-                                                <div className='text-[#272727] text-[16px] text-justify m-0' dangerouslySetInnerHTML={{ __html: text3 && text3 }}></div>
+                                                <div className='text-[#272727] text-[16px] text-justify m-0 md:pb-20' dangerouslySetInnerHTML={{ __html: text3 && text3 }}></div>
                                             }
                                         </Col>
                                     </Row>
