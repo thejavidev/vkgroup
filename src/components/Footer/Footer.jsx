@@ -16,7 +16,7 @@ import { Tb360View } from 'react-icons/Tb';
 
 
 
-const Footer = ({ option, subone, xidmet }) => {
+const Footer = ({ option, subone, xidmet, mehsullar }) => {
   const year = new Date().getFullYear();
   const [t] = useTranslation("translation");
   const url = `xidmetler`
@@ -25,10 +25,10 @@ const Footer = ({ option, subone, xidmet }) => {
       <footer className='bg-[#124395] w-full relative '>
         <Container fluid className=''>
           <Row className='justify-between h-full'>
-            <Col lg={12} md={12} className='pt-[40px] pb-0 pl-[40px] pr-[40px]'>
+            <Col lg={12} md={12} className='pt-[40px] pb-0 pl-[40px] pr-[40px] lg:pt-[20px] lg:pl-[10px] lg:pr-[10px]'>
               <Row className='mb-[50px]'>
-                <Col lg={6} className='mb-[40px]'>
-                  <h1 className='pb-[20px] font-[700] text-[27px] text-white'>{option?.footer_title_az}</h1>
+                <Col xl={6} md={4} sm={12} className='mb-[40px]'>
+                  <h1 className='pb-[20px] font-[700] text-[27px] lg:text-[20px] text-white'>{option?.footer_title_az}</h1>
                   <div className='text-white text-[16px] bg-transparent mb-3' dangerouslySetInnerHTML={{ __html: option && ml(option?.footer_text_az, option?.footer_text_ru, option?.footer_text_en) }}></div>
                   <UnorderedList className='flex gap-2 list-none p-0 m-0'>
                     <ListItem className='list-none text-white pr-2'><Link to={option?.youtube}><AiFillYoutube className='text-[25px]' /></Link></ListItem>
@@ -37,11 +37,11 @@ const Footer = ({ option, subone, xidmet }) => {
                     <ListItem className='list-none text-white '><Link to='https://player.emlak360.az/LHGzMU4Yqvx/?m=LHGzMU4Yqvx&type=az360'><Tb360View className='text-[25px]' /></Link></ListItem>
                   </UnorderedList>
                 </Col>
-                <Col lg={6}>
+                <Col xl={6} md={8} sm={12}>
                   <Row className="justify-end">
                     <Col lg={5}>
-                      <h1 className='font-[700] text-[27px] text-white uppercase mb-3'>{t('quickmenu')}</h1>
-                      <Row className="">
+                      <h1 className='font-[700] text-[27px] lg:text-[20px] text-white uppercase mb-3'>{t('quickmenu')}</h1>
+                      <Row className="lg:flex-col">
                         <Col lg={6} className='flex flex-col'>
                           <Link className='text-white capitalize pb-[10px] font-[600]' to='about'>{t('footerabout')}</Link>
                           <Link className='text-white capitalize pb-[10px] font-[600]' to='servis'>{t('footerservice')}</Link>
@@ -56,18 +56,21 @@ const Footer = ({ option, subone, xidmet }) => {
                       </Row>
                     </Col>
                     <Col lg={4}>
-                      <h1 className='font-[700] text-[27px] text-white uppercase mb-3'>{t('footerservice')}</h1>
+                      <h1 className='font-[700] text-[27px] lg:text-[20px] text-white uppercase mb-3'>{t('footerservice')}</h1>
                       <div className="overflow-auto h-[190px] flex flex-col">
                         {
-                          subone && subone?.slice(0, 3).map((item, index) => (
-                            <Link to={`${url}/${xidmet[0]?.slug_az}/${item?.slug_az}`} key={index}>
-                              <div className="text-white capitalize pb-[10px] font-[600]" dangerouslySetInnerHTML={{ __html: item && ml(item?.name_az, item?.name_ru, item?.name_en) }}>
-                              </div>
-                            </Link>
-                          ))
+                          xidmet?.[0]?.sub_categories_1 && xidmet?.[0]?.sub_categories_1?.map((item, index) => {
+                          
+                            return (
+                              <Link to={`${url}/${xidmet[0]?.slug_az}/${item?.slug_az}`} key={index}>
+                                <div className="text-white capitalize pb-[10px] font-[600]" dangerouslySetInnerHTML={{ __html: item && ml(item?.name_az, item?.name_ru, item?.name_en) }}>
+                                </div>
+                              </Link>
+                            )
+                          })
                         }
                         {
-                          subone && subone?.slice(3, 20).map((item, index) => (
+                          xidmet?.[1]?.sub_categories_1 && xidmet?.[1]?.sub_categories_1?.map((item, index) => (
                             <Link to={`${url}/${xidmet[1]?.slug_az}/${item?.slug_az}`} key={index}>
                               <div className="text-white capitalize pb-[10px] font-[600]" dangerouslySetInnerHTML={{ __html: item && ml(item?.name_az, item?.name_ru, item?.name_en) }}>
                               </div>
@@ -77,7 +80,7 @@ const Footer = ({ option, subone, xidmet }) => {
                       </div>
                     </Col>
                     <Col lg={3} className='flex flex-col'>
-                      <h1 className='font-[700] text-[27px] text-white uppercase mb-3'>{t('footermedia')}</h1>
+                      <h1 className='font-[700] text-[27px] lg:text-[20px] text-white uppercase mb-3'>{t('footermedia')}</h1>
                       <Link className='text-white capitalize pb-[10px] font-[600]' to='blog'>{t('footerblog')}</Link>
                       <Link className='text-white capitalize pb-[10px] font-[600]' to='foto'>{t('footerfoto')}</Link>
                       <Link className='text-white capitalize pb-[10px] font-[600]' to='video'>{t('footervideo')}</Link>

@@ -11,18 +11,9 @@ import { Button } from 'react-bootstrap';
 import LoaderContent from '../components/loader/LoaderContent';
 import LoaderText from '../components/loader/LoaderText';
 import { noPhoto } from '../assets';
+import { shuffle } from './Home';
 
 
-function shuffle(a) {
-  var j, x, i;
-  for (i = a.length - 1; i > 0; i--) {
-    j = Math.floor(Math.random() * (i + 1));
-    x = a[i];
-    a[i] = a[j];
-    a[j] = x;
-  }
-  return a;
-}
 
 const BlogDetail = ({ blog }) => {
   const Data = blog;
@@ -81,7 +72,7 @@ const BlogDetail = ({ blog }) => {
                       }
                       {
                         loading ? <LoaderText /> :
-                          <Link to={`/blog/${cur?.slug_az}`} onClick={scrollToTop}>
+                          <Link to={`/media/blog/${cur?.slug_az}`} onClick={scrollToTop}>
                             <Button className='bg-[#E10632] border-none outline-none shadow-none pt-[10px] pb-[10px] pl-[20px] pr-[20px] rounded-[20px] text-[#fff] font-[500] text-[12px] transitions'>
                               {t("etrafli")}
                             </Button>

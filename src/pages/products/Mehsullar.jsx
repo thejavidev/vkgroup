@@ -16,7 +16,7 @@ const Mehsullar = ({ mehsullar }) => {
     const menu = currentPost?.sub_categories;
     const [loading, setLoading] = useState(false);
     const [t] = useTranslation("translation");
-  
+   
 
     useEffect(() => {
         window.scrollTo(0, 0)

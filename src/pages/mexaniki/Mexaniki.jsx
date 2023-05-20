@@ -1,7 +1,7 @@
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 import { getMultiLang as ml } from '../../components/MultiLang';
 import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Col, Row } from 'react-bootstrap';
@@ -18,8 +18,9 @@ const Mexaniki = ({ products }) => {
     const subCategories1 = products?.[1]?.sub_categories_1
     const currentPost = subCategories1?.find((post) => post.slug_az === slug_az);
     const sub2 = currentPost?.sub_categories_2;
-    const [cur_section, setCurSection] = useState('')
-    
+    const urlname='xidmetler/';
+    const url= urlname+products?.[1]?.slug_az;
+  
     useEffect(() => {
         window.scrollTo(0, 0);
         setLoading(true)
@@ -38,15 +39,15 @@ const Mexaniki = ({ products }) => {
                         subCategories1 && subCategories1?.map((cur, index) => {
 
                             return (
-                                <div className="flex" key={index}>
-                                    <Link to={`/xidmetler/mexaniki/${cur?.slug_az}`}
-                                    onClick={() => setCurSection(cur)}
+                                <div className="flex menxaniki" key={index}>
+                                    <NavLink to={`/${url}/${cur?.slug_az}`}
+                                   
                                     className={`bg-[#124395] text-[#fff]  
-                                    ${cur === cur_section ? "activeRounded": ""} font-[700] uppercase
+                                     font-[700] uppercase
                                     flex w-[170px] h-[170px] items-center justify-center  transitions  hover:bg-[#f3f3f3] hover:text-[#124395]
                                     text-center rounded-full cursor-pointer`}>
                                         {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
-                                    </Link>
+                                    </NavLink>
                                 </div>
                             )
                         })

@@ -7,7 +7,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useEffect, useState } from 'react';
 import { noPhoto } from '../assets';
 import LoaderContent from '../components/loader/LoaderContent';
-import LoaderText from '../components/loader/LoaderText';
+
 
 const About = ({option}) => {
   const [t] = useTranslation("translation");
@@ -21,7 +21,7 @@ const About = ({option}) => {
   }, [])
   return (
     <>
-      <div className="bg-[#F3F3F3] relative mt-4 w-full pt-[100px] pb-[70px] pl-0 pr-0">
+      <div className="bg-[#F3F3F3] relative mt-4 w-full pt-[100px] pb-[70px] pl-0 pr-0 min-h-[60vh]">
         <Container>
           <Row className="items-center">
 

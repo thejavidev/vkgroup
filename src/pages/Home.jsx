@@ -17,7 +17,19 @@ import { useEffect } from "react";
 import { noPhoto } from "../assets";
 
 
-const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
+
+export function shuffle(a) {
+  var j, x, i;
+  for (i = a.length - 1; i > 0; i--) {
+    j = Math.floor(Math.random() * (i + 1));
+    x = a[i];
+    a[i] = a[j];
+    a[j] = x;
+  }
+  return a;
+}
+
+const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend,index }) => {
   const [t] = useTranslation("translation");
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -35,10 +47,10 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
         {
           banner && banner?.map((item, index) => (
             <SwiperSlide key={index} className="relative after">
-              <LazyLoadImage className="w-full h-[650px] md:h-full" src={item?.src} alt={item?.alt_az} />
+              <LazyLoadImage className="w-full h-[650px] lg:h-full" src={item?.src} alt={item?.alt_az} />
               <div className="sliderText absolute top-[50%] left-[50%] z-30 text-center text-black">
                 <div className="flex items-center justify-center w-full h-full flex-col text-center">
-                  <h5 className="text-[70px] text-white capitalize">{ml(item?.title_1_az, item?.title_1_ru, item?.title_1_en)}</h5>
+                  <h5 className="text-[70px] lg:text-[40px] text-white capitalize">{ml(item?.title_1_az, item?.title_1_ru, item?.title_1_en)}</h5>
                   <p className="font-[400] text-[19px] pt-[30px] text-center text-white">{ml(item?.title_2_az, item?.title_2_ru, item?.title_2_en)}</p>
                 </div>
               </div>
@@ -47,7 +59,10 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
         }
       </Swiper>
 
-      <div className="p-0 mt-[-25px] relative">
+      <div   className="p-0 mt-[-25px] relative">
+     
+       
+     
         <Container>
           <Row>
             <Swiper
@@ -57,12 +72,26 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
               roundLengths={true}
               loop={false}
               speed={1200}
-            
+              breakpoints={{
+                640: {
+                  slidesPerView: 2,
+                
+                },
+                768: {
+                  slidesPerView: 3,
+                
+                },
+                1024: {
+                  slidesPerView: 4,
+     
+                
+                },
+              }}
               
               className="relative w-full"
             >
               {
-                roundedmenu && roundedmenu?.slice(0,5)?.map((item, index) => (
+                roundedmenu && shuffle(Array.from(roundedmenu))?.map((item, index) => (
                   <SwiperSlide className="relative w-full" key={index}>
                     <Link to={`xidmetler/mexaniki/${item?.slug_az}`} className="scale1 flex items-center justify-center transitions cursor-pointer font-bold text-white bg-[#124395] w-[280px] h-[280px] overflow-hidden rounded-full z-50 border25 relative scale-[0.65]">
                       <div className="">
@@ -76,22 +105,23 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
             </Swiper>
           </Row>
         </Container>
+        
       </div>
 
-      <div className="bg-[#F3F3F3] relative mt-4 w-full pt-[30px] pb-[30px] pl-0 pr-0">
-        <Container>
+      <div  className="bg-[#F3F3F3] relative mt-4 w-full pt-[30px] pb-[30px] pl-0 pr-0">
+        <Container >
           <Row className="items-center">
 
             <Col lg={8} md={12}>
-              <p className="font-[400] text-[30px] text-[#272727]">{t("whowe")}</p>
+              <p className="font-[400] text-[30px] text-[#272727] lg:mt-6">{t("whowe")}</p>
               <div className="font-[400] pt-[20px] text-justify line-clamp-3 " dangerouslySetInnerHTML={{ __html: option && ml(option?.biz_text_az, option?.biz_text_ru, option?.biz_text_en) }}>
               </div>
               <Link to="about">
                 <Button className="mt-[30px] bg-[#E10632] text-white border-none outline-none rounded-none pl-[20px] pr-[20px] capitalize text-[17px]">{t("more")}</Button>
               </Link>
             </Col>
-            <Col lg={4} md={12}>
-              <LazyLoadImage className="p-[20px]" src={option?.biz_img ? option?.biz_img : noPhoto} />
+            <Col lg={4} md={12} className="lg:order-[-1]">
+              <LazyLoadImage className="p-[20px] lg:p-0 lg:mt-5 lg:w-full" src={option?.biz_img ? option?.biz_img : noPhoto} />
             </Col>
           </Row>
         </Container>
@@ -109,9 +139,24 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
               spaceBetween={20}
               navigation={true}
               modules={[Navigation]}
+              breakpoints={{
+                640: {
+                  slidesPerView: 2,
+                
+                },
+                768: {
+                  slidesPerView: 3,
+                
+                },
+                1024: {
+                  slidesPerView: 4,
+     
+                
+                },
+              }}
             >
               {
-                avadanlig && avadanlig?.map((item, index) => (
+                avadanlig && shuffle(Array.from(avadanlig))?.map((item, index) => (
                   <SwiperSlide key={index} >
                     <Card maxW='sm'>
                       <CardBody>
@@ -145,7 +190,7 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
           <p className="font-[400] text-[30px] text-[#272727] pt-[10px] pl-0 pr-0 pb-[20px]">{t("projects")}</p>
           <Row className="">
             {
-              layihe && layihe?.slice(0, 4).map((item, index) => (
+              layihe && shuffle(Array.from(layihe))?.slice(0, 4).map((item, index) => (
                 <Col className="imageP relative p-0 m-0 cursor-pointer" key={index} lg={3} md={4}>
                   <Link to={`layihelerimiz/${item?.slug_az}`}>
                     <LazyLoadImage src={item?.cover} alt={item?.cover_alt_az} />
@@ -169,6 +214,20 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
               slidesPerView={6}
               loop={true}
               spaceBetween={20}
+              breakpoints={{
+                640: {
+                  slidesPerView: 2,
+              
+                },
+                768: {
+                  slidesPerView: 3,
+           
+                },
+                1024: {
+                  slidesPerView: 4,
+                 
+                },
+              }}
             >
               {
                 brend && brend?.map((item, index) => (

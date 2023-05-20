@@ -6,11 +6,12 @@ const Layout = ({children,option,mehsullar,xidmet,avadanlig}) => {
 
   return (
     <>
+    
      <Header xidmet={xidmet} mehsullar={mehsullar} avadanlig={avadanlig}  />
-      <div className="mt-[66px]">
+      <div className="mt-[66px] lg:mt-[53px]">
         {children}
       </div>
-     <Footer option={option}  xidmet={xidmet} /> 
+     <Footer option={option}  xidmet={xidmet} mehsullar={mehsullar} /> 
     </>
   )
 }
