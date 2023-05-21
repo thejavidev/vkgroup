@@ -98,7 +98,7 @@ const Header = ({ xidmet, mehsullar }) => {
         },
         {
           id: 3,
-          title: `${t('footervideo')}`,
+          title: `${t('footerblog')}`,
           link: '/media/blog'
         },
       ]

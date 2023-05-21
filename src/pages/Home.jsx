@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
-import { EffectFade, Navigation } from "swiper";
+import { EffectFade, Navigation, Mousewheel } from "swiper";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -10,12 +10,12 @@ import Col from 'react-bootstrap/Col';
 import { useTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
-import { Card, Heading, CardBody, Stack, CardFooter } from '@chakra-ui/react'
+import { Card, Heading, CardBody, Stack } from '@chakra-ui/react'
 import { getMultiLang as ml } from '../components/MultiLang';
 import Contact from "./Contact";
 import { useEffect } from "react";
 import { noPhoto } from "../assets";
-
+import { BsArrowLeft, BsArrowRight } from 'react-icons/Bs';
 
 
 export function shuffle(a) {
@@ -29,7 +29,7 @@ export function shuffle(a) {
   return a;
 }
 
-const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend,index }) => {
+const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend, index }) => {
   const [t] = useTranslation("translation");
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -59,10 +59,10 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend,index }) =
         }
       </Swiper>
 
-      <div   className="p-0 mt-[-25px] relative">
-     
-       
-     
+      <div className="p-0 mt-[-25px] md:mt-0 relative">
+
+
+
         <Container>
           <Row>
             <Swiper
@@ -70,23 +70,23 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend,index }) =
               centeredSlides
               centeredSlidesBounds={true}
               roundLengths={true}
-              
+
               speed={1200}
               breakpoints={{
                 40: {
                   slidesPerView: 2,
-                
+
                 },
                 340: {
                   slidesPerView: 2,
                 },
                 640: {
                   slidesPerView: 2,
-                
+
                 },
                 768: {
                   slidesPerView: 3,
-                
+
                 },
                 1024: {
                   slidesPerView: 4,
@@ -95,7 +95,7 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend,index }) =
                   slidesPerView: 5,
                 },
               }}
-              
+
               className="relative w-full"
             >
               {
@@ -115,10 +115,10 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend,index }) =
             </Swiper>
           </Row>
         </Container>
-        
+
       </div>
 
-      <div  className="bg-[#F3F3F3] relative mt-4 w-full pt-[30px] pb-[30px] pl-0 pr-0">
+      <div className="bg-[#F3F3F3] relative mt-4 w-full pt-[30px] pb-[30px] pl-0 pr-0">
         <Container >
           <Row className="items-center md:p-[10px]">
 
@@ -140,27 +140,38 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend,index }) =
       <div className="relative equi bg-[#E10632] p-[20px]">
         <Container>
           <Row>
-            <div className="flex">
-              <p className="font-[400] text-[30px] text-white pt-[10px] pl-0 pr-0 pb-[20px] capitalize w-full">{t("avadanliq")}</p>
+            <div className="flex justify-between mb-4 items-center">
+              <div className="font-[400] text-[30px] text-white pt-[10px] pl-0 pr-0 pb-[20px] capitalize w-full">{t("avadanliq")}</div>
+              <div className=" flex justify-end ">
+                <Button className="next border-none outline-none shadow-none">
+                  <BsArrowLeft className='text-[25px] mr-4 text-[#fff]' />
+                </Button>
+                <Button className="prev border-none outline-none shadow-none">
+                  <BsArrowRight className='text-[25px] text-[#fff]' />
+                </Button>
+              </div>
             </div>
             <Swiper
               slidesPerView={5}
               loop={true}
               spaceBetween={20}
-              navigation={true}
-              modules={[Navigation]}
+              modules={[Mousewheel, Navigation]}
+              navigation={{
+                nextEl: ".prev",
+                prevEl: ".next"
+              }}
               breakpoints={{
                 240: {
                   slidesPerView: 2,
-                
+
                 },
                 640: {
                   slidesPerView: 2,
-                
+
                 },
                 768: {
                   slidesPerView: 3,
-                
+
                 },
                 1024: {
                   slidesPerView: 4,
@@ -188,13 +199,13 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend,index }) =
                   </SwiperSlide>
                 ))
               }
-             
+
             </Swiper>
             <Link to={`avadanliqlar`}>
-                <Button className="bg-[#fff] border-none outline-none shadow1 mt-[40px] mr-0 mb-[10px] ml-0 rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-black text-[17px] ">
-                  {t("more2")}
-                </Button>
-              </Link>
+              <Button className="bg-[#fff] border-none outline-none shadow1 mt-[40px] mr-0 mb-[10px] ml-0 rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-black text-[17px] ">
+                {t("more2")}
+              </Button>
+            </Link>
           </Row>
         </Container>
 
@@ -232,15 +243,15 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend,index }) =
               breakpoints={{
                 240: {
                   slidesPerView: 2,
-              
+
                 },
                 640: {
                   slidesPerView: 2,
-              
+
                 },
                 768: {
                   slidesPerView: 3,
-           
+
                 },
                 1124: {
                   slidesPerView: 4,

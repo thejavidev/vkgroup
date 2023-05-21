@@ -14,9 +14,9 @@ const VideoDetails = ({video}) => {
         <div className="pt-[50px] pb-[50px]">
             <Container>
                 <Row>
-                    <h3 className='font-[700] text-[25px] text-[#272727] w-full pt-[20px] pb-[20px] pl-0 pr-0 m-0'>{ml(currentPost?.title_az,currentPost?.title_ru,currentPost?.title_en)}</h3>
+                    <h3 className='font-[700] text-[25px] md:text-[18px] md:pl-[10px] text-[#272727] w-full pt-[20px] pb-[20px] pl-0 pr-0 m-0'>{ml(currentPost?.title_az,currentPost?.title_ru,currentPost?.title_en)}</h3>
                    <Col lg={12}>
-                    <iframe className='w-full h-[600px]' src={currentPost?.video_link} ></iframe>
+                    <iframe className='w-full h-[600px] lg:h-full' src={currentPost?.video_link} ></iframe>
                    </Col>
                     
                 </Row>

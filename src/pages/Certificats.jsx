@@ -27,8 +27,8 @@ const Certificats = ({ certificats }) => {
 
   return (
     <>
-      <div className="p-[20px] mt-[70px] bg-[#F3F3F3] w-full flex items-center justify-center">
-        <h2 className='text-center font-[700] text-[25px] uppercase text-[#272727] '>{t("footercertf")}</h2>
+      <div className="p-[20px] mt-[70px] md:mt-[50px] bg-[#F3F3F3] w-full flex items-center justify-center">
+        <h2 className='text-center font-[700] text-[25px]  md:text-[20px] uppercase text-[#272727] '>{t("footercertf")}</h2>
       </div>
       <div className="bg-[#fff] pt-[50px] pb-[100px] min-h-[70vh] pl-0 pr-0 relative">
         <Container>

@@ -11,6 +11,12 @@
 ::-webkit-scrollbar-thumb{
     background: #f3f3f3;
 }
+html,body{
+    overflow-x: hidden;
+}
+.image{
+    width: 100%;
+}
 @-webkit-keyframes dropdownMenu {
     from {
         opacity: 0;

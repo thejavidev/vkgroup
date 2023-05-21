@@ -58,25 +58,27 @@ const Products = ({ products }) => {
                     },
                   }}
             >
-                <SwiperSlide className='flex gap-[3rem] md:gap-[1rem]'>
+              
                     {
                         subCategories1 && subCategories1?.map((cur, index) => {
 
                             return (
-                                <div className="flex insaat" key={index}>
+                                <SwiperSlide className='flex gap-[3rem] md:gap-[1rem]' key={index}>
+                                <div className="flex insaat" >
                                     <NavLink to={`/${url}/${cur?.slug_az}`}
                                    
                                     className={`bg-[#124395] text-[#fff]  
                                    font-[700] uppercase md:text-[12px]
-                                    flex w-[170px] h-[170px] md:w-[140px] md:h-[140px] items-center justify-center  transitions  hover:bg-[#f3f3f3] hover:text-[#124395]
+                                    flex w-[170px] h-[170px] md:w-[130px] md:h-[130px] items-center justify-center  transitions  hover:bg-[#f3f3f3] hover:text-[#124395]
                                     text-center rounded-full cursor-pointer`}>
                                         {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
                                     </NavLink>
                                 </div>
+                                </SwiperSlide>
                             )
                         })
                     }
-                </SwiperSlide>
+               
             </Swiper>
 
             <Tabs>

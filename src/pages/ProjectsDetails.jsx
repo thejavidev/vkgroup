@@ -35,7 +35,7 @@ const ProjectsDetails = ({ layihe }) => {
           <Row>
             <Col lg={4} md={12}>
               <div className="">
-                <h2 className="font-[700] text-[40px] text-[#272727] mb-3">{ml(currentPost?.title_az, currentPost?.title_ru, currentPost?.title_en)}</h2>
+                <h2 className="font-[700] text-[40px] md:text-[25px] text-[#272727] mb-3">{ml(currentPost?.title_az, currentPost?.title_ru, currentPost?.title_en)}</h2>
                 <p className="font-[400] text-[16px] text-[#272727] text-justify pt-[20px] pb-[20px] pl-0 pr-0 m-0">{ml(currentPost?.intro_az, currentPost?.intro_ru, currentPost?.intro_en)}</p>
               </div>
             </Col>
@@ -50,7 +50,7 @@ const ProjectsDetails = ({ layihe }) => {
                 {
                   images && images?.map((item, index) => (
                     <SwiperSlide key={index}>
-                      <LazyLoadImage className="h-[400px] w-full" src={item?.src} />
+                      <LazyLoadImage className="h-[400px] w-full md:h-[250px]" src={item?.src} />
                     </SwiperSlide>
 
                   ))

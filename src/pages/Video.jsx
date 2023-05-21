@@ -31,10 +31,10 @@ const Video = ({ video }) => {
 
   return (
     <>
-      <div className="p-[20px] mt-[70px] bg-[#F3F3F3] w-full flex items-center justify-center">
-        <h2 className='text-center font-[700] text-[25px] uppercase text-[#272727] '>{t("footervideo")}</h2>
+      <div className="p-[20px] mt-[70px] bg-[#F3F3F3] md:mt-[50px] w-full flex items-center justify-center">
+        <h2 className='text-center font-[700] text-[25px] md:text-[20px] uppercase text-[#272727] '>{t("footervideo")}</h2>
       </div>
-      <div className="bg-[#fff] pt-[100px] pb-[100px] min-h-[70vh] pl-0 pr-0 relative">
+      <div className="bg-[#fff] pt-[100px] pb-[100px] md:pt-[50px] min-h-[70vh] md:min-h-full pl-0 pr-0 relative">
         <Container>
           <Row>
             {
@@ -47,7 +47,7 @@ const Video = ({ video }) => {
                           <Link to={`${item?.slug_az}`}>
                             <LazyLoadImage src={item?.src} className='w-full' />
                           </Link>
-                          <h3 className='font-[700] text-[25px] text-[#272727] w-full pt-[20px] pb-[20px] pl-0 pr-0 m-0'>{ml(item?.title_az, item?.title_ru, item?.title_en)}</h3>
+                          <h3 className='font-[700] text-[25px] md:text-[18px] text-[#272727] w-full pt-[20px] pb-[20px] pl-0 pr-0 m-0'>{ml(item?.title_az, item?.title_ru, item?.title_en)}</h3>
                         </div>
                     }
 

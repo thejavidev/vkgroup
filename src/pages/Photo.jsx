@@ -27,8 +27,8 @@ const Photo = ({ photo }) => {
 
   return (
     <>
-      <div className="p-[20px] mt-[70px] bg-[#F3F3F3] w-full flex items-center justify-center">
-        <h2 className='text-center font-[700] text-[25px] uppercase text-[#272727] '>{t("photo")}</h2>
+      <div className="p-[20px] mt-[70px] bg-[#F3F3F3] md:mt-[50px] w-full flex items-center justify-center">
+        <h2 className='text-center font-[700] text-[25px] uppercase md:text-[20px] text-[#272727] '>{t("photo")}</h2>
       </div>
       <div className="relative bg-[#fff]  pt-[70px] pb-[100px]">
         <Container>
@@ -37,11 +37,11 @@ const Photo = ({ photo }) => {
             {
               photo && photo?.slice(0, next)?.map((item, index) => {
                 return (
-                  <Col className=" relative mb-3  cursor-pointer overflow-hidden" key={index} lg={3} md={4}>
+                  <Col className=" relative mb-3  cursor-pointer overflow-hidden" key={index} lg={3} md={4} xs={6}>
                     {
                       loading ? <LoaderContent /> :
                         <Link to={`${item.id}`} className="imageP">
-                          <LazyLoadImage className="h-[250px]" src={item?.src} alt='' />
+                          <LazyLoadImage className="h-[250px] md:h-[150px]" src={item?.src} alt='' />
                         </Link>
                     }
                   </Col>

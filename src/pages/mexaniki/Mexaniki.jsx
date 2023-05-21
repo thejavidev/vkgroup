@@ -18,41 +18,66 @@ const Mexaniki = ({ products }) => {
     const subCategories1 = products?.[1]?.sub_categories_1
     const currentPost = subCategories1?.find((post) => post.slug_az === slug_az);
     const sub2 = currentPost?.sub_categories_2;
-    const urlname='xidmetler/';
-    const url= urlname+products?.[1]?.slug_az;
-  
+    const urlname = 'xidmetler/';
+    const url = urlname + products?.[1]?.slug_az;
+
     useEffect(() => {
         window.scrollTo(0, 0);
         setLoading(true)
         setTimeout(() => {
-          setLoading(false)
+            setLoading(false)
         }, 500);
-      }, [])
+    }, [])
     return (
-        <div className='min-h-[80vh] pt-[40px] pb-40px] pl-[100px] pr-[100px]'>
+        <div className='min-h-[80vh] pt-[40px] pb-40px] pl-[100px] pr-[100px] lg:pl-[30px] lg:pr-[30px]'>
             <Swiper
                 slidesPerView={8}
                 spaceBetween={30}
+                breakpoints={{
+                    40: {
+                      slidesPerView: 2,
+                    
+                    },
+                    340: {
+                      slidesPerView: 2,
+                    },
+                    640: {
+                      slidesPerView: 3,
+                    
+                    },
+                    768: {
+                      slidesPerView: 3,
+                    
+                    },
+                    1024: {
+                      slidesPerView: 4,
+                    },
+                    1299: {
+                      slidesPerView: 5,
+                    },
+                  }}
             >
-                <SwiperSlide className='flex gap-5'>
-                    {
-                        subCategories1 && subCategories1?.map((cur, index) => {
 
-                            return (
-                                <div className="flex menxaniki" key={index}>
+                {
+                    subCategories1 && subCategories1?.map((cur, index) => {
+
+                        return (
+                            <SwiperSlide key={index} className='flex gap-5'>
+                                <div className="flex menxaniki" >
                                     <NavLink to={`/${url}/${cur?.slug_az}`}
-                                   
-                                    className={`bg-[#124395] text-[#fff]  
+
+                                        className={`bg-[#124395] text-[#fff]  
                                      font-[700] uppercase
-                                    flex w-[170px] h-[170px] items-center justify-center  transitions  hover:bg-[#f3f3f3] hover:text-[#124395]
-                                    text-center rounded-full cursor-pointer`}>
+                                    flex w-[170px] h-[170px] md:w-[130px] md:h-[130px] items-center justify-center  transitions  hover:bg-[#f3f3f3] hover:text-[#124395]
+                                    text-center rounded-full cursor-pointer md:text-[13px]`}>
                                         {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
                                     </NavLink>
                                 </div>
-                            )
-                        })
-                    }
-                </SwiperSlide>
+                            </SwiperSlide>
+                        )
+                    })
+                }
+
             </Swiper>
 
             <Tabs>
@@ -61,7 +86,7 @@ const Mexaniki = ({ products }) => {
                     {
                         sub2 && sub2?.map((item, i) => (
                             <Tab _selected={{ color: 'white', bg: 'red' }} key={i} className='flex border-none capitalize outline-none shadow-none items-center justify-center rounded-[42px] transitions    font-[600] text-[#000] p-[15px]'>
-                                {ml(item?.name_az,item?.name_ru,item?.name_en)}
+                                {ml(item?.name_az, item?.name_ru, item?.name_en)}
 
                             </Tab>
                         ))
@@ -84,23 +109,23 @@ const Mexaniki = ({ products }) => {
                                 <TabPanel key={i}>
                                     <Row className='items-center'>
                                         <Col lg={3} className=''>
-                                           {
-                                            loading ? <LoaderContent /> :
-                                            <LazyLoadImage id='img' src={image ? image : defaulImg} className=' w-full h-[250px]   object-contain md:object-cover md:mb-10' alt={altTeg} />
-                                           }
+                                            {
+                                                loading ? <LoaderContent /> :
+                                                    <LazyLoadImage id='img' src={image ? image : defaulImg} className=' w-full h-[250px]   object-contain md:object-cover md:mb-10' alt={altTeg} />
+                                            }
                                         </Col>
                                         <Col lg={9}>
                                             {
                                                 loading ? <LoaderText /> :
-                                                <h2 className='capitalize font-[700] text-[40px] md:text-[25px] tetx-[#272727] m-0 pb-[10px]'>{text1}</h2>
+                                                    <h2 className='capitalize font-[700] text-[40px] md:text-[25px] tetx-[#272727] m-0 pb-[10px]'>{text1}</h2>
                                             }
                                             {
                                                 loading ? <LoaderText /> :
-                                                <h5 className='text-[25px] font-[600] capitalize text-[#272727] m-0 pb-[10px]'>{text2}</h5>
+                                                    <h5 className='text-[25px] font-[600] capitalize text-[#272727] m-0 pb-[10px]'>{text2}</h5>
                                             }
                                             {
-                                                loading? <LoaderText /> :
-                                                <div className='text-[#272727] text-[16px] text-justify m-0 md:pb-20' dangerouslySetInnerHTML={{ __html: text3 && text3 }}></div>
+                                                loading ? <LoaderText /> :
+                                                    <div className='text-[#272727] text-[16px] text-justify m-0 md:pb-20' dangerouslySetInnerHTML={{ __html: text3 && text3 }}></div>
                                             }
                                         </Col>
                                     </Row>
