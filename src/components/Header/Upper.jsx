@@ -3,15 +3,19 @@ import React, { useEffect } from 'react';
 const Upper =({toggle, switchLang})=>{
 
     useEffect(()=>{
-        if(localStorage.getItem("i18nextLng") ==='tr-TR'  ){
+        if(localStorage.getItem("i18nextLng") ==='tr-TR' || localStorage.getItem("i18nextLng") ==='TR-TR' || localStorage.getItem("i18nextLng") ==='TR' || localStorage.getItem("i18nextLng") ==='tr' ){
             localStorage.setItem('i18nextLng', 'az');
-        }else if(localStorage.getItem("i18nextLng") ==='ru-RU'){
+        }
+        if(localStorage.getItem("i18nextLng") ==='ru-RU'){
             localStorage.setItem('i18nextLng', 'ru');
-        }else if(localStorage.getItem("i18nextLng") ==='en-GB'){
+        } 
+        if(localStorage.getItem("i18nextLng") ==='en-GB'){
             localStorage.setItem('i18nextLng', 'en');
-        }else if(localStorage.getItem("i18nextLng") ==='az-AZ'){
+        }
+        if(localStorage.getItem("i18nextLng") ==='az-AZ'){
             localStorage.setItem('i18nextLng', 'az');
-        }else if(localStorage.getItem("i18nextLng") ==='en-AZ'){
+        }
+        if(localStorage.getItem("i18nextLng") ==='en-AZ'){
             localStorage.setItem('i18nextLng', 'az');
         }
     })

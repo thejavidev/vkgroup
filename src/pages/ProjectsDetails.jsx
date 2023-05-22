@@ -24,7 +24,7 @@ const ProjectsDetails = ({ layihe }) => {
   const { slug_az } = useParams();
   const currentPost = Data?.find((post) => post.slug_az === slug_az);
   const images = currentPost?.images;
-  console.log(images)
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])

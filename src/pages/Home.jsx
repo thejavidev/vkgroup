@@ -131,7 +131,7 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend, index }) 
               </Link>
             </Col>
             <Col lg={4} md={12} className="lg:order-[-1]">
-              <LazyLoadImage className="p-[20px] lg:p-0 lg:mt-5 lg:w-full" src={option?.biz_img ? option?.biz_img : noPhoto} />
+              <LazyLoadImage className="p-[20px] lg:p-0 lg:mt-5 lg:w-full" src={option?.biz_img} />
             </Col>
           </Row>
         </Container>

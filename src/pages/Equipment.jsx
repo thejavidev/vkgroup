@@ -34,10 +34,10 @@ const Equipment = ({ avadanlig }) => {
     }, []);
     return (
         <>
-            <div className="p-[20px] mt-[70px] md:mt-[55px] bg-[#F3F3F3] w-full flex items-center justify-center">
+            <div className="p-[20px] mt-[70px] md:mt-[55px] bg-[#F3F3F3] w-full flex items-center justify-center ">
                 <h2 className='text-center font-[700] text-[25px] md:text-[16px] uppercase text-[#272727] '>{t("avadanliq")}</h2>
             </div>
-            <div className="min-h-[65vh]">
+            <div className="min-h-[75vh]">
                 <Container>
                 <div className=" flex justify-end mt-10">
                         <Button className="next">

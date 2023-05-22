@@ -1,44 +1,45 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react';
+
 import { useParams } from 'react-router';
-import { getMultiLang as ml } from '../components/MultiLang';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-// Import Swiper styles
-
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { useTranslation } from 'react-i18next';
+import LoaderImg from '../components/loader/LoaderImg';
+import LoaderSmallImng from '../components/loader/LoaderSmallImng';
 
 
-const PhotoDetails = ({foto}) => {
+const PhotoDetails = ({ photo }) => {
   const [t] = useTranslation("translation");
-  const Data = foto;
+  const [loading, setLoading] = useState(false)
+  const [thumbsSwiper, setThumbsSwiper] = useState(null)
   const { id } = useParams();
-  const url ='https://vkgroup.az/files/fotos/';
   const productId = parseInt(id);
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const currentPost = Data?.find((post) => post.id === productId);
-  const images = currentPost?.cover1;
-
+  const currentPost = photo?.find((post) => post?.id == productId);
+  const images = currentPost?.images;
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 700);
   }, [])
- console.log(images)
-
   return (
-    < >
-
-      {/* <LazyLoadImage  src={currentPost?.src} /> */}
-      <div className="mt-32 mb-28">
+    <React.Fragment>
+      <div className="p-[20px] mt-[65px] bg-[#F3F3F3] md:mt-[50px] w-full flex items-center justify-center">
+        <h2 className='text-center font-[700] text-[25px] uppercase md:text-[20px] text-[#272727] '>{t("photo")}</h2>
+      </div>
+      <div className="mt-4 mb-10">
         <Container>
           <Row>
-            
-            <Col lg={12} md={12}>
+
+            <Col lg={9} md={12}>
               <Swiper
                 spaceBetween={10}
                 navigation={true}
@@ -49,45 +50,60 @@ const PhotoDetails = ({foto}) => {
                 {
                   images && images?.map((item, index) => (
                     <SwiperSlide key={index}>
-                      <LazyLoadImage className="h-[400px] w-full" src={`${url}${item?.src}`} />
+                      {
+                        loading ? <LoaderImg /> :
+                        <LazyLoadImage className="h-[540px] lg:h-[250px] w-full" src={item?.banner} />
+                      }
                     </SwiperSlide>
 
                   ))
                 }
-
-
-
               </Swiper>
-              <Swiper
-                onSwiper={setThumbsSwiper}
-                spaceBetween={10}
-                slidesPerView={4}
-                freeMode={true}
-                watchSlidesProgress={true}
-                modules={[FreeMode, Navigation, Thumbs]}
-                className="mySwiper mb-4"
-              >
-                <div className=" border-2 border-[#ff0000] w-full">
+            </Col>
+            <Col lg={3} md={12}>
+              <div className="flex  h-[540px] lg:h-[120px]">
+                <Swiper
+                  onSwiper={setThumbsSwiper}
+                  spaceBetween={30}
+                  slidesPerView={4}
+                  freeMode={true}
+                  direction="vertical"
+                  watchSlidesProgress={true}
+                  modules={[FreeMode, Navigation, Thumbs]}
+                  breakpoints={{
+                    0: {
+                      direction: "horizontal",
+                      slidesPerView: 2,
+                    },
+                    991: {
+                      direction: "vertical",
+                    }
+                  }}
+                  className="mySwiper mb-4 w-full h-full "
+                >
+                  <div className=" w-full h-full ">
 
-                  {
-                    images && images?.map((item, index) => (
-                      <SwiperSlide key={index}>
-                        <LazyLoadImage className="h-[88px] w-full" src={`${url}${item?.src}`} />
-                      </SwiperSlide>
+                    {
+                      images && images?.map((item, index) => (
+                        <SwiperSlide key={index} className=''>
+                          {
+                            loading ? <LoaderSmallImng /> :
+                            <LazyLoadImage className="h-[120px] w-full cursor-pointer" src={item?.banner} />
+                          }
+                        </SwiperSlide>
 
-                    ))
-                  }
-                </div>
+                      ))
+                    }
+                  </div>
 
 
-              </Swiper>
-
-
+                </Swiper>
+              </div>
             </Col>
           </Row>
         </Container>
       </div>
-    </>
+    </React.Fragment>
   )
 }
 

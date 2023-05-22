@@ -81,9 +81,9 @@ const Footer = ({ option, xidmet }) => {
                     </Col>
                     <Col lg={3} className='flex flex-col lg:mt-12'>
                       <h1 className='font-[700] text-[27px] lg:text-[20px] text-white uppercase mb-3'>{t('footermedia')}</h1>
-                      <Link className='text-white capitalize pb-[10px] font-[600]' to='blog'>{t('footerblog')}</Link>
-                      <Link className='text-white capitalize pb-[10px] font-[600]' to='foto'>{t('footerfoto')}</Link>
-                      <Link className='text-white capitalize pb-[10px] font-[600]' to='video'>{t('footervideo')}</Link>
+                      <Link className='text-white capitalize pb-[10px] font-[600]' to='media/blog'>{t('footerblog')}</Link>
+                      <Link className='text-white capitalize pb-[10px] font-[600]' to='media/foto'>{t('footerfoto')}</Link>
+                      <Link className='text-white capitalize pb-[10px] font-[600]' to='media/video'>{t('footervideo')}</Link>
                     </Col>
                   </Row>
                 </Col>

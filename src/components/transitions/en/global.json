@@ -17,7 +17,9 @@
     "mehsullar":"products",
     "footerT":"All rights reserved ©",
     "quickmenu":"Easy menu",
+    "sending":"Sending",
     "footerabout":"About",
+    
     "footerservice":"Service",
     "footerlayihe":"Projects",
     "footeravadanlig":"Equipment",
@@ -30,5 +32,7 @@
     "footervideo":"Video",
     "footerblog":"Blog",
     "filtr":"filter",
-    "damper2":"DAMPERS"
+    "damper2":"DAMPERS",
+    "swal1":"Great",
+    "swal2":"Your message has been sent successfully."
 }

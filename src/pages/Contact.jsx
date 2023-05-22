@@ -1,7 +1,7 @@
 import { BsTelephone } from 'react-icons/Bs';
 import { HiOutlineLocationMarker, } from 'react-icons/Hi';
 import { BsEnvelope } from 'react-icons/Bs';
-import { AspectRatio, Input, Textarea } from '@chakra-ui/react'
+import { AspectRatio, Input, Textarea, FormControl } from '@chakra-ui/react'
 import { getMultiLang as ml } from '../components/MultiLang';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -9,16 +9,68 @@ import Col from 'react-bootstrap/Col';
 import { useTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import Swal from 'sweetalert2';
+import emailjs from '@emailjs/browser';
 
 const Contact = ({ option }) => {
   const [t] = useTranslation("translation");
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, [])
+  }, []);
+  const [loading, setLoading] = useState(false);
+  const formRef = useRef();
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value, message, phone, email } = e.target;
+    setForm({ ...form, [name]: value, [message]: value, [phone]: value, [email]: value })
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    emailjs.send('service_o6kehjn', 'template_svn6m4v',
+      {
+        form_name: form.name,
+        to_name: 'Vkgroup',
+        form_email: form.email,
+        to_email: 'info@vkgroup.az',
+        message: 'Müstərinin adı: ' +
+          form.name + ' \n' + ' Müştərinin email adresi : ' +
+          form.email + ' \n' + ' Müştərinin telefon nömrəsi : ' +
+          form.phone + ' \n' + ' Müştərinin tam ismarıcı : ' + form.message
+      },
+      'H9oFB4Is3tffQsflM',
+    )
+      .then(() => {
+        setLoading(false);
+        Swal.fire({
+          title: `${t('swal1')}`,
+          text: `${t('swal2')}`,
+          type: 'success',
+        });
+
+
+        setForm({
+          name: '',
+          phone: '',
+          email: '',
+          message: ''
+        }, (error) => {
+          setLoading(false)
+          console.log(error)
+          alert('xeta bas verdi')
+        })
+      })
+  }
   return (
     <>
-     
+
       <div className="relative mt-24 mb-28">
         <Container>
           <Row>
@@ -68,27 +120,42 @@ const Contact = ({ option }) => {
               </AspectRatio>
             </Col>
             <Col lg={5} md={12}>
-              <form className="mt-3">
+              <FormControl className="mt-3" onSubmit={handleSubmit} ref={formRef}>
                 <div className="">
-                  <Input className="border-[1px] w-full p-[10px] outline-none shadow-none text-[16px] border-[#000] text-[#272727]" placeholder={t("nameSurname")} />
+                  <Input
+                    value={form.name} required
+                    onChange={handleChange}
+                    name='name'
+                    className="border-[1px] w-full p-[10px] outline-none shadow-none text-[16px] border-[#000] text-[#272727]" placeholder={t("nameSurname")} />
                 </div>
                 <div className="mt-3">
-                  <Input className="border-[1px] w-full p-[10px] outline-none shadow-none text-[16px] border-[#000] text-[#272727]" placeholder={t("contactNumber")} />
+                  <Input
+                    value={form.phone} required
+                    onChange={handleChange}
+                    name='phone'
+                    className="border-[1px] w-full p-[10px] outline-none shadow-none text-[16px] border-[#000] text-[#272727]" placeholder={t("contactNumber")} />
                 </div>
                 <div className="mt-3">
-                  <Input className="border-[1px] w-full p-[10px] outline-none shadow-none text-[16px] border-[#000] text-[#272727]" placeholder={t("email")} />
+                  <Input
+                    value={form.email} required
+                    onChange={handleChange}
+                    name='email'
+                    className="border-[1px] w-full p-[10px] outline-none shadow-none text-[16px] border-[#000] text-[#272727]" placeholder={t("email")} />
                 </div>
                 <div className="mt-3">
                   <Textarea
+                    value={form.message} required
+                    name="message"
+                    onChange={handleChange}
                     className='border-[1px] w-full p-[10px] outline-none shadow-none text-[16px] border-[#000] text-[#272727] h-[140px] resize-none'
                     placeholder={t("message")}
                     size='sm'
                   />
                 </div>
-                <Button className="pt-[5px] pb-[5px] pl-[20px] pr-[20px] text-[16px] border-[1px] border-[#000] text-[#272727] rounded-none mt-3">
-                  {t("send")}
+                <Button name="submit" type="submit" className="pt-[5px] pb-[5px] pl-[20px] pr-[20px] text-[16px] border-[1px] border-[#000] text-[#272727] rounded-none mt-3">
+                  {loading ? (t('sending')) : (t('send'))}
                 </Button>
-              </form>
+              </FormControl>
             </Col>
           </Row>
         </Container>

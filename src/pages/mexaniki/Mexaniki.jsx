@@ -52,8 +52,11 @@ const Mexaniki = ({ products }) => {
                     1024: {
                       slidesPerView: 4,
                     },
-                    1299: {
-                      slidesPerView: 5,
+                    1399: {
+                        slidesPerView: 6,
+                      },
+                    1499: {
+                      slidesPerView: 8,
                     },
                   }}
             >

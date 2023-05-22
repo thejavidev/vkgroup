@@ -21,25 +21,24 @@ import Mehsullar from './pages/products/Mehsullar';
 import Equipment from './pages/Equipment';
 import Products from './pages/xidmet/Products';
 import Mexaniki from './pages/mexaniki/Mexaniki';
-
+import { createSelector } from 'reselect' 
 
 
 
 
 function App() {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.list);
-
+  const data =  useSelector((state) => state.list)
   const [loading, setLoading] = useState(false)
 
   useEffect(useCallback(() => {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
-    }, 100);
+    }, 200);
     dispatch(loadposts());
-
   }, [dispatch]), [])
+
 
   const urlX0=data?.xidmets?.[0]?.slug_az
   const urlX1=data?.xidmets?.[1]?.slug_az
@@ -60,7 +59,7 @@ function App() {
               <Route path="/layihelerimiz" element={<Projects layihe={data?.layihe}  />} ></Route>
               <Route path="/layihelerimiz/:slug_az" element={<ProjectsDetails  layihe={data?.layihe} />} ></Route>
               <Route path="/media/foto" element={<Photo photo={data?.foto} />} ></Route>
-              <Route path="/media/foto/:id" element={<PhotoDetails />} ></Route>
+              <Route path="/media/foto/:id" element={<PhotoDetails photo={data?.foto} />} ></Route>
               <Route path="/media/video" element={<Video video={data?.video} />} ></Route>
               <Route path="/media/video/:slug_az" element={<VideoDetails video={data?.video} />} ></Route>
               <Route path="/media/blog" element={<Blog blog={data?.blog} />} ></Route>
