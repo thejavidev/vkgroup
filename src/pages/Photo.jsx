@@ -7,10 +7,8 @@ import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from "react";
-import LoaderContent from "../components/loader/LoaderContent";
-import { getMultiLang as ml } from "../components/MultiLang";
 
-const Photo = ({ photo }) => {
+const Photo = React.memo(({ photo }) => {
   const [t] = useTranslation("translation");
   const [loading, setLoading] = useState(false)
   const imagePerRow = 4;
@@ -61,6 +59,6 @@ const Photo = ({ photo }) => {
       </div>
     </React.Fragment>
   )
-}
+})
 
 export default Photo

@@ -7,11 +7,12 @@ import { getMultiLang as ml } from '../components/MultiLang';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Col from 'react-bootstrap/Col';
 import { Link } from "react-router-dom";
+import React from 'react';
 import LoaderContent from '../components/loader/LoaderContent';
 import LoaderText from '../components/loader/LoaderText';
 import { noPhoto } from '../assets';
 
-const Blog = ({ blog }) => {
+const Blog = React.memo(({ blog }) => {
   const [t] = useTranslation("translation");
   const [loading, setLoading] = useState(false);
 
@@ -82,6 +83,6 @@ const Blog = ({ blog }) => {
       </div>
     </>
   )
-}
+})
 
 export default Blog

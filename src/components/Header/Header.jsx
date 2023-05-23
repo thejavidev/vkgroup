@@ -9,6 +9,7 @@ import { getMultiLang as ml } from '../MultiLang';
 import { BiMenu } from 'react-icons/Bi';
 import { AiOutlineClose, AiOutlineCaretDown } from 'react-icons/Ai';
 import { Button } from 'react-bootstrap';
+import React from 'react';
 import {
   Collapse,
   List,
@@ -16,7 +17,7 @@ import {
   UnorderedList,
 } from '@chakra-ui/react'
 
-const Header = ({ xidmet, mehsullar }) => {
+const Header = React.memo(({ xidmet, mehsullar }) => {
   const [t, i18n] = useTranslation("translation");
   const [open, setOpen] = useState(false);
   const openMobileHeader =useRef();
@@ -30,9 +31,9 @@ const Header = ({ xidmet, mehsullar }) => {
     await i18n.changeLanguage(lang);
     setOpen(false);
   }
-  const langChecker = (lang = "az") => {
+  const langChecker = useCallback((lang = "az") => {
     return lang !== localStorage.getItem("i18nextLng")
-  }
+  },[])
   const langs = ["az", "ru", "en"];
   const myLang = langs?.filter(langChecker);
 
@@ -433,7 +434,7 @@ const Header = ({ xidmet, mehsullar }) => {
 
     </>
   )
-}
+})
 
 export default Header
 

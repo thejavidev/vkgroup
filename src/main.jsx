@@ -11,8 +11,10 @@ import { I18nextProvider, initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import configeStore from './components/store/configureStore.js'
 import resources from './components//transitions';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-const store = configeStore();
+
+const store = configeStore(composeWithDevTools());
 const defaultLanguage = ["az"]
 i18next.use(LanguageDetector, initReactI18next,).init({
   resources,

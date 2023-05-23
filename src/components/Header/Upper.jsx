@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const Upper =({toggle, switchLang})=>{
+const Upper =React.memo(({toggle, switchLang})=>{
 
     useEffect(()=>{
         if(localStorage.getItem("i18nextLng") ==='tr-TR' || localStorage.getItem("i18nextLng") ==='TR-TR' || localStorage.getItem("i18nextLng") ==='TR' || localStorage.getItem("i18nextLng") ==='tr' ){
@@ -28,6 +28,6 @@ const Upper =({toggle, switchLang})=>{
             {switchLang}
         </div>
     )
-}
+})
 
 export default Upper

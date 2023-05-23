@@ -15,7 +15,7 @@ import LoaderImg from '../components/loader/LoaderImg';
 import LoaderSmallImng from '../components/loader/LoaderSmallImng';
 
 
-const PhotoDetails = ({ photo }) => {
+const PhotoDetails = React.memo(({ photo }) => {
   const [t] = useTranslation("translation");
   const [loading, setLoading] = useState(false)
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
@@ -105,6 +105,6 @@ const PhotoDetails = ({ photo }) => {
       </div>
     </React.Fragment>
   )
-}
+})
 
 export default PhotoDetails

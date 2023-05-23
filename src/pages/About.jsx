@@ -1,6 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { getMultiLang as ml } from '../components/MultiLang';
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -9,7 +10,7 @@ import { noPhoto } from '../assets';
 import LoaderContent from '../components/loader/LoaderContent';
 
 
-const About = ({option}) => {
+const About = React.memo(({option}) => {
   const [t] = useTranslation("translation");
   const [loading, setLoading] = useState(false)
   useEffect(() => {
@@ -40,7 +41,7 @@ const About = ({option}) => {
             <Col lg={4} md={12}>
               {
                 loading ? <LoaderContent /> :
-                <LazyLoadImage className="p-[20px] md:p-0 md:w-full md:mt-10" src={option?.biz_img ? option?.biz_img : noPhoto} />
+                <LazyLoadImage className="p-[20px] md:p-0 lg:w-full lg:mt-10 lg:p-[0]" src={option?.biz_img ? option?.biz_img : noPhoto} />
               }
             </Col>
           </Row>
@@ -48,6 +49,6 @@ const About = ({option}) => {
       </div>
     </>
   )
-}
+})
 
 export default About

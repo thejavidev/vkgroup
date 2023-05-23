@@ -16,6 +16,8 @@
     "@emotion/styled": "^11.11.0",
     "@fancyapps/ui": "^5.0.17",
     "@progress/kendo-react-layout": "^5.13.1",
+    "@react-spring/parallax": "^9.7.2",
+    "@react-spring/web": "^9.7.2",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
@@ -36,6 +38,7 @@
     "react-router": "^6.11.1",
     "react-router-dom": "^6.11.1",
     "react-tilt": "^1.0.2",
+    "redux-devtools-extension": "^2.13.9",
     "sweetalert2": "^11.7.5",
     "swiper": "^9.3.1"
   },

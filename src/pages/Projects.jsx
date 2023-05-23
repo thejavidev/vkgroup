@@ -7,8 +7,9 @@ import Button from 'react-bootstrap/Button';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from "react";
 import LoaderContent from "../components/loader/LoaderContent";
+import React from "react";
 
-const Projects = ({ layihe }) => {
+const Projects = React.memo(({ layihe }) => {
   const [t] = useTranslation("translation");
   const [loading, setLoading] = useState(false)
 
@@ -66,6 +67,6 @@ const Projects = ({ layihe }) => {
       </div>
     </>
   )
-}
+})
 
 export default Projects

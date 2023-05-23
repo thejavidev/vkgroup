@@ -15,7 +15,7 @@ import { shuffle } from './Home';
 
 
 
-const BlogDetail = ({ blog }) => {
+const BlogDetail = React.memo(({ blog }) => {
   const Data = blog;
   const [t] = useTranslation("translation");
   const { slug_az } = useParams();
@@ -92,6 +92,6 @@ const BlogDetail = ({ blog }) => {
 
     </>
   )
-}
+})
 
 export default BlogDetail

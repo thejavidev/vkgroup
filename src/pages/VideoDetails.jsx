@@ -4,7 +4,9 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { getMultiLang as ml } from '../components/MultiLang';
 import Col from 'react-bootstrap/Col';
-const VideoDetails = ({video}) => {
+
+
+const VideoDetails = React.memo(({video}) => {
     const { slug_az } = useParams();
     const Data=video;
     const currentPost = Data?.find((post) => post.slug_az === slug_az);
@@ -25,6 +27,6 @@ const VideoDetails = ({video}) => {
      
     </>
   )
-}
+})
 
 export default VideoDetails

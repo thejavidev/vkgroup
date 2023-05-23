@@ -6,5 +6,6 @@ export default function store() {
     return configureStore({
         reducer,
         middleware: [...getDefaultMiddleware(), api],
-    });
+       
+    })
 }

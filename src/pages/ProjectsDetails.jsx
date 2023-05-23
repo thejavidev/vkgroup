@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import { useTranslation } from 'react-i18next';
 import { getMultiLang as ml } from '../components/MultiLang';
 import { useParams } from "react-router";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 
@@ -17,7 +17,7 @@ import "swiper/css/thumbs";
 
 
 
-const ProjectsDetails = ({ layihe }) => {
+const ProjectsDetails = React.memo(({ layihe }) => {
   const Data = layihe;
   const [t] = useTranslation("translation");
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -90,6 +90,6 @@ const ProjectsDetails = ({ layihe }) => {
       </div>
     </>
   )
-}
+})
 
 export default ProjectsDetails

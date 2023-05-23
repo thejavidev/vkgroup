@@ -12,8 +12,9 @@ import Button from 'react-bootstrap/Button';
 import { useEffect, useRef, useState } from 'react';
 import Swal from 'sweetalert2';
 import emailjs from '@emailjs/browser';
+import React from 'react';
 
-const Contact = ({ option }) => {
+const Contact = React.memo(({ option }) => {
   const [t] = useTranslation("translation");
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -162,6 +163,6 @@ const Contact = ({ option }) => {
       </div>
     </>
   )
-}
+})
 
 export default Contact

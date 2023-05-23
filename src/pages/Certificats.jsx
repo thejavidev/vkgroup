@@ -8,8 +8,9 @@ import { useTranslation } from 'react-i18next';
 import { Button } from 'react-bootstrap';
 import LoaderCertf from '../components/loader/LoaderCertf';
 import { noPhoto } from '../assets';
+import React from 'react';
 
-const Certificats = ({ certificats }) => {
+const Certificats = React.memo(({ certificats }) => {
   const [t] = useTranslation("translation");
   const [loading, setLoading] = useState(false)
   const imagePerRow = 4;
@@ -60,6 +61,6 @@ const Certificats = ({ certificats }) => {
       </div>
     </>
   )
-}
+})
 
 export default Certificats

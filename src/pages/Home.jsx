@@ -13,8 +13,10 @@ import Button from 'react-bootstrap/Button';
 import { Card, Heading, CardBody, Stack } from '@chakra-ui/react'
 import { getMultiLang as ml } from '../components/MultiLang';
 import Contact from "./Contact";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { BsArrowLeft, BsArrowRight } from 'react-icons/Bs';
+import React from "react";
+
 
 
 export function shuffle(a) {
@@ -28,14 +30,15 @@ export function shuffle(a) {
   return a;
 }
 
-const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
+const Home = React.memo(({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
   const [t] = useTranslation("translation");
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
   return (
     <>
-      <Swiper
+      {/* <Swiper
         spaceBetween={0}
         effect={"fade"}
         navigation={true}
@@ -98,24 +101,26 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
               className="relative w-full"
             >
               {
-                roundedmenu && shuffle(Array.from(roundedmenu))?.map((item, index) => (
-                  <SwiperSlide className="relative w-full" key={index}>
-                    <Link to={`xidmetler/mexaniki/${item?.slug_az}`} className="scale1 flex 
-                    items-center justify-center transitions cursor-pointer font-bold text-white bg-[#124395] 
-                    w-[280px] h-[280px] md:w-[180px] md:h-[180px]  overflow-hidden rounded-full z-50 border25 relative scale-[0.65]">
-                      <div className="">
-                        <h1 className="text-[18px] md:text-[15px] uppercase text-center border-none" dangerouslySetInnerHTML={{ __html: item && ml(item?.name_az, item?.name_ru, item?.name_en) }}></h1>
-                      </div>
-                    </Link>
-                  </SwiperSlide>
-                ))
+                useMemo(()=>(
+                  roundedmenu && shuffle(Array.from(roundedmenu))?.map((item, index) => (
+                    <SwiperSlide className="relative w-full" key={index}>
+                      <Link to={`xidmetler/mexaniki/${item?.slug_az}`} className="scale1 flex 
+                      items-center justify-center transitions cursor-pointer font-bold text-white bg-[#124395] 
+                      w-[280px] h-[280px] md:w-[180px] md:h-[180px]  overflow-hidden rounded-full z-50 border25 relative scale-[0.65]">
+                        <div className="">
+                          <h1 className="text-[18px] md:text-[15px] uppercase text-center border-none" dangerouslySetInnerHTML={{ __html: item && ml(item?.name_az, item?.name_ru, item?.name_en) }}></h1>
+                        </div>
+                      </Link>
+                    </SwiperSlide>
+                  ))
+                ),[roundedmenu])
               }
 
             </Swiper>
           </Row>
         </Container>
 
-      </div>
+      </div> */}
 
       <div className="bg-[#F3F3F3] relative mt-4 w-full pt-[30px] pb-[30px] pl-0 pr-0">
         <Container >
@@ -130,7 +135,7 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
               </Link>
             </Col>
             <Col lg={4} md={12} className="lg:order-[-1]">
-              <LazyLoadImage className="p-[20px] lg:p-0 lg:mt-5 lg:w-full" src={option?.biz_img} />
+            <LazyLoadImage className="p-[20px] lg:p-0 lg:mt-5 lg:w-full" src={option?.biz_img} />
             </Col>
           </Row>
         </Container>
@@ -181,22 +186,24 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
               }}
             >
               {
-                avadanlig && shuffle(Array.from(avadanlig))?.map((item, index) => (
-                  <SwiperSlide key={index} >
-                    <Card maxW='sm'>
-                      <CardBody>
-                        <LazyLoadImage
-                          src={item?.src}
-                          alt={item?.alt_az}
-                          className="w-full"
-                        />
-                        <Stack mt='6' >
-                          <Heading className="pt-[10px] font-[600] capitalize text-[14px] text-white" size='md'>{ml(item?.name_az, item?.name_ru, item?.name_en)}</Heading>
-                        </Stack>
-                      </CardBody>
-                    </Card>
-                  </SwiperSlide>
-                ))
+                useMemo(() => (
+                  avadanlig && shuffle(Array?.from(avadanlig))?.map((item, index) => (
+                    <SwiperSlide key={index} >
+                      <Card maxW='sm'>
+                        <CardBody>
+                          <LazyLoadImage
+                            src={item?.src}
+                            alt={item?.alt_az}
+                            className="w-full"
+                          />
+                          <Stack mt='6' >
+                            <Heading className="pt-[10px] font-[600] capitalize text-[14px] text-white" size='md'>{ml(item?.name_az, item?.name_ru, item?.name_en)}</Heading>
+                          </Stack>
+                        </CardBody>
+                      </Card>
+                    </SwiperSlide>
+                  ))
+                ), [avadanlig])
               }
 
             </Swiper>
@@ -215,13 +222,15 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
           <p className="font-[400] text-[30px] md:text-[20px] text-[#272727] pt-[10px] pl-0 pr-0 pb-[20px]">{t("projects")}</p>
           <Row className="">
             {
-              layihe && shuffle(Array.from(layihe))?.slice(0, 4).map((item, index) => (
-                <Col className="imageP relative p-0 m-0 cursor-pointer" key={index} lg={3} md={4} xs={6}>
-                  <Link to={`layihelerimiz/${item?.slug_az}`}>
-                    <LazyLoadImage src={item?.cover} alt={item?.cover_alt_az} />
-                  </Link>
-                </Col>
-              ))
+              useMemo(() => (
+                layihe && shuffle(Array.from(layihe))?.slice(0, 4).map((item, index) => (
+                  <Col className="imageP relative p-0 m-0 cursor-pointer" key={index} lg={3} md={4} xs={6}>
+                    <Link to={`layihelerimiz/${item?.slug_az}`}>
+                      <LazyLoadImage src={item?.cover} alt={item?.cover_alt_az} />
+                    </Link>
+                  </Col>
+                ))
+              ), [layihe])
             }
             <Link to={`layihelerimiz`} className="p-0 m-0">
               <Button className="bg-[#fff] border-none capitalize outline-none shadow1 mt-[20px] mr-0 mb-[10px] ml-0 rounded-[4px] pt-[5px] pb-[5px] pl-[30px] pr-[30px] text-black text-[17px] ">
@@ -261,14 +270,16 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
               }}
             >
               {
-                brend && brend?.map((item, index) => (
-                  <SwiperSlide key={index}>
-                    <div className="rounded-full imageB bg-[#E10632] flex w-[180px] h-[180px] md:w-[130px] md:h-[130px] items-center justify-center transitions cursor-pointer hover:bg-[#f3f3f3]">
-                      <LazyLoadImage className="w-[100px]" src={item?.src} alt={item?.alt_az} />
-                      <LazyLoadImage className="w-[100px] hidden" src={item?.grey_src} alt={item?.alt_grey_az} />
-                    </div>
-                  </SwiperSlide>
-                ))
+                useMemo(() => (
+                  brend && brend?.map((item, index) => (
+                    <SwiperSlide key={index}>
+                      <div className="rounded-full imageB bg-[#E10632] flex w-[180px] h-[180px] md:w-[130px] md:h-[130px] items-center justify-center transitions cursor-pointer hover:bg-[#f3f3f3]">
+                        <LazyLoadImage className="w-[100px]" src={item?.src} alt={item?.alt_az} />
+                        <LazyLoadImage className="w-[100px] hidden" src={item?.grey_src} alt={item?.alt_grey_az} />
+                      </div>
+                    </SwiperSlide>
+                  ))
+                ), [brend])
               }
 
 
@@ -283,6 +294,6 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
 
     </>
   )
-}
+})
 
 export default Home

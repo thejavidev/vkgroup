@@ -5,8 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { getMultiLang as ml } from '../components/MultiLang';
 import Contact from './Contact';
 import { useEffect } from 'react';
-
-const ServiceAbout = ({ option, service1, service2 }) => {
+import React from 'react';
+const ServiceAbout = React.memo(({ option, service1, service2 }) => {
   const [t] = useTranslation("translation");
 
   console.log(service2)
@@ -64,6 +64,6 @@ const ServiceAbout = ({ option, service1, service2 }) => {
         </div>
     </>
   )
-}
+})
 
 export default ServiceAbout

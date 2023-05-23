@@ -10,7 +10,7 @@ import LoaderContent from '../components/loader/LoaderContent';
 import { Link } from 'react-router-dom';
 import { getMultiLang as ml } from '../components/MultiLang';
 
-const Video = ({ video }) => {
+const Video = React.memo(({ video }) => {
   const [t] = useTranslation("translation");
 
   const [loading, setLoading] = useState(false)
@@ -66,6 +66,6 @@ const Video = ({ video }) => {
       </div>
     </>
   )
-}
+})
 
 export default Video

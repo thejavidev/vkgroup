@@ -14,7 +14,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel, Navigation } from "swiper";
 import { BsArrowLeft, BsArrowRight } from 'react-icons/Bs';
 
-const Equipment = ({ avadanlig }) => {
+const Equipment = React.memo(({ avadanlig }) => {
     const [t] = useTranslation("translation");
     const [loading, setLoading] = useState(false);
     useEffect(() => {
@@ -125,6 +125,6 @@ const Equipment = ({ avadanlig }) => {
             </div>
         </>
     )
-}
+})
 
 export default Equipment

@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { getMultiLang as ml } from '../MultiLang';
 import { Link } from 'react-router-dom';
+import React from 'react';
 import {
   ListItem,
   UnorderedList,
@@ -16,7 +17,7 @@ import { Tb360View } from 'react-icons/Tb';
 
 
 
-const Footer = ({ option, xidmet }) => {
+const Footer = React.memo(({ option, xidmet }) => {
   const year = new Date().getFullYear();
   const [t] = useTranslation("translation");
   const url = `xidmetler`
@@ -105,6 +106,6 @@ const Footer = ({ option, xidmet }) => {
       </footer>
     </>
   )
-}
+})
 
 export default Footer
