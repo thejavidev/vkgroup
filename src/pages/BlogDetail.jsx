@@ -19,7 +19,7 @@ const BlogDetail = ({ blog }) => {
   const Data = blog;
   const [t] = useTranslation("translation");
   const { slug_az } = useParams();
-  const currentPost = Data?.find((post) => post.slug_az === slug_az);
+  const currentPost = Data?.find((post) => post?.slug_az === slug_az);
 
   const [loading, setLoading] = useState(false);
 

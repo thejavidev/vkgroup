@@ -14,7 +14,6 @@ import { Card, Heading, CardBody, Stack } from '@chakra-ui/react'
 import { getMultiLang as ml } from '../components/MultiLang';
 import Contact from "./Contact";
 import { useEffect } from "react";
-import { noPhoto } from "../assets";
 import { BsArrowLeft, BsArrowRight } from 'react-icons/Bs';
 
 
@@ -29,7 +28,7 @@ export function shuffle(a) {
   return a;
 }
 
-const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend, index }) => {
+const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
   const [t] = useTranslation("translation");
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -265,8 +264,8 @@ const Home = ({ banner, roundedmenu, option, avadanlig, layihe, brend, index }) 
                 brend && brend?.map((item, index) => (
                   <SwiperSlide key={index}>
                     <div className="rounded-full imageB bg-[#E10632] flex w-[180px] h-[180px] md:w-[130px] md:h-[130px] items-center justify-center transitions cursor-pointer hover:bg-[#f3f3f3]">
-                      <LazyLoadImage className="w-[100px]" src={item.src} alt={item.alt_az} />
-                      <LazyLoadImage className="w-[100px] hidden" src={item.grey_src} alt={item.alt_grey_az} />
+                      <LazyLoadImage className="w-[100px]" src={item?.src} alt={item?.alt_az} />
+                      <LazyLoadImage className="w-[100px] hidden" src={item?.grey_src} alt={item?.alt_grey_az} />
                     </div>
                   </SwiperSlide>
                 ))

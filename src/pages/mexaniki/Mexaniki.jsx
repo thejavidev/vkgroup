@@ -16,7 +16,7 @@ const Mexaniki = ({ products }) => {
     const [loading, setLoading] = useState(false)
     const { slug_az } = useParams();
     const subCategories1 = products?.[1]?.sub_categories_1
-    const currentPost = subCategories1?.find((post) => post.slug_az === slug_az);
+    const currentPost = subCategories1?.find((post) => post?.slug_az === slug_az);
     const sub2 = currentPost?.sub_categories_2;
     const urlname = 'xidmetler/';
     const url = urlname + products?.[1]?.slug_az;

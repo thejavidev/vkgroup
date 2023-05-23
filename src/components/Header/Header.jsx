@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Upper from './Upper';
 import Container from 'react-bootstrap/Container';
@@ -18,8 +18,14 @@ import {
 
 const Header = ({ xidmet, mehsullar }) => {
   const [t, i18n] = useTranslation("translation");
-  const [cur_section, setCurSection] = useState('')
   const [open, setOpen] = useState(false);
+  const openMobileHeader =useRef();
+  const OverlayDiv =useRef();
+  const [openId, setOpenId] = useState(0);
+  const [openId2, setOpenId2] = useState(0);
+  const [show, setShow] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  
   const clickHandle = async (lang) => {
     await i18n.changeLanguage(lang);
     setOpen(false);
@@ -28,9 +34,8 @@ const Header = ({ xidmet, mehsullar }) => {
     return lang !== localStorage.getItem("i18nextLng")
   }
   const langs = ["az", "ru", "en"];
-  const myLang = langs.filter(langChecker);
-  const [show, setShow] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const myLang = langs?.filter(langChecker);
+
 
   const controlNavbar = () => {
     if (typeof window !== 'undefined') {
@@ -45,11 +50,10 @@ const Header = ({ xidmet, mehsullar }) => {
     }
   };
 
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', controlNavbar);
-
-
       return () => {
         window.removeEventListener('scroll', controlNavbar);
       };
@@ -57,22 +61,15 @@ const Header = ({ xidmet, mehsullar }) => {
   }, [lastScrollY]);
 
 
+
   const openMenu = () => {
-    let OpenMenuClick = document.querySelector('.mobile-header');
-    let Overlay = document.querySelector('.overlay');
-    OpenMenuClick.classList.add('active');
-    Overlay.classList.add('active')
+    openMobileHeader?.current?.classList?.add('active');
+    OverlayDiv?.current?.classList?.add('active');
   }
   const CloseMenu = () => {
-    let OpenMenuClick = document.querySelector('.mobile-header');
-    let Overlay = document.querySelector('.overlay');
-    OpenMenuClick.classList.remove('active');
-    Overlay.classList.remove('active')
+    openMobileHeader?.current?.classList?.remove('active');
+    OverlayDiv?.current?.classList?.remove('active');
   }
-  const [openId, setOpenId] = useState(0);
-  const [openId2, setOpenId2] = useState(0);
-
-
   const mobileHeader = [
     {
       id: 1,
@@ -108,7 +105,7 @@ const Header = ({ xidmet, mehsullar }) => {
 
   return (
     <>
-      <div onClick={CloseMenu} className="mobile-menu-overlay block fixed left-[0] top-[0] bottom-[0] right-[0] z-[100] overlay"></div>
+      <div onClick={CloseMenu} ref={OverlayDiv} className="mobile-menu-overlay block fixed left-[0] top-[0] bottom-[0] right-[0] z-[100] overlay"></div>
       <header className={` ${show && 'none'} header  fixed bg-[#272727] top-[0px] left-[0] right-[0] w-full z-[150]`} >
         <Container fluid className='pr-[70px] pl-[70px] pt-[7px] pb-[7px] 2xl:pl-[20px] 2xl:pr-[20px] lg:pt-[10px] lg:pb-[10px]'>
           <Nav className='items-center justify-between w-full '>
@@ -263,7 +260,7 @@ const Header = ({ xidmet, mehsullar }) => {
           </Nav>
         </Container>
 
-        <div className='mobile-header fixed inset-0 z-[150] bg-[#272727] w-full max-w-[300px] menutransitions p-[20px]'>
+        <div ref={openMobileHeader} className='mobile-header fixed inset-0 z-[150] bg-[#272727] w-full max-w-[300px] menutransitions p-[20px]'>
           <Button
             className="absolute right-[10px] top-[10px] shrink-0 border-none outline-none hover:bg-transparent hover:shadow-none hover:outline-none focus:bg-transparent"
 

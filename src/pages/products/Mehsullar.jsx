@@ -17,7 +17,7 @@ import { BsArrowLeft,BsArrowRight } from 'react-icons/Bs';
 
 const Mehsullar = ({ mehsullar }) => {
     const { slug_az } = useParams();
-    const currentPost = mehsullar?.find((post) => post.slug_az === slug_az);
+    const currentPost = mehsullar?.find((post) => post?.slug_az === slug_az);
     const menu = currentPost?.sub_categories;
     const [loading, setLoading] = useState(false);
     const [t] = useTranslation("translation");

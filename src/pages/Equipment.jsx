@@ -9,9 +9,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { AspectRatio } from '@chakra-ui/react'
 import LoaderContent from '../components/loader/LoaderContent';
 import LoaderText from '../components/loader/LoaderText';
-import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
-import { noPhoto, noVideo } from '../assets';
+import { noPhoto } from '../assets';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel, Navigation } from "swiper";
 import { BsArrowLeft, BsArrowRight } from 'react-icons/Bs';
@@ -19,13 +17,7 @@ import { BsArrowLeft, BsArrowRight } from 'react-icons/Bs';
 const Equipment = ({ avadanlig }) => {
     const [t] = useTranslation("translation");
     const [loading, setLoading] = useState(false);
-    const { slug_en } = useParams();
-   
-    //     const currentPost = avadanlig?.find((post) => post.slug_en === slug_en);
-    //    console.log(currentPost)
     useEffect(() => {
-        const iframe =document?.getElementsByTagName('iframe')[1]?.contentDocument?.body?.children?.img;
-        iframe?.classList?.add('image')
         window.scrollTo(0, 0)
         setLoading(true)
         setTimeout(() => {

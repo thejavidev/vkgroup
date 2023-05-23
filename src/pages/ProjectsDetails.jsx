@@ -22,7 +22,7 @@ const ProjectsDetails = ({ layihe }) => {
   const [t] = useTranslation("translation");
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const { slug_az } = useParams();
-  const currentPost = Data?.find((post) => post.slug_az === slug_az);
+  const currentPost = Data?.find((post) => post?.slug_az === slug_az);
   const images = currentPost?.images;
 
   useEffect(() => {
