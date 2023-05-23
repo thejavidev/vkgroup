@@ -38,7 +38,7 @@ const Home = React.memo(({ banner, roundedmenu, option, avadanlig, layihe, brend
 
   return (
     <>
-      {/* <Swiper
+      <Swiper
         spaceBetween={0}
         effect={"fade"}
         navigation={true}
@@ -120,7 +120,7 @@ const Home = React.memo(({ banner, roundedmenu, option, avadanlig, layihe, brend
           </Row>
         </Container>
 
-      </div> */}
+      </div>
 
       <div className="bg-[#F3F3F3] relative mt-4 w-full pt-[30px] pb-[30px] pl-0 pr-0">
         <Container >
