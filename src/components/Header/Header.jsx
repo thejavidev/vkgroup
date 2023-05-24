@@ -226,11 +226,11 @@ const Header = React.memo(({ xidmet, mehsullar }) => {
                     {t("footerservice")}
                   </NavLink>
                 </li>
-                <li className='cursor-pointer hvr '>
+                {/* <li className='cursor-pointer hvr '>
                   <NavLink to='rey-sorgusu' className='text-white text-[15px] xl:text-[13px] uppercase font-[300] relative block pt-[15px] pb-[15px]  pl-[18px] pr-[18px] 2xl:pl-[8px] 2xl:pr-[8px] lg:pl-[4px] lg:pr-[4px]'>
                     {t("footerrey")}
                   </NavLink>
-                </li>
+                </li> */}
                 <li className='cursor-pointer hvr '>
                   <NavLink to='elaqe' className='text-white text-[15px] xl:text-[13px] uppercase font-[300] relative block pt-[15px] pb-[15px]  pl-[18px] pr-[18px] 2xl:pl-[8px] 2xl:pr-[8px] lg:pl-[4px] lg:pr-[4px]'>
                     {t("footerelaqe")}
@@ -418,11 +418,11 @@ const Header = React.memo(({ xidmet, mehsullar }) => {
                 {t("footerservice")}
               </NavLink>
             </ListItem>
-            <ListItem className='list-none border-botttom mb-[10px] pb-[7px] pl-[7px]'>
+            {/* <ListItem className='list-none border-botttom mb-[10px] pb-[7px] pl-[7px]'>
               <NavLink to='rey-sorgusu' className='text-[#fff] uppercase  hover:text-[#E10632]' onClick={CloseMenu}>
                 {t("footerrey")}
               </NavLink>
-            </ListItem>
+            </ListItem> */}
             <ListItem className='list-none border-botttom mb-[10px] pb-[7px] pl-[7px]'>
               <NavLink to='elaqe' className='text-[#fff] uppercase hover:text-[#E10632] ' onClick={CloseMenu}>
                 {t("footerelaqe")}

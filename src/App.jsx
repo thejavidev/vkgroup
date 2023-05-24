@@ -21,8 +21,7 @@ import Mehsullar from './pages/products/Mehsullar';
 import Equipment from './pages/Equipment';
 import Products from './pages/xidmet/Products';
 import Mexaniki from './pages/mexaniki/Mexaniki';
-import { createSelector } from 'reselect' 
-import Comments from './pages/Comments';
+
 
 
 
@@ -67,7 +66,7 @@ function App() {
               <Route path="/media/blog/:slug_az" element={<BlogDetail blog={data?.blog} />} ></Route>
               <Route path="/sertifikat" element={<Certificats certificats={data?.certificats} />} ></Route>
               <Route path="/servis" element={<ServiceAbout option={data?.options} service1={data?.services1} service2={data?.services2} />} ></Route>
-              <Route path="/rey-sorgusu" element={<Comments />}  ></Route>
+          
               <Route path="/elaqe" element={<Contact option={data?.options} />} ></Route>
             </Routes>
           </Layout>
