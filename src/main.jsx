@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import { Provider } from 'react-redux';
@@ -23,6 +23,7 @@ i18next.use(LanguageDetector, initReactI18next,).init({
   lng: window.localStorage.getItem('i18nextLng'),
   debug: false,
 })
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

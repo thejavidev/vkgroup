@@ -112,7 +112,7 @@ const Header = React.memo(({ xidmet, mehsullar }) => {
           <Nav className='items-center justify-between w-full '>
             <div className="logo">
               <Link to='/'>
-                <LazyLoadImage className='w-[150px] xl:w-[120px]' src='https://vkgroup.az/vk/img/header/vklogo.png' />
+                <LazyLoadImage className='w-[150px] xl:w-[120px]' src='./public/vklogo.png' />
               </Link>
             </div>
             <div className="menu flex">

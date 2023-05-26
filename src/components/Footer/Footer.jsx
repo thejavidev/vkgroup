@@ -93,11 +93,13 @@ const Footer = React.memo(({ option, xidmet }) => {
             <Col lg={12} md={12} className='bg-[#272727] p-[20px] '>
               <div className="flex w-full justify-between md:flex-col md:justify-center md:items-center md:gap-4">
                 <div className="">
-                  <LazyLoadImage className='w-[150px]' src='https://vkgroup.az/vk/img/header/vklogo.png' />
+                  <LazyLoadImage className='w-[150px]' src='./public/vklogo.png' />
                 </div>
                 <div className="flex flex-wrap items-center md:justify-center md:gap-4">
                   <p className='text-white text-[18px] font-[400] pr-[20px] md:p-0'>{t("footerT")} {year}</p>
-                  <LazyLoadImage className='w-[100px] object-contain' src='https://vkgroup.az/vk/img/footer/corn.png' />
+                  <a href="https://corn.az" target='_blank'>
+                  <LazyLoadImage className='w-[100px] object-contain' src='./public/corn.png' />
+                  </a>
                 </div>
               </div>
             </Col>

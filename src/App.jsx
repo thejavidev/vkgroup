@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
@@ -24,55 +24,49 @@ import Mexaniki from './pages/mexaniki/Mexaniki';
 
 
 
-
-
 function App() {
   const dispatch = useDispatch();
-  const data =  useSelector((state) => state.list)
+  const data = useSelector((state) => state.list)
   const [loading, setLoading] = useState(false)
-
+  const urlX0 = data?.xidmets?.[0]?.slug_az
+  const urlX1 = data?.xidmets?.[1]?.slug_az
   useEffect(useCallback(() => {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
-    }, 200);
+    },1800);
     dispatch(loadposts());
   }, [dispatch]), [])
 
 
-  const urlX0=data?.xidmets?.[0]?.slug_az
-  const urlX1=data?.xidmets?.[1]?.slug_az
-  
+
 
   return (
     <>
       {
         loading ? <Loader /> :
           <Layout option={data?.options} xidmet={data?.xidmets} mehsullar={data?.mehsullar} avadanlig={data?.avadanlig}>
-            <Routes>
-              <Route path="/" exact element={<Home roundedmenu={data?.xidmets?.[1]?.sub_categories_1} banner={data?.banner} option={data?.options} avadanlig={data?.avadanlig} layihe={data?.layihe} brend={data?.brend} />} ></Route>
-              <Route path="/about" element={<About option={data?.options}  />} ></Route>
-              <Route path="/mehsullar/:slug_az" element={<Mehsullar mehsullar={data?.mehsullar} />} ></Route>
-              <Route path={`/xidmetler/${urlX0}/:slug_az`} element={<Products products={data?.xidmets} />} ></Route>
-              <Route path={`/xidmetler/${urlX1}/:slug_az`} element={<Mexaniki products={data?.xidmets} />} ></Route>
-              <Route path="/avadanliqlar" element={<Equipment avadanlig={data?.avadanlig} />} ></Route>
-              <Route path="/layihelerimiz" element={<Projects layihe={data?.layihe}  />} ></Route>
-              <Route path="/layihelerimiz/:slug_az" element={<ProjectsDetails  layihe={data?.layihe} />} ></Route>
-              <Route path="/media/foto" element={<Photo photo={data?.foto} />} ></Route>
-              <Route path="/media/foto/:id" element={<PhotoDetails photo={data?.foto} />} ></Route>
-              <Route path="/media/video" element={<Video video={data?.video} />} ></Route>
-              <Route path="/media/video/:slug_az" element={<VideoDetails video={data?.video} />} ></Route>
-              <Route path="/media/blog" element={<Blog blog={data?.blog} />} ></Route>
-              <Route path="/media/blog/:slug_az" element={<BlogDetail blog={data?.blog} />} ></Route>
-              <Route path="/sertifikat" element={<Certificats certificats={data?.certificats} />} ></Route>
-              <Route path="/servis" element={<ServiceAbout option={data?.options} service1={data?.services1} service2={data?.services2} />} ></Route>
-          
-              <Route path="/elaqe" element={<Contact option={data?.options} />} ></Route>
-            </Routes>
+              <Routes>
+                <Route path="/" exact element={<Home roundedmenu={data?.xidmets?.[1]?.sub_categories_1} banner={data?.banner} option={data?.options} avadanlig={data?.avadanlig} layihe={data?.layihe} brend={data?.brend} />} ></Route>
+                <Route path="/about" element={<About option={data?.options} />} ></Route>
+                <Route path="/mehsullar/:slug_az" element={<Mehsullar mehsullar={data?.mehsullar} />} ></Route>
+                <Route path={`/xidmetler/${urlX0}/:slug_az`} element={<Products products={data?.xidmets} />} ></Route>
+                <Route path={`/xidmetler/${urlX1}/:slug_az`} element={<Mexaniki products={data?.xidmets} />} ></Route>
+                <Route path="/avadanliqlar" element={<Equipment avadanlig={data?.avadanlig} />} ></Route>
+                <Route path="/layihelerimiz" element={<Projects layihe={data?.layihe} />} ></Route>
+                <Route path="/layihelerimiz/:slug_az" element={<ProjectsDetails layihe={data?.layihe} />} ></Route>
+                <Route path="/media/foto" element={<Photo photo={data?.foto} />} ></Route>
+                <Route path="/media/foto/:id" element={<PhotoDetails photo={data?.foto} />} ></Route>
+                <Route path="/media/video" element={<Video video={data?.video} />} ></Route>
+                <Route path="/media/video/:slug_az" element={<VideoDetails video={data?.video} />} ></Route>
+                <Route path="/media/blog" element={<Blog blog={data?.blog} />} ></Route>
+                <Route path="/media/blog/:slug_az" element={<BlogDetail blog={data?.blog} />} ></Route>
+                <Route path="/sertifikat" element={<Certificats certificats={data?.certificats} />} ></Route>
+                <Route path="/servis" element={<ServiceAbout option={data?.options} service1={data?.services1} service2={data?.services2} />} ></Route>
+                <Route path="/elaqe" element={<Contact option={data?.options} />} ></Route>
+              </Routes>
           </Layout>
       }
-
-
     </>
   )
 }
