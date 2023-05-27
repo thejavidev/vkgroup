@@ -46,7 +46,7 @@ const Home = React.memo(({ banner, roundedmenu, option, avadanlig, layihe, brend
   return (
     <>
       <section className="home" >
-        
+
 
         <Swiper
           spaceBetween={0}
@@ -133,10 +133,10 @@ const Home = React.memo(({ banner, roundedmenu, option, avadanlig, layihe, brend
           <Container >
             <Row className="items-center md:p-[10px]">
 
-              <Col lg={8} md={12}>
+              <Col lg={8} md={12} data-aos="fade-right"
+                  data-aos-offset="300" >
                 <p className="font-[400] text-[30px] text-[#272727] lg:mt-6">{t("whowe")}</p>
-                <div className="font-[400] pt-[20px] text-justify line-clamp-3 " data-aos="fade-right"
-                  data-aos-offset="300" dangerouslySetInnerHTML={{ __html: option && ml(option?.biz_text_az, option?.biz_text_ru, option?.biz_text_en) }}>
+                <div className="font-[400] pt-[20px] text-justify line-clamp-3 " dangerouslySetInnerHTML={{ __html: option && ml(option?.biz_text_az, option?.biz_text_ru, option?.biz_text_en) }}>
                 </div>
                 <Link to="about">
                   <Button className="mt-[30px] bg-[#E10632] text-white border-none outline-none rounded-none pl-[20px] pr-[20px] capitalize text-[17px]">{t("more")}</Button>
