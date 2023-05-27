@@ -17,6 +17,7 @@ html,body{
 .image{
     width: 100%;
 }
+
 @-webkit-keyframes dropdownMenu {
     from {
         opacity: 0;
@@ -256,4 +257,7 @@ img{
     z-index: 40;
     height: 100%;
     background: #f3f3f3;
+}
+.openSearch{
+    right: 20px;
 }

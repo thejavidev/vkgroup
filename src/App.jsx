@@ -22,6 +22,7 @@ import Equipment from './pages/Equipment';
 import Products from './pages/xidmet/Products';
 import Mexaniki from './pages/mexaniki/Mexaniki';
 import NotFound from './pages/NotFound';
+import Search from './pages/Search';
 
 
 
@@ -46,7 +47,7 @@ function App() {
     <>
       {
         loading ? <Loader /> :
-          <Layout option={data?.options} xidmet={data?.xidmets} mehsullar={data?.mehsullar} avadanlig={data?.avadanlig}>
+          <Layout option={data?.options} products={data?.xidmets} xidmet={data?.xidmets} mehsullar={data?.mehsullar} avadanlig={data?.avadanlig}>
               <Routes>
                 <Route path="/" exact element={<Home roundedmenu={data?.xidmets?.[1]?.sub_categories_1} banner={data?.banner} option={data?.options} avadanlig={data?.avadanlig} layihe={data?.layihe} brend={data?.brend} />} ></Route>
                 <Route path="/about" element={<About option={data?.options} />} ></Route>
@@ -65,6 +66,7 @@ function App() {
                 <Route path="/sertifikat" element={<Certificats certificats={data?.certificats} />} ></Route>
                 <Route path="/servis" element={<ServiceAbout option={data?.options} service1={data?.services1} service2={data?.services2} />} ></Route>
                 <Route path="/elaqe" element={<Contact option={data?.options} />} ></Route>
+                <Route path="/search" element={<Search products={data?.xidmets} />} ></Route>
                 <Route path='*' element={<NotFound />} ></Route>
               </Routes>
           </Layout>

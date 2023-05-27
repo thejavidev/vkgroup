@@ -35,19 +35,18 @@ const Home = React.memo(({ banner, roundedmenu, option, avadanlig, layihe, brend
   const [t] = useTranslation("translation");
   AOS.init({ once: true, });
 
-
-
   useEffect(() => {
     window.scrollTo(0, 0)
-
-   
-
   }, [])
+
+
+
+
+
   return (
     <>
       <section className="home" >
-
-
+        
 
         <Swiper
           spaceBetween={0}

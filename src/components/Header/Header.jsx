@@ -62,7 +62,9 @@ const Header = React.memo(({ xidmet, mehsullar }) => {
     }
   }, [lastScrollY]);
 
-
+  const openSearch = () => {
+    document.querySelector('.inputDiv')?.classList?.toggle('openSearch');
+  }
 
   const openMenu = () => {
     openMobileHeader?.current?.classList?.add('active');
@@ -238,6 +240,9 @@ const Header = React.memo(({ xidmet, mehsullar }) => {
                     {t("footerelaqe")}
                   </NavLink>
                 </li>
+                {/* <li className='cursor-pointer hvr text-[#fff]' onClick={openSearch}>
+                  axtarasd
+                </li> */}
               </ul>
             </div>
             <div className="flex items-center">
