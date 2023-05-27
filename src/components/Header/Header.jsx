@@ -16,6 +16,7 @@ import {
   ListItem,
   UnorderedList,
 } from '@chakra-ui/react'
+import { headerLogo } from '../../assets';
 
 const Header = React.memo(({ xidmet, mehsullar }) => {
   const [t, i18n] = useTranslation("translation");
@@ -112,7 +113,8 @@ const Header = React.memo(({ xidmet, mehsullar }) => {
           <Nav className='items-center justify-between w-full '>
             <div className="logo">
               <Link to='/'>
-                <LazyLoadImage className='w-[150px] xl:w-[120px]' src='./public/vklogo.png' />
+              
+                <LazyLoadImage className='w-[150px] xl:w-[120px]' src={headerLogo} />
               </Link>
             </div>
             <div className="menu flex">

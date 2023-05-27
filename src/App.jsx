@@ -21,6 +21,7 @@ import Mehsullar from './pages/products/Mehsullar';
 import Equipment from './pages/Equipment';
 import Products from './pages/xidmet/Products';
 import Mexaniki from './pages/mexaniki/Mexaniki';
+import NotFound from './pages/NotFound';
 
 
 
@@ -34,8 +35,8 @@ function App() {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
-    },1800);
-    dispatch(loadposts());
+    },1800)
+    dispatch(loadposts())
   }, [dispatch]), [])
 
 
@@ -64,6 +65,7 @@ function App() {
                 <Route path="/sertifikat" element={<Certificats certificats={data?.certificats} />} ></Route>
                 <Route path="/servis" element={<ServiceAbout option={data?.options} service1={data?.services1} service2={data?.services2} />} ></Route>
                 <Route path="/elaqe" element={<Contact option={data?.options} />} ></Route>
+                <Route path='*' element={<NotFound />} ></Route>
               </Routes>
           </Layout>
       }

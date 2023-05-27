@@ -13,15 +13,11 @@ import Button from 'react-bootstrap/Button';
 import { Card, Heading, CardBody, Stack } from '@chakra-ui/react'
 import { getMultiLang as ml } from '../components/MultiLang';
 import Contact from "./Contact";
-import { useEffect, useMemo, useRef } from "react";
+import { useContext, useEffect, useMemo, useRef } from "react";
 import { BsArrowLeft, BsArrowRight } from 'react-icons/Bs';
 import React from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { CSSRulePlugin } from "gsap/CSSRulePlugin";
-import { TimelineLite, Power2 } from "gsap";
-import { Timeline } from "gsap/gsap-core";
-import { gsap } from "gsap";
 
 
 export function shuffle(a) {
@@ -38,32 +34,21 @@ export function shuffle(a) {
 const Home = React.memo(({ banner, roundedmenu, option, avadanlig, layihe, brend }) => {
   const [t] = useTranslation("translation");
   AOS.init({ once: true, });
- 
 
-  let container = useRef(null);
-  let image = useRef(null)
-  let imageReveal = CSSRulePlugin.getRule(".imgContainer:after");
 
-  const tl = new Timeline();
+
   useEffect(() => {
     window.scrollTo(0, 0)
-  
-    tl.to(container,0,{css:{visibility:'visible'}}).to(
-      imageReveal,
-      2.4,
-      {width:"0%",ease:Power2.easeInOut}
-    ).from(image,1.4,{scale:1.6,ease:Power2.easeInOut,delay:-1.6})
-    gsap.timeline({
-      scrollTrigger:{
-          trigger:".home",
-          start:"top top",
-          scrub:1
-      } 
-    })
+
+   
+
   }, [])
   return (
     <>
-      <div  className="home">
+      <section className="home" >
+
+
+
         <Swiper
           spaceBetween={0}
           effect={"fade"}
@@ -128,8 +113,8 @@ const Home = React.memo(({ banner, roundedmenu, option, avadanlig, layihe, brend
                     roundedmenu && shuffle(Array.from(roundedmenu))?.map((item, index) => (
                       <SwiperSlide className="relative w-full" key={index} data-aos="fade-up" data-aos-offset="200">
                         <Link to={`xidmetler/mexaniki/${item?.slug_az}`} className="scale1 flex 
-                      items-center justify-center transitions cursor-pointer font-bold text-white bg-[#124395] 
-                      w-[280px] h-[280px] md:w-[180px] md:h-[180px]  overflow-hidden rounded-full z-50 border25 relative scale-[0.65]">
+                        items-center justify-center transitions cursor-pointer font-bold text-white bg-[#124395] 
+                        w-[280px] h-[280px] md:w-[180px] md:h-[180px]  overflow-hidden rounded-full z-50 border25 relative scale-[0.65]">
                           <div className="">
                             <h1 className="text-[18px] md:text-[15px] uppercase text-center border-none" dangerouslySetInnerHTML={{ __html: item && ml(item?.name_az, item?.name_ru, item?.name_en) }}></h1>
                           </div>
@@ -152,20 +137,15 @@ const Home = React.memo(({ banner, roundedmenu, option, avadanlig, layihe, brend
               <Col lg={8} md={12}>
                 <p className="font-[400] text-[30px] text-[#272727] lg:mt-6">{t("whowe")}</p>
                 <div className="font-[400] pt-[20px] text-justify line-clamp-3 " data-aos="fade-right"
-                  data-aos-offset="200" dangerouslySetInnerHTML={{ __html: option && ml(option?.biz_text_az, option?.biz_text_ru, option?.biz_text_en) }}>
+                  data-aos-offset="300" dangerouslySetInnerHTML={{ __html: option && ml(option?.biz_text_az, option?.biz_text_ru, option?.biz_text_en) }}>
                 </div>
                 <Link to="about">
                   <Button className="mt-[30px] bg-[#E10632] text-white border-none outline-none rounded-none pl-[20px] pr-[20px] capitalize text-[17px]">{t("more")}</Button>
                 </Link>
               </Col>
               <Col lg={4} md={12} className="lg:order-[-1]" >
-                <div ref={el => container = el} className="container1">
-                  <div className="relative overflow-hidden imgContainer h-[300px]">
-                    <LazyLoadImage ref={el => image = el} className="p-[20px] lg:p-0 lg:mt-5 lg:w-full absolute w-full" src={option?.biz_img} />
-                  </div>
-                </div>
-
-
+                <LazyLoadImage data-aos="fade-left"
+                  data-aos-offset="300" className="p-[20px] lg:p-0 lg:mt-5  w-full" src={option?.biz_img} />
               </Col>
             </Row>
           </Container>
@@ -321,7 +301,9 @@ const Home = React.memo(({ banner, roundedmenu, option, avadanlig, layihe, brend
         <div className="mb-10 mt-10" >
           <Contact option={option} />
         </div>
-      </div>
+
+      </section>
+
     </>
 
   )
