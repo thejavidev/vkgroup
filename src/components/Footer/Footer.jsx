@@ -24,7 +24,7 @@ const Footer = React.memo(({ option, xidmet }) => {
   const url = `xidmetler`
   return (
     <>
-      <footer className='bg-[#124395] w-full relative '>
+      <footer className='bg-[--bgf] w-full relative '>
         <Container fluid className=''>
           <Row className='justify-between h-full'>
             <Col lg={12} md={12} className='pt-[40px] pb-0 pl-[40px] pr-[40px] lg:pt-[20px] lg:pl-[10px] lg:pr-[10px]'>

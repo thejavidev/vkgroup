@@ -1,76 +1,88 @@
-import React, { useCallback, useEffect, useState, useRef } from 'react'
+import React, { createContext, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Projects from "./pages/Projects";
-import Photo from "./pages/Photo";
-import PhotoDetails from "./pages/PhotoDetails";
-import Video from "./pages/Video";
-import Blog from "./pages/Blog";
-import BlogDetail from "./pages/BlogDetail";
-import Certificats from "./pages/Certificats";
-import ServiceAbout from "./pages/ServiceAbout";
-import Contact from "./pages/Contact";
 import { loadposts } from './components/store/posts';
-import ProjectsDetails from './pages/ProjectsDetails';
 import Loader from './components/loader/Loader';
-import VideoDetails from './pages/VideoDetails';
-import Mehsullar from './pages/products/Mehsullar';
-import Equipment from './pages/Equipment';
-import Products from './pages/xidmet/Products';
-import Mexaniki from './pages/mexaniki/Mexaniki';
-import NotFound from './pages/NotFound';
-import Search from './pages/Search';
+import Router from './components/route';
+import $ from 'jquery';
+import { useTranslation } from 'react-i18next';
 
-
-
+export const ThemeContext = createContext(null);
 function App() {
   const dispatch = useDispatch();
+  const [t] = useTranslation("translation");
+
   const data = useSelector((state) => state.list)
-  const [loading, setLoading] = useState(false)
-  const urlX0 = data?.xidmets?.[0]?.slug_az
-  const urlX1 = data?.xidmets?.[1]?.slug_az
-  useEffect(useCallback(() => {
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-    },1800)
+
+  useEffect(()=>{
+    function pageLoading(){
+      setTimeout(() => {
+        $('#pageLoadingText').text(`${t("text1")}`)
+        $('#pageLoadingText').css('color','red')
+      }, 200);
+      setTimeout(() => {
+        $('#pageLoadingText').text(`${t("text2")}`)
+      }, 350);
+      setTimeout(() => {
+        $('#pageLoadingText').text(`${t("text3")}`)
+      }, 500);
+      setTimeout(() => {
+        $('#pageLoadingText').text(`${t("text4")}`)
+      }, 650);
+      setTimeout(() => {
+        $('#pageLoadingText').text(`${t("text5")}`)
+      }, 800);
+      setTimeout(() => {
+        $('#pageLoadingText').text(`${t("text6")}`)
+        $('#pageLoadingText').css('color','blue')
+      }, 950);
+      setTimeout(() => {
+        $('#pageLoadingText').text(`${t("text7")}`)
+      }, 1100);
+      setTimeout(() => {
+        $('#pageLoadingText').text(`${t("text8")}`)
+      }, 1250);
+      setTimeout(() => {
+        $('#pageLoadingText').text(`${t("text9")}`)
+      }, 1400);
+      setTimeout(() => {
+        $('#pageLoadingText').css('color','white')
+        $('#pageLoadingText').text(`${t("text10")}`)
+      }, 1550);
+      setTimeout(() => {
+        $('#pageLoadingText').text(`${t("text11")}`)
+      }, 1700);
+      setTimeout(() => {
+        $('#pageLoadingText').text(`${t("text12")}`)
+      }, 1850);
+      setTimeout(() => {
+        $('#pageLoadingText').text(`${t("text13")}`)
+      }, 2000);
+      setTimeout(() => {
+        $('#pageLoadingText').text('Vkgroup.az')
+      }, 2150);
+      setTimeout(() => {
+        $('#pageLoadingText').css('color', '#2b2c2f')
+        $('#pageLoadingText').css('transform', 'translate(-375%, -300%) scale(100)')
+      }, 2300);
+      setTimeout(() => {
+        $('.loader1').css('display','none')
+      }, 3000);
+    }
+    pageLoading()
     dispatch(loadposts())
-  }, [dispatch]), [])
+  },[dispatch])
+
 
 
 
 
   return (
     <>
-      {
-        loading ? <Loader /> :
-          <Layout option={data?.options} products={data?.xidmets} xidmet={data?.xidmets} mehsullar={data?.mehsullar} avadanlig={data?.avadanlig}>
-              <Routes>
-                <Route path="/" exact element={<Home roundedmenu={data?.xidmets?.[1]?.sub_categories_1} banner={data?.banner} option={data?.options} avadanlig={data?.avadanlig} layihe={data?.layihe} brend={data?.brend} />} ></Route>
-                <Route path="/about" element={<About option={data?.options} />} ></Route>
-                <Route path="/mehsullar/:slug_az" element={<Mehsullar mehsullar={data?.mehsullar} />} ></Route>
-                <Route path={`/xidmetler/${urlX0}/:slug_az`} element={<Products products={data?.xidmets} />} ></Route>
-                <Route path={`/xidmetler/${urlX1}/:slug_az`} element={<Mexaniki products={data?.xidmets} />} ></Route>
-                <Route path="/avadanliqlar" element={<Equipment avadanlig={data?.avadanlig} />} ></Route>
-                <Route path="/layihelerimiz" element={<Projects layihe={data?.layihe} />} ></Route>
-                <Route path="/layihelerimiz/:slug_az" element={<ProjectsDetails layihe={data?.layihe} />} ></Route>
-                <Route path="/media/foto" element={<Photo photo={data?.foto} />} ></Route>
-                <Route path="/media/foto/:id" element={<PhotoDetails photo={data?.foto} />} ></Route>
-                <Route path="/media/video" element={<Video video={data?.video} />} ></Route>
-                <Route path="/media/video/:slug_az" element={<VideoDetails video={data?.video} />} ></Route>
-                <Route path="/media/blog" element={<Blog blog={data?.blog} />} ></Route>
-                <Route path="/media/blog/:slug_az" element={<BlogDetail blog={data?.blog} />} ></Route>
-                <Route path="/sertifikat" element={<Certificats certificats={data?.certificats} />} ></Route>
-                <Route path="/servis" element={<ServiceAbout option={data?.options} service1={data?.services1} service2={data?.services2} />} ></Route>
-                <Route path="/elaqe" element={<Contact option={data?.options} />} ></Route>
-                <Route path="/search" element={<Search products={data?.xidmets} />} ></Route>
-                <Route path='*' element={<NotFound />} ></Route>
-              </Routes>
-          </Layout>
-      }
+      <Loader />
+      <Layout option={data?.options} products={data?.xidmets} xidmet={data?.xidmets} mehsullar={data?.mehsullar} avadanlig={data?.avadanlig}>
+        <Router />
+      </Layout>
     </>
   )
 }

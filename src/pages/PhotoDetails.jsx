@@ -32,10 +32,10 @@ const PhotoDetails = React.memo(({ photo }) => {
   }, [])
   return (
     <React.Fragment>
-      <div className="p-[20px] mt-[65px] bg-[#F3F3F3] md:mt-[50px] w-full flex items-center justify-center">
-        <h2 className='text-center font-[700] text-[25px] uppercase md:text-[20px] text-[#272727] '>{t("photo")}</h2>
+      <div className="p-[20px] mt-[65px] bg-[--bg3] md:mt-[50px] w-full flex items-center justify-center">
+        <h2 className='text-center font-[700] text-[25px] uppercase md:text-[20px] text-[--text] '>{t("photo")}</h2>
       </div>
-      <div className="mt-4 mb-10">
+      <div className="pt-4 pb-10">
         <Container>
           <Row>
 

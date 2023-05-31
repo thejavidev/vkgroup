@@ -46,7 +46,7 @@ const Home = React.memo(({ banner, roundedmenu, option, avadanlig, layihe, brend
   return (
     <>
       <section className="home" >
-
+        
 
         <Swiper
           spaceBetween={0}
@@ -71,7 +71,7 @@ const Home = React.memo(({ banner, roundedmenu, option, avadanlig, layihe, brend
           }
         </Swiper>
 
-        <div className="p-0 mt-[-25px] md:mt-0 relative" >
+        <div className="p-0 mt-[-25px] md:mt-0 relative bg-[--bg]" >
           <Container>
             <Row>
               <Swiper
@@ -108,19 +108,17 @@ const Home = React.memo(({ banner, roundedmenu, option, avadanlig, layihe, brend
                 className="relative w-full"
               >
                 {
-                  useMemo(() => (
-                    roundedmenu && shuffle(Array.from(roundedmenu))?.map((item, index) => (
-                      <SwiperSlide className="relative w-full" key={index} data-aos="fade-up" data-aos-offset="200">
-                        <Link to={`xidmetler/mexaniki/${item?.slug_az}`} className="scale1 flex 
-                        items-center justify-center transitions cursor-pointer font-bold text-white bg-[#124395] 
-                        w-[280px] h-[280px] md:w-[180px] md:h-[180px]  overflow-hidden rounded-full z-50 border25 relative scale-[0.65]">
-                          <div className="">
-                            <h1 className="text-[18px] md:text-[15px] uppercase text-center border-none" dangerouslySetInnerHTML={{ __html: item && ml(item?.name_az, item?.name_ru, item?.name_en) }}></h1>
-                          </div>
-                        </Link>
-                      </SwiperSlide>
-                    ))
-                  ), [roundedmenu])
+                 roundedmenu && shuffle(Array.from(roundedmenu))?.map((item, index) => (
+                  <SwiperSlide className="relative w-full" key={index} >
+                    <Link to={`xidmetler/mexaniki/${item?.slug_az}`} className="scale1 flex 
+                    items-center justify-center transitions cursor-pointer font-bold text-white bg-[#124395] 
+                    w-[280px] h-[280px] md:w-[180px] md:h-[180px]  overflow-hidden rounded-full z-50  relative scale-[0.65]">
+                      <div className="">
+                        <h1 className="text-[18px] md:text-[15px] uppercase text-center border-none" dangerouslySetInnerHTML={{ __html: item && ml(item?.name_az, item?.name_ru, item?.name_en) }}></h1>
+                      </div>
+                    </Link>
+                  </SwiperSlide>
+                ))
                 }
 
               </Swiper>
@@ -129,14 +127,14 @@ const Home = React.memo(({ banner, roundedmenu, option, avadanlig, layihe, brend
 
         </div>
 
-        <div className="bg-[#F3F3F3] relative mt-4 w-full pt-[30px] pb-[30px] pl-0 pr-0" >
+        <div className="bg-[--bg3] relative w-full pt-[70px] pb-[30px] pl-0 pr-0" >
           <Container >
             <Row className="items-center md:p-[10px]">
 
               <Col lg={8} md={12} data-aos="fade-right"
                   data-aos-offset="300" >
-                <p className="font-[400] text-[30px] text-[#272727] lg:mt-6">{t("whowe")}</p>
-                <div className="font-[400] pt-[20px] text-justify line-clamp-3 " dangerouslySetInnerHTML={{ __html: option && ml(option?.biz_text_az, option?.biz_text_ru, option?.biz_text_en) }}>
+                <p className="font-[400] text-[30px] text-[--text] lg:mt-6">{t("whowe")}</p>
+                <div className="font-[400] pt-[20px] text-justify line-clamp-3 text-[--text]" dangerouslySetInnerHTML={{ __html: option && ml(option?.biz_text_az, option?.biz_text_ru, option?.biz_text_en) }}>
                 </div>
                 <Link to="about">
                   <Button className="mt-[30px] bg-[#E10632] text-white border-none outline-none rounded-none pl-[20px] pr-[20px] capitalize text-[17px]">{t("more")}</Button>
@@ -150,7 +148,7 @@ const Home = React.memo(({ banner, roundedmenu, option, avadanlig, layihe, brend
           </Container>
         </div>
 
-        <div className="relative equi bg-[#E10632] p-[20px]" >
+        <div className="relative equi bg-[--bg22] p-[20px]" >
           <Container>
             <Row>
               <div className="flex justify-between mb-4 items-center">
@@ -226,9 +224,9 @@ const Home = React.memo(({ banner, roundedmenu, option, avadanlig, layihe, brend
 
         </div>
 
-        <div className="relative bg-[#F3F3F3] p-[20px]" >
-          <Container>
-            <p className="font-[400] text-[30px] md:text-[20px] text-[#272727] pt-[10px] pl-0 pr-0 pb-[20px]">{t("projects")}</p>
+        <div className="relative bg-[--bg3] p-[20px]" >
+          <Container className="pb-[40px]">
+            <p className="font-[400] text-[30px] md:text-[20px] text-[--text] pt-[10px] pl-0 pr-0 pb-[20px]">{t("projects")}</p>
             <Row className="">
               {
                 useMemo(() => (
@@ -250,7 +248,7 @@ const Home = React.memo(({ banner, roundedmenu, option, avadanlig, layihe, brend
           </Container>
         </div>
 
-        <div className="bg-[#fff] relative p-[20px] mt-4" >
+        <div className="bg-[--bg] relative p-[20px] " >
           <Container>
             <Row>
               <Swiper
@@ -282,7 +280,7 @@ const Home = React.memo(({ banner, roundedmenu, option, avadanlig, layihe, brend
                   useMemo(() => (
                     brend && brend?.map((item, index) => (
                       <SwiperSlide key={index} >
-                        <div className="rounded-full imageB bg-[#E10632] flex w-[180px] h-[180px] md:w-[130px] md:h-[130px] items-center justify-center transitions cursor-pointer hover:bg-[#f3f3f3]">
+                        <div className="rounded-full imageB bg-[--bg22] flex w-[180px] h-[180px] md:w-[130px] md:h-[130px] items-center justify-center transitions cursor-pointer hover:bg-[#f3f3f3]">
                           <LazyLoadImage className="w-[100px]" src={item?.src} alt={item?.alt_az} />
                           <LazyLoadImage className="w-[100px] hidden" src={item?.grey_src} alt={item?.alt_grey_az} />
                         </div>
@@ -297,7 +295,7 @@ const Home = React.memo(({ banner, roundedmenu, option, avadanlig, layihe, brend
           </Container>
         </div>
 
-        <div className="mb-10 mt-10" >
+        <div >
           <Contact option={option} />
         </div>
 

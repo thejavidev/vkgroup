@@ -72,21 +72,21 @@ const Contact = React.memo(({ option }) => {
   return (
     <>
 
-      <div className="relative mt-24 mb-28">
+      <div className="relative pt-24 pb-28 bg-[--bg]">
         <Container>
           <Row>
-            <p className="font-[700] text-[45px] md:text-[25px] text-[#272727] mb-4">{t("contactT")}</p>
+            <p className="font-[700] text-[45px] md:text-[25px] text-[--text] mb-4">{t("contactT")}</p>
             <Col lg={7} md={12} className="p-[20px]">
               <div className="flex justify-between w-full md:flex-col md:justify-start">
                 <div className="flex items-center justify-center md:items-start md:justify-start md:mb-[20px]">
-                  <BsTelephone className="text-[30px] mr-3" />
+                  <BsTelephone className="text-[30px] mr-3 text-[--text]" />
                   <div className="flex flex-col">
-                    <p className="text-[16px] font-[300] text-[#272727]">
+                    <p className="text-[16px] font-[300] text-[--text]">
                       <Link to={`tel:${option?.tel1}`}>
                         {option?.tel1}
                       </Link>
                     </p>
-                    <p className="font-[300] text-[16px] text-[#272727]">
+                    <p className="font-[300] text-[16px] text-[--text]">
                       <Link to={`tel:${option?.tel2}`}>
                         {option?.tel2}
                       </Link>
@@ -94,9 +94,9 @@ const Contact = React.memo(({ option }) => {
                   </div>
                 </div>
                 <div className="flex items-center justify-center  md:items-start md:justify-start md:mb-[20px]">
-                  <HiOutlineLocationMarker className="text-[30px] mr-3" />
+                  <HiOutlineLocationMarker className="text-[30px] mr-3 text-[--text]" />
                   <div className="flex flex-col">
-                    <p className="font-[300] text-[16px] text-[#272727]">
+                    <p className="font-[300] text-[16px] text-[--text]">
                       <Link target="_blank" to={`https://goo.gl/maps/UsQwaNLbsHKVyCicA?coh=178571&entry=tt`}>
                         {ml(option?.unvan_az, option?.unvan_ru, option?.unvan_en)}
                       </Link>
@@ -105,9 +105,9 @@ const Contact = React.memo(({ option }) => {
                   </div>
                 </div>
                 <div className="flex items-center justify-center  md:items-start md:justify-start md:mb-[20px]">
-                  <BsEnvelope className="text-[30px] font-[200] mr-3" />
+                  <BsEnvelope className="text-[30px] font-[200] mr-3 text-[--text]" />
                   <div className="flex flex-col">
-                    <p className="font-[300] text-[16px] text-[#272727]">
+                    <p className="font-[300] text-[16px] text-[--text]">
                       <Link target="_blank" to={`mailto:${option?.email}`}>
                         {option?.email}
                       </Link>
@@ -127,33 +127,33 @@ const Contact = React.memo(({ option }) => {
                     value={form.name} required
                     onChange={handleChange}
                     name='name'
-                    className="border-[1px] w-full p-[10px] outline-none shadow-none text-[16px] border-[#000] text-[#272727]" placeholder={t("nameSurname")} />
+                    className="border-[1px] w-full p-[10px] outline-none shadow-none text-[16px] border-[#000] bg-[--bgd] text-[--text]" placeholder={t("nameSurname")} />
                 </div>
                 <div className="mt-3">
                   <Input
                     value={form.phone} required
                     onChange={handleChange}
                     name='phone'
-                    className="border-[1px] w-full p-[10px] outline-none shadow-none text-[16px] border-[#000] text-[#272727]" placeholder={t("contactNumber")} />
+                    className="border-[1px] w-full p-[10px] outline-none shadow-none text-[16px] border-[#000] bg-[--bgd] text-[--text]" placeholder={t("contactNumber")} />
                 </div>
                 <div className="mt-3">
                   <Input
                     value={form.email} required
                     onChange={handleChange}
                     name='email'
-                    className="border-[1px] w-full p-[10px] outline-none shadow-none text-[16px] border-[#000] text-[#272727]" placeholder={t("email")} />
+                    className="border-[1px] w-full p-[10px] outline-none shadow-none text-[16px] border-[#000] bg-[--bgd] text-[--text]" placeholder={t("email")} />
                 </div>
                 <div className="mt-3">
                   <Textarea
                     value={form.message} required
                     name="message"
                     onChange={handleChange}
-                    className='border-[1px] w-full p-[10px] outline-none shadow-none text-[16px] border-[#000] text-[#272727] h-[140px] resize-none'
+                    className='border-[1px] w-full p-[10px] outline-none shadow-none text-[16px] border-[#000] bg-[--bgd] text-[--text] h-[140px] resize-none'
                     placeholder={t("message")}
                     size='sm'
                   />
                 </div>
-                <Button name="submit" type="submit" className="pt-[5px] pb-[5px] pl-[20px] pr-[20px] text-[16px] border-[1px] border-[#000] text-[#272727] rounded-none mt-3">
+                <Button name="submit" type="submit" className="pt-[5px] pb-[5px] pl-[20px] text-[--text] pr-[20px] text-[16px] border-[1px] border-[#000] bg-[--bgd] text-[--text]rounded-none mt-3">
                   {loading ? (t('sending')) : (t('send'))}
                 </Button>
               </FormControl>

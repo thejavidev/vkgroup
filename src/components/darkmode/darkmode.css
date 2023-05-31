@@ -1,0 +1,40 @@
+#darkMode {
+    background: url("../../assets/moon.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    padding: 10px;
+    position: absolute;
+    right: 10px;
+    top: calc(24% - 20px);
+    width: 45px;
+    height: 45px;
+    background-color: var(--toggle-theme);
+    z-index: 1200;
+    cursor: pointer;
+    border-radius: 50%;
+    text-align: center;
+    border: none;
+  }
+  
+  #darkMode.clicked {
+    padding: 10px;
+    background: url("../../assets/son.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #2b2c2f;
+    background-size: 30px 30px;
+  }
+
+  @media screen and (max-width:991px) {
+    #darkMode{
+      background-size: 20px 20px;
+      top: calc(4% - 20px);
+      right: 150px;
+      width: 30px;
+      height: 30px;
+    }
+    #darkMode.clicked{
+      background-size: 20px 20px;
+    }
+  }

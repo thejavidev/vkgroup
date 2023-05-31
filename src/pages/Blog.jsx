@@ -34,8 +34,8 @@ const Blog = React.memo(({ blog }) => {
   return (
     <>
       <div className="" data-scroll-section>
-        <div className="p-[20px] mt-[70px] md:mt-[50px] bg-[#F3F3F3] w-full flex items-center justify-center">
-          <h2 className='text-center font-[700] text-[25px] md:text-[20px] uppercase text-[#272727] '>{t("blog")}</h2>
+        <div className="p-[20px] mt-[67px] md:mt-[50px] bg-[--bg3] w-full flex items-center justify-center">
+          <h2 className='text-center font-[700] text-[25px] md:text-[20px] uppercase text-[--text] '>{t("blog")}</h2>
         </div>
         <div className="section mt-5">
           <Container>
@@ -53,11 +53,11 @@ const Blog = React.memo(({ blog }) => {
                       <Col className="flex items-start justify-center flex-col  p-[10px]" lg={4} md={12} xs={12}>
                         {
                           loading ? <LoaderText /> :
-                            <h2 className='text-[23px] md:text-[18px] font-[700] text-left text-[#272727]'>{ml(cur?.title_az, cur?.title_ru, cur?.title_en)}</h2>
+                            <h2 className='text-[23px] md:text-[18px] font-[700] text-left text-[--text]'>{ml(cur?.title_az, cur?.title_ru, cur?.title_en)}</h2>
                         }
                         {
                           loading ? <LoaderText /> :
-                            <p className='font-[400] text-[15px] text-[#272727] pt-[20px] md:pt-[10px] pb-[20px] md:pb-[10px] pl-0 pr-0 m-0'>{ml(cur?.intro_az, cur?.intro_ru, cur?.intro_en)}</p>
+                            <p className='font-[400] text-[15px] text-[--text] pt-[20px] md:pt-[10px] pb-[20px] md:pb-[10px] pl-0 pr-0 m-0'>{ml(cur?.intro_az, cur?.intro_ru, cur?.intro_en)}</p>
                         }
                         {
                           loading ? <LoaderText /> :

@@ -26,10 +26,10 @@ const Equipment = React.memo(({ avadanlig }) => {
     }, []);
     return (
         <>
-            <div className="p-[20px] mt-[70px] md:mt-[55px] bg-[#F3F3F3] w-full flex items-center justify-center ">
-                <h2 className='text-center font-[700] text-[25px] md:text-[16px] uppercase text-[#272727] '>{t("avadanliq")}</h2>
+            <div className="p-[20px] mt-[67px] md:mt-[55px] bg-[--bg3] w-full flex items-center justify-center ">
+                <h2 className='text-center font-[700] text-[25px] md:text-[16px] uppercase text-[--text] '>{t("avadanliq")}</h2>
             </div>
-            <div className="min-h-[75vh]">
+            <div className="min-h-[75vh] bg-[--bg]">
                 <Container>
                 <div className=" flex justify-end mt-10">
                         <Button className="next">
@@ -40,7 +40,7 @@ const Equipment = React.memo(({ avadanlig }) => {
                         </Button>
                     </div>
                     <Tabs className='mt-5'>
-                        <TabList className='flex justify-around gap-5 m-0 p-0  bg-[#f3f3f3] transitions rounded-[42px]'>
+                        <TabList className='flex justify-around gap-5 m-0 p-0  bg-[--bg2] transitions rounded-[42px]'>
                             <Swiper
                                 className='flex w-full'
                                 slidesPerView={5}
@@ -78,7 +78,7 @@ const Equipment = React.memo(({ avadanlig }) => {
                                     avadanlig && avadanlig?.map((cur, index) => (
                                         <SwiperSlide key={index} className='flex items-center justify-center'>
                                             <Tab  _selected={{ color: 'white', bg: 'red' }} 
-                                            className={`transitions capitalize pt-[10px] pb-[10px] pl-[20px] pr-[20px] md:pl-[10px] md:pr-[10px] rounded-[42px] `}>
+                                            className={`transitions capitalize pt-[10px] pb-[10px] pl-[20px] text-[--text] pr-[20px] md:pl-[10px] md:pr-[10px] rounded-[42px] `}>
                                                 {ml(cur?.name_az, cur?.name_ru, cur?.name_en)}
                                             </Tab>
                                         </SwiperSlide>
@@ -94,7 +94,7 @@ const Equipment = React.memo(({ avadanlig }) => {
                                     <TabPanel key={index}>
                                         {
                                             loading ? <LoaderText /> :
-                                                <h2 className='text-[25px] font-[700] mb-4 mt-[40px] text-[#272727] capitalize pb-[20px]'>{ml(cur?.name_az, cur?.name_ru, cur?.name_en)}</h2>
+                                                <h2 className='text-[25px] font-[700] mb-4 mt-[40px] text-[--text] capitalize pb-[20px]'>{ml(cur?.name_az, cur?.name_ru, cur?.name_en)}</h2>
                                         }
                                         <Row className='justify-between items-center'>
                                             <Col lg={6} md={12} xs={12}>

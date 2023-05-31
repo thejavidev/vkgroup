@@ -37,16 +37,16 @@ const BlogDetail = React.memo(({ blog }) => {
 
   return (
     <>
-      <div className="p-[20px] mt-[70px] md:mt-[50px] bg-[#F3F3F3] w-full flex items-center justify-center">
-        <h2 className='text-center font-[700] text-[25px] md:text-[20px] uppercase text-[#272727] '>{t("blog")}</h2>
+      <div className="p-[20px] mt-[67px] md:mt-[50px] bg-[--bg3] w-full flex items-center justify-center">
+        <h2 className='text-center font-[700] text-[25px] md:text-[20px] uppercase text-[--text] '>{t("blog")} - {ml(currentPost?.title_az, currentPost?.title_ru, currentPost?.title_ru)}</h2>
       </div>
       <div className="">
         <Container fluid className='pt-[20px] pb-[20px] pl-[100px] pr-[100px] lg:pl-[20px] lg:pr-[20px]'>
           <Row>
             <Col lg={12}>
-              <h2 className='font-[700] text-[40px] md:text-[20px] text-[#27272] '>{ml(currentPost?.title_az, currentPost?.title_ru, currentPost?.title_ru)}</h2>
+              <h2 className='font-[700] text-[40px] md:text-[20px] text-[--text] '>{ml(currentPost?.title_az, currentPost?.title_ru, currentPost?.title_ru)}</h2>
               <div dangerouslySetInnerHTML={{ __html: currentPost && ml(currentPost?.text_az, currentPost?.text_ru, currentPost?.text_en) }}
-                className="font-[400] text-[16px] md:text-[14px] pt-[20px] pb-[20px] pl-0 pr-0 text-[#272727]"></div>
+                className="font-[400] text-[16px] md:text-[14px] pt-[20px] pb-[20px] pl-0 pr-0 text-[--text]"></div>
             </Col>
           </Row>
         </Container>
@@ -59,7 +59,7 @@ const BlogDetail = React.memo(({ blog }) => {
               return (
                 <Col lg={3} key={i} className='mb-3'>
                   <div className="flex flex-col ">
-                    <div className="w-full overflow-hidden border-2">
+                    <div className="w-full overflow-hidden">
                       {
                         loading ? <LoaderContent /> :
                           <LazyLoadImage className='overflow-hidden w-full' src={cur?.src ? cur?.src :noPhoto} alt={cur?.alt_az} />
@@ -68,7 +68,7 @@ const BlogDetail = React.memo(({ blog }) => {
                     <div className="w-full pt-[5px] pb-[5px] pl-0 pr-0 flex flex-col">
                       {
                         loading ? <LoaderText /> :
-                          <h2 className='font-[700] text-[15px] pt-2 text-left text-[#272727] mb-3 line-clamp-1'>{ml(cur?.title_az, cur?.title_ru, cur?.title_ru)}</h2>
+                          <h2 className='font-[700] text-[15px] pt-2 text-left text-[--text] mb-3 line-clamp-1'>{ml(cur?.title_az, cur?.title_ru, cur?.title_ru)}</h2>
                       }
                       {
                         loading ? <LoaderText /> :

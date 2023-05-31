@@ -7,7 +7,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Link, NavLink } from 'react-router-dom';
 import { getMultiLang as ml } from '../MultiLang';
 import { BiMenu } from 'react-icons/Bi';
-import { AiOutlineClose, AiOutlineCaretDown } from 'react-icons/Ai';
+import { AiOutlineClose, AiOutlineCaretDown,AiOutlineSearch } from 'react-icons/Ai';
 import { Button } from 'react-bootstrap';
 import React from 'react';
 import {
@@ -17,6 +17,7 @@ import {
   UnorderedList,
 } from '@chakra-ui/react'
 import { headerLogo } from '../../assets';
+import DarkMode from '../darkmode/DarkMode';
 
 const Header = React.memo(({ xidmet, mehsullar }) => {
   const [t, i18n] = useTranslation("translation");
@@ -107,10 +108,14 @@ const Header = React.memo(({ xidmet, mehsullar }) => {
 
   ]
 
+ 
+  
+  
   return (
     <>
-      <div onClick={CloseMenu} ref={OverlayDiv} className="mobile-menu-overlay block fixed left-[0] top-[0] bottom-[0] right-[0] z-[100] overlay"></div>
-      <header className={` ${show && 'none'} header  fixed bg-[#272727] top-[0px] left-[0] right-[0] w-full z-[150]`} >
+      <DarkMode />
+      <div onClick={CloseMenu} ref={OverlayDiv} className="mobile-menu-overlay  block fixed left-[0] top-[0] bottom-[0] right-[0] z-[100] overlay"></div>
+      <header className={` ${show && 'none'} header   fixed bg-[#272727]  top-[0] left-[0] right-[0] w-full z-[150]`} >
         <Container fluid className='pr-[70px] pl-[70px] pt-[7px] pb-[7px] 2xl:pl-[20px] 2xl:pr-[20px] lg:pt-[10px] lg:pb-[10px]'>
           <Nav className='items-center justify-between w-full '>
             <div className="logo">
@@ -122,7 +127,7 @@ const Header = React.memo(({ xidmet, mehsullar }) => {
             <div className="menu flex">
               <ul className='flex w-full items-center allmenu lg:hidden'>
                 <li className='cursor-pointer hvr'>
-                  <NavLink to='/about' className='text-white  pt-[15px] pb-[15px]  pl-[18px] pr-[18px] 2xl:pl-[8px]  2xl:pr-[8px] lg:pl-[4px] lg:pr-[4px] text-[15px] xl:text-[13px] uppercase font-[300] relative block '>
+                  <NavLink to={`/about`} className='text-white  pt-[15px] pb-[15px]  pl-[18px] pr-[18px] 2xl:pl-[8px]  2xl:pr-[8px] lg:pl-[4px] lg:pr-[4px] text-[15px] xl:text-[13px] uppercase font-[300] relative block '>
                     {t("footerabout")}
                   </NavLink>
                 </li>
@@ -241,7 +246,7 @@ const Header = React.memo(({ xidmet, mehsullar }) => {
                   </NavLink>
                 </li>
                 {/* <li className='cursor-pointer hvr text-[#fff]' onClick={openSearch}>
-                  axtarasd
+                 <AiOutlineSearch className='text-[20px] ml-[20px]' />
                 </li> */}
               </ul>
             </div>
@@ -251,9 +256,9 @@ const Header = React.memo(({ xidmet, mehsullar }) => {
                   toggle={() => setOpen(!open)}
                   switchLang={
                     open && (
-                      <div className="absolute  mt-6 right-[-3px] top-3 h-[50px] flex flex-col text-left items-end">
+                      <div className="absolute  mt-6 right-[14px] top-3 h-[50px] flex flex-col text-left items-end">
                         {myLang.map((lang, index) => (
-                          <button className='text-[#fff] uppercase text-[16px] xl:text-[13px] bg-[#272727] pt-[10px] pb-[10px] pr-[15px] pl-[15px]' key={index} onClick={() => clickHandle(lang)} >
+                          <button className='text-[#fff] uppercase text-[16px] xl:text-[13px] transitions bg-[#272727] hover:text-[#DE0733] pt-[10px] pb-[10px] pr-[15px] pl-[15px]' key={index} onClick={() => clickHandle(lang)} >
                             {lang}
                           </button>
                         ))}

@@ -30,13 +30,16 @@ const ProjectsDetails = React.memo(({ layihe }) => {
   }, [])
   return (
     <>
-      <div className="mt-32 mb-28">
+     <div className="p-[20px] mt-[67px] bg-[--bgd] md:mt-[50px] w-full flex items-center justify-center">
+        <h2 className='text-center font-[700] text-[25px] uppercase md:text-[20px] text-[--text] '>{t("projects")} - {ml(currentPost?.title_az, currentPost?.title_ru, currentPost?.title_en)}</h2>
+      </div>
+      <div className="pt-5 pb-10 bg-[--bg]">
         <Container>
           <Row>
             <Col lg={4} md={12}>
               <div className="">
-                <h2 className="font-[700] text-[40px] md:text-[25px] text-[#272727] mb-3">{ml(currentPost?.title_az, currentPost?.title_ru, currentPost?.title_en)}</h2>
-                <p className="font-[400] text-[16px] text-[#272727] text-justify pt-[20px] pb-[20px] pl-0 pr-0 m-0">{ml(currentPost?.intro_az, currentPost?.intro_ru, currentPost?.intro_en)}</p>
+                <h2 className="font-[700] text-[40px] md:text-[25px] text-[--text] mb-3">{ml(currentPost?.title_az, currentPost?.title_ru, currentPost?.title_en)}</h2>
+                <p className="font-[400] text-[16px] text-[--text] text-justify pt-[20px] pb-[20px] pl-0 pr-0 m-0">{ml(currentPost?.intro_az, currentPost?.intro_ru, currentPost?.intro_en)}</p>
               </div>
             </Col>
             <Col lg={8} md={12}>

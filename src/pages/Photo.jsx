@@ -27,10 +27,10 @@ const Photo = React.memo(({ photo }) => {
 
   return (
     <React.Fragment>
-      <div className="p-[20px] mt-[70px] bg-[#F3F3F3] md:mt-[50px] w-full flex items-center justify-center">
-        <h2 className='text-center font-[700] text-[25px] uppercase md:text-[20px] text-[#272727] '>{t("photo")}</h2>
+      <div className="p-[20px] mt-[67px] bg-[--bg3] md:mt-[50px] w-full flex items-center justify-center">
+        <h2 className='text-center font-[700] text-[25px] uppercase md:text-[20px] text-[--text] '>{t("photo")}</h2>
       </div>
-      <div className="relative bg-[#fff]  pt-[70px] pb-[100px]">
+      <div className="relative bg-[--bg]  pt-[70px] pb-[100px]">
         <Container>
 
           <Row className="">

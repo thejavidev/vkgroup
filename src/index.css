@@ -1,7 +1,66 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root{
+    --bg:#fff;
+    --bg3:#f3f3f3;
+    --bgd:#fff;
+    --bgf:#124395;
+    --text:#272727;
+    --bgf3:#124395;
+    --eee:#ecebeb;
+    --ddd:#dddd;
+    --toggle-theme: #fbc710;
+    --border25:#f3f3f3;
+    --bg2:#f3f3f3;
+    --bg22:#E10632;
+    --bgbanner:rgba(18, 67, 149, 0.7);
+    --transition: cubic-bezier(.06, .54, .9, .94);
+}
+body.dark{
+    --bg3:#2a2a2a;
+    --bg:#2b2c2f;
+    --bgd:#000;
+    --bgf:#041f4d;
+    --bgf3:#041f4d;
+    --toggle-theme: #2b2c2f;
+    --eee:#2a2a2a;
+    --ddd:#444242;
+    --text:#f3f3f3;
+    --border25:#f3f3f38a;
+    --bg22:#520615;
+    --bg2:#520615;
+    --bgbanner:rgba(18, 67, 149, 0.9);
+}
 
+.productText h1,
+.productText h2,
+.productText h3,
+.productText h4,
+.productText h5,
+.productText h6,
+.productText span,
+.productText a,
+.productText div,
+.productText p
+{
+    color: var(--text) !important;
+}
+
+.productText span,
+.productText span span,
+.productText span span span,
+.productText span span span span,
+.productText span span span span span{
+    color: var(--text) !important;
+}
+.mehsulspan span span{
+    background: transparent !important;
+    color: var(--text) !important;
+}
+.hid{
+    visibility: hidden;
+}
 ::-webkit-scrollbar{
     width: 4px;
 }
@@ -18,6 +77,15 @@ html,body{
     width: 100%;
 }
 
+.transfrom1{
+    transform: translate(-50%,-50%) scale(0);
+    transition: all 1s ease-in-out;
+}
+#pageLoadingText{
+    transition: all 750ms ease-in;
+    will-change: transform;
+    transform: translateZ(0) scale(1);
+}
 @-webkit-keyframes dropdownMenu {
     from {
         opacity: 0;
@@ -72,19 +140,26 @@ img{
     margin-right: var(--displace);
     animation: animation321 var(--timing) infinite alternate cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-@keyframes placeHolderShimmer {
+/* @keyframes placeHolderShimmer {
     0%{ background-position: -468px 0; }
     100%{ background-position: 468px 0; }
-  }
+  } */
+
+ @keyframes skeleton {
+    to{
+        opacity: .5;
+    }
+ } 
   
 .ball2{
-    animation-duration: 1.5s;
+    /* animation-duration: 1.5s;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     animation-name: placeHolderShimmer;
-    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
-    background-size: 800px 104px;
+    background: linear-gradient(to right, var(--eee) 8%, var(--ddd) 18%, var(--eee) 33%); */
+    animation: skeleton 1s ease infinite alternate;
+    background-size: 1000px 194px;
 }
 .transitions{
     transition: all 200ms linear;
@@ -143,10 +218,10 @@ img{
 @media screen and (min-width:1100px) {
     .swiper-slide-active > .scale1{
         transform: scale(1) !important;
+        border: 25px solid var(--border25);
+       
     }
-    .border25{
-        border: 25px solid #F3F3F3;
-    }
+    
 }
 .shadow1{
     box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.25);
@@ -162,7 +237,7 @@ img{
     right: 0;
     width: 100%;
     height: 100%;
-    background: rgba(18, 67, 149, 0.7);
+    background: var(--bgbanner);
     mix-blend-mode: multiply;
 }
 
