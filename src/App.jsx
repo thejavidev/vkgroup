@@ -10,9 +10,10 @@ import { useTranslation } from 'react-i18next';
 export const ThemeContext = createContext(null);
 function App() {
   const dispatch = useDispatch();
+  const data = useSelector((state) => state.list)
   const [t] = useTranslation("translation");
 
-  const data = useSelector((state) => state.list)
+
 
   useEffect(()=>{
     function pageLoading(){

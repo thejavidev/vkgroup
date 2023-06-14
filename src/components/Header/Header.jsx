@@ -42,8 +42,8 @@ const Header = React.memo(({ xidmet, mehsullar }) => {
 
   const controlNavbar = () => {
     if (typeof window !== 'undefined') {
-      if (window.scrollY > lastScrollY) { // if scroll down hide the navbar
-        setShow(true);
+      if (window.scrollY > 200) { // if scroll down hide the navbar
+        
       } else { // if scroll up show the navbar
         setShow(false);
       }
@@ -120,7 +120,6 @@ const Header = React.memo(({ xidmet, mehsullar }) => {
           <Nav className='items-center justify-between w-full '>
             <div className="logo">
               <Link to='/'>
-              
                 <LazyLoadImage className='w-[150px] xl:w-[120px]' src={headerLogo} />
               </Link>
             </div>

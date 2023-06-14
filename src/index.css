@@ -8,7 +8,7 @@
     --bgf:#124395;
     --text:#272727;
     --bgf3:#124395;
-    --eee:#ecebeb;
+    --eee:#b1aeae;
     --ddd:#dddd;
     --toggle-theme: #fbc710;
     --border25:#f3f3f3;
@@ -146,9 +146,9 @@ img{
   } */
 
  @keyframes skeleton {
-    to{
-        opacity: .5;
-    }
+   to {
+    opacity: .4;
+   }
  } 
   
 .ball2{
@@ -158,7 +158,7 @@ img{
     animation-timing-function: linear;
     animation-name: placeHolderShimmer;
     background: linear-gradient(to right, var(--eee) 8%, var(--ddd) 18%, var(--eee) 33%); */
-    animation: skeleton 1s ease infinite alternate;
+    animation: skeleton 1.5s  infinite alternate;
     background-size: 1000px 194px;
 }
 .transitions{
